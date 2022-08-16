@@ -128,6 +128,8 @@ flags.DEFINE_boolean('use_gpu_relax', None, 'Whether to relax on GPU. '
                      'Relax on GPU can be much faster than CPU, so it is '
                      'recommended to enable if possible. GPUs must be available'
                      ' if this setting is enabled.')
+flags.DEFINE_boolean('run_feature', False, 'Calculate MSA and template to '
+                     'generate feature')
 
 FLAGS = flags.FLAGS
 
@@ -156,7 +158,8 @@ def predict_structure(
     model_runners: Dict[str, model.RunModel],
     amber_relaxer: relax.AmberRelaxation,
     benchmark: bool,
-    random_seed: int):
+    random_seed: int,
+    run_feature: bool):
   """Predicts structure using AlphaFold for the given sequence."""
   logging.info('Predicting %s', fasta_name)
   timings = {}
@@ -169,15 +172,25 @@ def predict_structure(
 
   # Get features.
   t_0 = time.time()
-  feature_dict = data_pipeline.process(
-      input_fasta_path=fasta_path,
-      msa_output_dir=msa_output_dir)
+  features_output_path = os.path.join(output_dir, 'features.pkl')
+
+  # If we already have feature.pkl file, skip the MSA and template finding step
+  if os.path.exists(features_output_path):
+    feature_dict = pickle.load(open(features_output_path, 'rb'))
+  else:
+    feature_dict = data_pipeline.process(
+        input_fasta_path=fasta_path,
+        msa_output_dir=msa_output_dir)
+
+    # Write out features as a pickled dictionary.
+    with open(features_output_path, 'wb') as f:
+      pickle.dump(feature_dict, f, protocol=4)
+
   timings['features'] = time.time() - t_0
 
-  # Write out features as a pickled dictionary.
-  features_output_path = os.path.join(output_dir, 'features.pkl')
-  with open(features_output_path, 'wb') as f:
-    pickle.dump(feature_dict, f, protocol=4)
+  # return if we only run cpu for features
+  if run_feature:
+    return 0
 
   unrelaxed_pdbs = {}
   relaxed_pdbs = {}
@@ -396,14 +409,15 @@ def main(argv):
   for i, fasta_path in enumerate(FLAGS.fasta_paths):
     fasta_name = fasta_names[i]
     predict_structure(
-        fasta_path=fasta_path,
-        fasta_name=fasta_name,
-        output_dir_base=FLAGS.output_dir,
-        data_pipeline=data_pipeline,
-        model_runners=model_runners,
-        amber_relaxer=amber_relaxer,
-        benchmark=FLAGS.benchmark,
-        random_seed=random_seed)
+      fasta_path=fasta_path,
+      fasta_name=fasta_name,
+      output_dir_base=FLAGS.output_dir,
+      data_pipeline=data_pipeline,
+      model_runners=model_runners,
+      amber_relaxer=amber_relaxer,
+      benchmark=FLAGS.benchmark,
+      random_seed=random_seed,
+      run_feature=FLAGS.run_feature)
 
 
 if __name__ == '__main__':

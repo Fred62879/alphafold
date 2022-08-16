@@ -183,8 +183,7 @@ class DataPipeline:
         use_precomputed_msas=self.use_precomputed_msas,
         max_sto_sequences=self.mgnify_max_hits)
 
-    '''
-    # running agains pdb (ORIG)
+    # running againsst pdb (ORIG)
     msa_for_templates = jackhmmer_uniref90_result['sto']
     msa_for_templates = parsers.deduplicate_stockholm_msa(msa_for_templates)
     msa_for_templates = parsers.remove_empty_columns_from_stockholm_msa(
@@ -245,6 +244,7 @@ class DataPipeline:
     pdb_template_hits = self.template_searcher.get_template_hits(
       output_string=pdb_templates_result, input_sequence=input_sequence)
     # ends here
+    '''
 
     # running bfd
     if self._use_small_bfd:

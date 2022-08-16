@@ -1,0 +1,122 @@
+
+Lmod is automatically replacing "intel/2020.1.217" with "gcc/9.3.0".
+
+
+Due to MODULEPATH changes, the following have been reloaded:
+  1) libfabric/1.10.1     2) openmpi/4.0.3     3) ucx/1.8.0
+
+I0629 23:17:43.811767 47441289746240 templates.py:857] Using precomputed obsolete pdbs /home/fred862/scratch/fred862/data/alphafold/input/database/pdb_mmcif/obsolete.dat.
+I0629 23:17:48.106020 47441289746240 tpu_client.py:50] Starting the local TPU driver.
+I0629 23:17:48.106984 47441289746240 xla_bridge.py:212] Unable to initialize backend 'tpu_driver': NOT_FOUND: Unable to find driver in registry given worker: local://
+2022-06-29 23:17:48.148332: W external/org_tensorflow/tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libcuda.so.1'; dlerror: libcuda.so.1: cannot open shared object file: No such file or directory
+2022-06-29 23:17:48.154354: W external/org_tensorflow/tensorflow/stream_executor/cuda/cuda_driver.cc:269] failed call to cuInit: UNKNOWN ERROR (303)
+I0629 23:17:48.259541 47441289746240 xla_bridge.py:212] Unable to initialize backend 'gpu': FAILED_PRECONDITION: No visible GPU devices.
+I0629 23:17:48.268559 47441289746240 xla_bridge.py:212] Unable to initialize backend 'tpu': INVALID_ARGUMENT: TpuPlatform is not available.
+W0629 23:17:48.268887 47441289746240 xla_bridge.py:215] No GPU/TPU found, falling back to CPU. (Set TF_CPP_MIN_LOG_LEVEL=0 and rerun for more info.)
+I0629 23:18:01.484441 47441289746240 run_alphafold.py:376] Have 5 models: ['model_1_pred_0', 'model_2_pred_0', 'model_3_pred_0', 'model_4_pred_0', 'model_5_pred_0']
+I0629 23:18:01.484822 47441289746240 run_alphafold.py:393] Using random seed 1579029377756003601 for the data pipeline
+I0629 23:18:01.485095 47441289746240 run_alphafold.py:161] Predicting 1
+W0629 23:18:01.903051 47441289746240 pipeline.py:100] Reading MSA from file /home/fred862/scratch/fred862/data/alphafold/output/1/msas/uniref90_hits.sto
+W0629 23:18:02.016557 47441289746240 pipeline.py:100] Reading MSA from file /home/fred862/scratch/fred862/data/alphafold/output/1/msas/mgnify_hits.sto
+I0629 23:18:02.037951 47441289746240 jackhmmer.py:133] Launching subprocess "/cvmfs/soft.computecanada.ca/easybuild/software/2020/avx512/Core/hmmer/3.2.1/bin/jackhmmer -o /dev/null -A /tmp/tmpzzcsa6mb/output.sto --noali --F1 0.0005 --F2 5e-05 --F3 5e-07 --incE 0.0001 -E 0.0001 --cpu 8 -N 1 /home/fred862/scratch/fred862/data/alphafold/input/seq_to_pred/1.fasta /home/fred862/scratch/fred862/data/alphafold/input/database/small_bfd/bfd-first_non_consensus_sequences.fasta"
+I0629 23:18:02.090566 47441289746240 utils.py:36] Started Jackhmmer (bfd-first_non_consensus_sequences.fasta) query
+I0629 23:19:56.679675 47441289746240 utils.py:40] Finished Jackhmmer (bfd-first_non_consensus_sequences.fasta) query in 114.589 seconds
+I0629 23:19:56.683292 47441289746240 templates.py:878] Searching for template for: GSMAHAGRTG
+I0629 23:19:56.683989 47441289746240 templates.py:718] hit 3jbo_6 did not pass prefilter: Template too short. Length: 8.
+I0629 23:19:56.684134 47441289746240 templates.py:912] Skipped invalid hit 3JBO_6 PROTEIN/RNA Complex; RIBOSOME; 5.8A {Plasmodium falciparum 3D7}, error: None, warning: None
+I0629 23:19:56.684234 47441289746240 templates.py:718] hit 3jbn_6 did not pass prefilter: Template too short. Length: 8.
+I0629 23:19:56.684306 47441289746240 templates.py:912] Skipped invalid hit 3JBN_6 PROTEIN/RNA Complex; RIBOSOME; 4.7A {Plasmodium falciparum 3D7}, error: None, warning: None
+I0629 23:19:56.684383 47441289746240 templates.py:718] hit 5tbw_e0 did not pass prefilter: Template too short. Length: 8.
+I0629 23:19:56.684448 47441289746240 templates.py:912] Skipped invalid hit 5TBW_e0 ?; Protein translation inhibitor, complex, ribosome; HET: OHX, MG, ZN, 7AL; 3.0A {Saccharomyces cerevisiae (strain ATCC 204508 / S288c)}, error: None, warning: None
+I0629 23:19:56.684525 47441289746240 templates.py:718] hit 5ndw_e0 did not pass prefilter: Template too short. Length: 8.
+I0629 23:19:56.684591 47441289746240 templates.py:912] Skipped invalid hit 5NDW_e0 40S ribosomal protein S10-A, 40S; translation, ribosome, 40S, 60S, 80S; HET: 8UZ, MG, ZN; 3.7A {Saccharomyces cerevisiae S288c}, error: None, warning: None
+I0629 23:19:56.684703 47441289746240 templates.py:718] hit 5oa3_e did not pass prefilter: Template too short. Length: 8.
+I0629 23:19:56.684773 47441289746240 templates.py:912] Skipped invalid hit 5OA3_e Eukaryotic translation initiation factor 2D; translation re-initiation complex, small ribosomal; 4.3A {Saccharomyces cerevisiae}, error: None, warning: None
+I0629 23:19:56.684844 47441289746240 templates.py:718] hit 4u4u_E0 did not pass prefilter: Template too short. Length: 8.
+I0629 23:19:56.684907 47441289746240 templates.py:912] Skipped invalid hit 4U4U_E0 40S ribosomal protein S0-A, 40S; translation, ribosome, 40S, 60S, 80S; HET: 3KD, MG, OHX, ZN; 3.0A {Saccharomyces cerevisiae ATCC 204508 / S288c}, error: None, warning: None
+I0629 23:19:56.684988 47441289746240 templates.py:718] hit 4uer_X did not pass prefilter: Template too short. Length: 8.
+I0629 23:19:56.685052 47441289746240 templates.py:912] Skipped invalid hit 4UER_X EIF1A, ES28, ES8, ES7, ES1; EIF3, TRANSLATION INITIATION, TRANSLATION; 6.47A {LACHANCEA KLUYVERI}, error: None, warning: None
+I0629 23:19:56.685129 47441289746240 templates.py:718] hit 6t4q_Se did not pass prefilter: Template too short. Length: 8.
+I0629 23:19:56.685202 47441289746240 templates.py:912] Skipped invalid hit 6T4Q_Se 40S ribosomal protein S1-A, 40S; stalling dicodon codon pair, TRANSLATION; HET: MG; 2.6A {Saccharomyces cerevisiae}, error: None, warning: None
+I0629 23:19:56.685275 47441289746240 templates.py:718] hit 3j7a_6 did not pass prefilter: Template too short. Length: 8.
+I0629 23:19:56.685338 47441289746240 templates.py:912] Skipped invalid hit 3J7A_6 PROTEIN/RNA Complex; emetine, RIBOSOME-INHIBITOR complex; HET: MG, 34G; 3.2A {Plasmodium falciparum}, error: None, warning: None
+I0629 23:19:56.685410 47441289746240 templates.py:718] hit 6rm3_SEE did not pass prefilter: Template too short. Length: 8.
+I0629 23:19:56.685474 47441289746240 templates.py:912] Skipped invalid hit 6RM3_SEE uL2, uS2, uL15, eS26, uL3; Microsporidia, Ribosome, Intracellular Parasite; HET: MG; 3.4A {Vairimorpha necatrix}, error: None, warning: None
+I0629 23:19:56.685546 47441289746240 templates.py:718] hit 6qzp_Se did not pass prefilter: Template too short. Length: 8.
+I0629 23:19:56.685609 47441289746240 templates.py:912] Skipped invalid hit 6EK0_Se 60S ribosomal protein L8, 60S; Human 80S ribosome, rRNA, rRNA; HET: P4U, OMC, 7MG, 5MC, B9H, 2MG, B8N, 5MU, 4AC, HMT, 6MZ, B8T, OMG, I4U, M7A, BGH, E6G, 1MA, A2M, P7G, MG, MA6, B8K, E7G, B9B, E3C, PSU, B8Q, OMU, B8H, MLZ, B8W, HYG, MHG, UR3; 2.9A {Homo sapiens}, error: None, warning: None
+I0629 23:19:56.685684 47441289746240 templates.py:718] hit 5xxu_e did not pass prefilter: Template too short. Length: 8.
+I0629 23:19:56.685748 47441289746240 templates.py:912] Skipped invalid hit 5XXU_e uS2, eS1, uS5, uS3, eS4; Toxoplasma gondii ribosome, rRNA, rprotein; 3.35A {Toxoplasma gondii}, error: None, warning: None
+I0629 23:19:56.685820 47441289746240 templates.py:718] hit 5xyi_e did not pass prefilter: Template too short. Length: 8.
+I0629 23:19:56.685885 47441289746240 templates.py:912] Skipped invalid hit 5XYI_e 40S ribosomal protein SA, Ribosomal; Trichomonas vaginalis ribosome, rRNA, rprotein; 3.35A {Trichomonas vaginalis}, error: None, warning: None
+I0629 23:19:56.685957 47441289746240 templates.py:718] hit 5t2a_AY did not pass prefilter: Template too short. Length: 8.
+I0629 23:19:56.686021 47441289746240 templates.py:912] Skipped invalid hit 5T2A_AY eL18, uL16, uL5, eL13, uL13; ribosome, Leishmania donovani; 2.9A {Leishmania donovani}, error: None, warning: None
+I0629 23:19:56.686095 47441289746240 templates.py:718] hit 4v8m_AY did not pass prefilter: Template too short. Length: 8.
+I0629 23:19:56.686159 47441289746240 templates.py:912] Skipped invalid hit 4V8M_AY Ribosome; RIBOSOME, EUKARYOTIC, KINETOPLASTIDS, EXPANSION SEGMENTS; 5.57A {TRYPANOSOMA BRUCEI BRUCEI}, error: None, warning: None
+I0629 23:19:56.686240 47441289746240 templates.py:718] hit 2lqi_B did not pass prefilter: Template too short. Length: 8.
+I0629 23:19:56.686334 47441289746240 templates.py:912] Skipped invalid hit 2LQI_B CREB-binding protein (E.C.2.3.1.48), Forkhead box; promiscuous binding, intrinsic disorder, transcription; NMR {Mus musculus}, error: None, warning: None
+I0629 23:19:56.686406 47441289746240 templates.py:718] hit 2d5u_A did not pass prefilter: Template too short. Length: 7.
+I0629 23:19:56.686469 47441289746240 templates.py:912] Skipped invalid hit 2D5U_A N-glycanase 1 (E.C.3.5.1.52); PNGase, HYDROLASE; NMR {Mus musculus} SCOP: d.314.1.1, error: None, warning: None
+I0629 23:19:56.686538 47441289746240 templates.py:718] hit 6c2s_B did not pass prefilter: Template too short. Length: 6.
+I0629 23:19:56.686601 47441289746240 templates.py:912] Skipped invalid hit 6C2S_B Transcriptional regulator, MarR family/DNA Complex; Transcriptional regulation, repressor, MarR family; 2.85A {Rhodopseudomonas palustris (strain ATCC BAA-98 / CGA009)}, error: None, warning: None
+I0629 23:19:56.686673 47441289746240 templates.py:718] hit 4ewi_A did not pass prefilter: Template too short. Length: 7.
+I0629 23:19:56.686736 47441289746240 templates.py:912] Skipped invalid hit 4EWI_A NACHT, LRR and PYD domains-containing; NLR proteins, Death Domain, Pyrin; 2.28A {Homo sapiens}, error: None, warning: None
+I0629 23:19:56.686806 47441289746240 templates.py:718] hit 4ewi_B did not pass prefilter: Template too short. Length: 7.
+I0629 23:19:56.686869 47441289746240 templates.py:912] Skipped invalid hit 4EWI_B NACHT, LRR and PYD domains-containing; NLR proteins, Death Domain, Pyrin; 2.28A {Homo sapiens}, error: None, warning: None
+I0629 23:19:56.686939 47441289746240 templates.py:718] hit 3l9b_A did not pass prefilter: Template too short. Length: 7.
+I0629 23:19:56.687003 47441289746240 templates.py:912] Skipped invalid hit 3L9B_A Otoferlin; Otoferlin, C2-domain, beta-sheets, Cell membrane; 1.95A {Rattus norvegicus}, error: None, warning: None
+I0629 23:19:56.687073 47441289746240 templates.py:718] hit 3ajb_B did not pass prefilter: Template too short. Length: 6.
+I0629 23:19:56.687137 47441289746240 templates.py:912] Skipped invalid hit 3AJB_B Peroxisomal biogenesis factor 3, Peroxisomal; ALL ALPHA, Protein-Protein complex, PROTEIN; 2.5A {Homo sapiens}, error: None, warning: None
+I0629 23:19:56.687228 47441289746240 templates.py:718] hit 3r7k_A did not pass prefilter: Template too short. Length: 9.
+I0629 23:19:56.687292 47441289746240 templates.py:912] Skipped invalid hit 3R7K_A Probable acyl CoA dehydrogenase; SSGCID, Structural Genomics, Seattle Structural; HET: FDA; 2.5A {Mycobacterium abscessus}, error: None, warning: None
+I0629 23:19:56.687362 47441289746240 templates.py:718] hit 3r7k_C did not pass prefilter: Template too short. Length: 9.
+I0629 23:19:56.687425 47441289746240 templates.py:912] Skipped invalid hit 3R7K_C Probable acyl CoA dehydrogenase; SSGCID, Structural Genomics, Seattle Structural; HET: FDA; 2.5A {Mycobacterium abscessus}, error: None, warning: None
+I0629 23:19:56.687494 47441289746240 templates.py:718] hit 6c28_B did not pass prefilter: Template too short. Length: 6.
+I0629 23:19:56.687556 47441289746240 templates.py:912] Skipped invalid hit 6C28_B Transcriptional regulator, MarR family; Transcriptional regulation, repressor, MarR family; HET: WCA; 2.09A {Rhodopseudomonas palustris (strain ATCC BAA-98 / CGA009)}, error: None, warning: None
+I0629 23:19:56.687626 47441289746240 templates.py:718] hit 6c9t_A did not pass prefilter: Template too short. Length: 6.
+I0629 23:19:56.687688 47441289746240 templates.py:912] Skipped invalid hit 6C9T_A Transcriptional regulator, MarR family; Transcriptional regulation, repressor, MarR family; 2.07A {Rhodopseudomonas palustris (strain ATCC BAA-98 / CGA009)}, error: None, warning: None
+I0629 23:19:56.688033 47441289746240 pipeline.py:280] Uniref90 MSA size: 1 sequences.
+I0629 23:19:56.688126 47441289746240 pipeline.py:281] BFD MSA size: 1 sequences.
+I0629 23:19:56.688203 47441289746240 pipeline.py:282] MGnify MSA size: 1 sequences.
+I0629 23:19:56.688266 47441289746240 pipeline.py:283] Final (deduplicated) MSA size: 1 sequences.
+I0629 23:19:56.688767 47441289746240 pipeline.py:285] Total number of templates (NB: this can include bad templates and is later filtered to top 4): 0.
+I0629 23:19:56.691699 47441289746240 run_alphafold.py:190] Running model model_1_pred_0 on 1
+2022-06-29 23:20:02.091366: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libcuda.so.1'; dlerror: libcuda.so.1: cannot open shared object file: No such file or directory
+2022-06-29 23:20:02.099446: W tensorflow/stream_executor/cuda/cuda_driver.cc:326] failed call to cuInit: UNKNOWN ERROR (303)
+I0629 23:20:04.640527 47441289746240 model.py:165] Running predict with shape(feat) = {'aatype': (32, 10), 'residue_index': (32, 10), 'seq_length': (32,), 'template_aatype': (32, 4, 10), 'template_all_atom_masks': (32, 4, 10, 37), 'template_all_atom_positions': (32, 4, 10, 37, 3), 'template_sum_probs': (32, 4, 1), 'is_distillation': (32,), 'seq_mask': (32, 10), 'msa_mask': (32, 508, 10), 'msa_row_mask': (32, 508), 'random_crop_to_size_seed': (32, 2), 'template_mask': (32, 4), 'template_pseudo_beta': (32, 4, 10, 3), 'template_pseudo_beta_mask': (32, 4, 10), 'atom14_atom_exists': (32, 10, 14), 'residx_atom14_to_atom37': (32, 10, 14), 'residx_atom37_to_atom14': (32, 10, 37), 'atom37_atom_exists': (32, 10, 37), 'extra_msa': (32, 5120, 10), 'extra_msa_mask': (32, 5120, 10), 'extra_msa_row_mask': (32, 5120), 'bert_mask': (32, 508, 10), 'true_msa': (32, 508, 10), 'extra_has_deletion': (32, 5120, 10), 'extra_deletion_value': (32, 5120, 10), 'msa_feat': (32, 508, 10, 49), 'target_feat': (32, 10, 22)}
+2022-06-29 23:25:03.024167: E external/org_tensorflow/tensorflow/compiler/xla/service/slow_operation_alarm.cc:61] 
+********************************
+Very slow compile?  If you want to file a bug, run with envvar XLA_FLAGS=--xla_dump_to=/tmp/foo and attach the results.
+Compiling module jit_apply_fn.147931
+********************************
+I0629 23:50:29.302206 47441289746240 model.py:175] Output shape was {'distogram': {'bin_edges': (63,), 'logits': (10, 10, 64)}, 'experimentally_resolved': {'logits': (10, 37)}, 'masked_msa': {'logits': (508, 10, 23)}, 'predicted_lddt': {'logits': (10, 50)}, 'structure_module': {'final_atom_mask': (10, 37), 'final_atom_positions': (10, 37, 3)}, 'plddt': (10,), 'ranking_confidence': ()}
+I0629 23:50:29.302927 47441289746240 run_alphafold.py:202] Total JAX model model_1_pred_0 on 1 predict time (includes compilation time, see --benchmark): 1824.7s
+I0629 23:50:30.159264 47441289746240 amber_minimize.py:177] alterations info: {'nonstandard_residues': [], 'removed_heterogens': set(), 'missing_residues': {}, 'missing_heavy_atoms': {}, 'missing_terminals': {<Residue 9 (GLY) of chain 0>: ['OXT']}, 'Se_in_MET': [], 'removed_chains': {0: []}}
+I0629 23:50:30.174085 47441289746240 amber_minimize.py:407] Minimizing protein, attempt 1 of 100.
+I0629 23:50:31.986524 47441289746240 amber_minimize.py:68] Restraining 65 / 127 particles.
+I0629 23:50:32.521402 47441289746240 amber_minimize.py:177] alterations info: {'nonstandard_residues': [], 'removed_heterogens': set(), 'missing_residues': {}, 'missing_heavy_atoms': {}, 'missing_terminals': {}, 'Se_in_MET': [], 'removed_chains': {0: []}}
+Traceback (most recent call last):
+  File "/home/fred862/scratch/fred862/code/alphafold/run_alphafold.py", line 422, in <module>
+    app.run(main)
+  File "/home/fred862/env/alphafold_env/lib/python3.8/site-packages/absl/app.py", line 312, in run
+    _run_main(main, args)
+  File "/home/fred862/env/alphafold_env/lib/python3.8/site-packages/absl/app.py", line 258, in _run_main
+    sys.exit(main(argv))
+  File "/home/fred862/scratch/fred862/code/alphafold/run_alphafold.py", line 398, in main
+    predict_structure(
+  File "/home/fred862/scratch/fred862/code/alphafold/run_alphafold.py", line 242, in predict_structure
+    relaxed_pdb_str, _, _ = amber_relaxer.process(prot=unrelaxed_protein)
+  File "/lustre04/scratch/fred862/fred862/code/alphafold/alphafold/relax/relax.py", line 61, in process
+    out = amber_minimize.run_pipeline(
+  File "/lustre04/scratch/fred862/fred862/code/alphafold/alphafold/relax/amber_minimize.py", line 489, in run_pipeline
+    ret.update(get_violation_metrics(prot))
+  File "/lustre04/scratch/fred862/fred862/code/alphafold/alphafold/relax/amber_minimize.py", line 357, in get_violation_metrics
+    structural_violations, struct_metrics = find_violations(prot)
+  File "/lustre04/scratch/fred862/fred862/code/alphafold/alphafold/relax/amber_minimize.py", line 339, in find_violations
+    violations = folding.find_structural_violations(
+  File "/lustre04/scratch/fred862/fred862/code/alphafold/alphafold/model/folding.py", line 771, in find_structural_violations
+    restype_atom14_bounds = residue_constants.make_atom14_dists_bounds(
+  File "/lustre04/scratch/fred862/fred862/code/alphafold/alphafold/common/residue_constants.py", line 861, in make_atom14_dists_bounds
+    residue_bonds, residue_virtual_bonds, _ = load_stereo_chemical_props()
+  File "/lustre04/scratch/fred862/fred862/code/alphafold/alphafold/common/residue_constants.py", line 409, in load_stereo_chemical_props
+    with open(stereo_chemical_props_path, 'rt') as f:
+FileNotFoundError: [Errno 2] No such file or directory: '/lustre04/scratch/fred862/fred862/code/alphafold/alphafold/common/stereo_chemical_props.txt'

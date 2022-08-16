@@ -1,0 +1,78 @@
+
+Lmod is automatically replacing "intel/2020.1.217" with "gcc/9.3.0".
+
+
+Due to MODULEPATH changes, the following have been reloaded:
+  1) libfabric/1.10.1     2) openmpi/4.0.3     3) ucx/1.8.0
+
+I0630 10:48:45.414305 47226945079104 templates.py:857] Using precomputed obsolete pdbs /home/fred862/scratch/fred862/data/alphafold/input/database/pdb_mmcif/obsolete.dat.
+I0630 10:48:47.967315 47226945079104 tpu_client.py:50] Starting the local TPU driver.
+I0630 10:48:47.967907 47226945079104 xla_bridge.py:212] Unable to initialize backend 'tpu_driver': NOT_FOUND: Unable to find driver in registry given worker: local://
+2022-06-30 10:48:47.977120: W external/org_tensorflow/tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libcuda.so.1'; dlerror: libcuda.so.1: cannot open shared object file: No such file or directory
+2022-06-30 10:48:47.977587: W external/org_tensorflow/tensorflow/stream_executor/cuda/cuda_driver.cc:269] failed call to cuInit: UNKNOWN ERROR (303)
+I0630 10:48:48.208502 47226945079104 xla_bridge.py:212] Unable to initialize backend 'gpu': FAILED_PRECONDITION: No visible GPU devices.
+I0630 10:48:48.210265 47226945079104 xla_bridge.py:212] Unable to initialize backend 'tpu': INVALID_ARGUMENT: TpuPlatform is not available.
+W0630 10:48:48.210391 47226945079104 xla_bridge.py:215] No GPU/TPU found, falling back to CPU. (Set TF_CPP_MIN_LOG_LEVEL=0 and rerun for more info.)
+I0630 10:49:01.361618 47226945079104 run_alphafold.py:376] Have 5 models: ['model_1_pred_0', 'model_2_pred_0', 'model_3_pred_0', 'model_4_pred_0', 'model_5_pred_0']
+I0630 10:49:01.361914 47226945079104 run_alphafold.py:393] Using random seed 1327536060826469603 for the data pipeline
+I0630 10:49:01.362246 47226945079104 run_alphafold.py:161] Predicting 1
+I0630 10:49:01.365242 47226945079104 jackhmmer.py:133] Launching subprocess "/cvmfs/soft.computecanada.ca/easybuild/software/2020/avx512/Core/hmmer/3.2.1/bin/jackhmmer -o /dev/null -A /tmp/tmp129ta11_/output.sto --noali --F1 0.0005 --F2 5e-05 --F3 5e-07 --incE 0.0001 -E 0.0001 --cpu 8 -N 1 /home/fred862/scratch/fred862/data/alphafold/input/seq_to_pred/1.fasta /home/fred862/scratch/fred862/data/alphafold/input/database/uniref90/uniref90.fasta"
+I0630 10:49:01.437471 47226945079104 utils.py:36] Started Jackhmmer (uniref90.fasta) query
+I0630 10:57:22.069922 47226945079104 utils.py:40] Finished Jackhmmer (uniref90.fasta) query in 500.632 seconds
+I0630 10:57:22.196269 47226945079104 jackhmmer.py:133] Launching subprocess "/cvmfs/soft.computecanada.ca/easybuild/software/2020/avx512/Core/hmmer/3.2.1/bin/jackhmmer -o /dev/null -A /tmp/tmpi71z2tlb/output.sto --noali --F1 0.0005 --F2 5e-05 --F3 5e-07 --incE 0.0001 -E 0.0001 --cpu 8 -N 1 /home/fred862/scratch/fred862/data/alphafold/input/seq_to_pred/1.fasta /home/fred862/scratch/fred862/data/alphafold/input/database/mgnify/mgy_clusters_2018_12.fa"
+I0630 10:57:22.254569 47226945079104 utils.py:36] Started Jackhmmer (mgy_clusters_2018_12.fa) query
+I0630 11:06:11.803253 47226945079104 utils.py:40] Finished Jackhmmer (mgy_clusters_2018_12.fa) query in 529.548 seconds
+I0630 11:06:12.453197 47226945079104 hhsearch.py:85] Launching subprocess "/cvmfs/soft.computecanada.ca/easybuild/software/2020/Core/hh-suite/3.3.0/bin/hhsearch -i /tmp/tmpe23c5gg7/query.a3m -o /tmp/tmpe23c5gg7/output.hhr -maxseq 1000000 -d /home/fred862/scratch/fred862/data/alphafold/input/database/pdb70/pdb70"
+I0630 11:06:12.604060 47226945079104 utils.py:36] Started HHsearch query
+I0630 11:09:56.081967 47226945079104 utils.py:40] Finished HHsearch query in 223.477 seconds
+I0630 11:09:56.460383 47226945079104 jackhmmer.py:133] Launching subprocess "/cvmfs/soft.computecanada.ca/easybuild/software/2020/avx512/Core/hmmer/3.2.1/bin/jackhmmer -o /dev/null -A /tmp/tmp0iq18i89/output.sto --noali --F1 0.0005 --F2 5e-05 --F3 5e-07 --incE 0.0001 -E 0.0001 --cpu 8 -N 1 /home/fred862/scratch/fred862/data/alphafold/input/seq_to_pred/1.fasta /home/fred862/scratch/fred862/data/alphafold/input/database/small_bfd/bfd-first_non_consensus_sequences.fasta"
+I0630 11:09:56.520328 47226945079104 utils.py:36] Started Jackhmmer (bfd-first_non_consensus_sequences.fasta) query
+I0630 11:11:52.274416 47226945079104 utils.py:40] Finished Jackhmmer (bfd-first_non_consensus_sequences.fasta) query in 115.754 seconds
+I0630 11:11:52.286194 47226945079104 templates.py:878] Searching for template for: GSMAHAGRTGYDNREIVMKYIHYKLSQRGYEWDAGDDVEENRTEAPEGTESEVVHLTLRQAGDDFSRRYRRDFAEMSSQLHLTPFTARGRFATVVEELFRDGVNWGRIVAFFEFGGVMCVESVNREMSPLVDNIALWMTEYLNRHLHTWIQDNGGWDAFVELYGPSMR
+I0630 11:11:52.287601 47226945079104 templates.py:718] hit 1ysw_A did not pass prefilter: Template is an exact subsequence of query with large coverage. Length ratio: 0.9761904761904762.
+I0630 11:11:52.287758 47226945079104 templates.py:912] Skipped invalid hit 1YSW_A Apoptosis regulator Bcl-2; COMPLEX, APOPTOSIS; HET: 43B; NMR {Homo sapiens} SCOP: f.1.4.1, error: None, warning: None
+I0630 11:11:52.762444 47226945079104 templates.py:267] Found an exact template match 1ysn_A.
+I0630 11:11:56.906233 47226945079104 templates.py:267] Found an exact template match 2pon_B.
+I0630 11:12:00.737481 47226945079104 templates.py:267] Found an exact template match 1o0l_A.
+I0630 11:12:01.392172 47226945079104 templates.py:267] Found an exact template match 4k5a_A.
+I0630 11:12:01.748882 47226945079104 templates.py:267] Found an exact template match 5vwv_A.
+I0630 11:12:02.319247 47226945079104 templates.py:267] Found an exact template match 3sp7_A.
+I0630 11:12:02.989073 47226945079104 templates.py:267] Found an exact template match 5jsn_C.
+I0630 11:12:03.418881 47226945079104 templates.py:267] Found an exact template match 1lxl_A.
+I0630 11:12:03.802304 47226945079104 templates.py:267] Found an exact template match 5fmi_A.
+I0630 11:12:06.189293 47226945079104 templates.py:267] Found an exact template match 6gl8_A.
+I0630 11:12:10.996952 47226945079104 templates.py:267] Found an exact template match 6bf2_A.
+I0630 11:12:11.812950 47226945079104 templates.py:267] Found an exact template match 5vx1_B.
+I0630 11:12:12.909659 47226945079104 templates.py:267] Found an exact template match 2a5y_A.
+I0630 11:12:13.846281 47226945079104 templates.py:267] Found an exact template match 3pk1_A.
+I0630 11:12:14.745459 47226945079104 templates.py:267] Found an exact template match 5wdd_B.
+I0630 11:12:15.135448 47226945079104 templates.py:267] Found an exact template match 6eb6_A.
+I0630 11:12:18.868424 47226945079104 templates.py:267] Found an exact template match 6ckv_A.
+I0630 11:12:23.079453 47226945079104 templates.py:267] Found an exact template match 2lr1_A.
+I0630 11:12:24.222336 47226945079104 templates.py:267] Found an exact template match 1ty4_B.
+I0630 11:12:24.736333 47226945079104 templates.py:267] Found an exact template match 4cim_A.
+I0630 11:12:24.914786 47226945079104 pipeline.py:280] Uniref90 MSA size: 3405 sequences.
+I0630 11:12:24.915027 47226945079104 pipeline.py:281] BFD MSA size: 132 sequences.
+I0630 11:12:24.915104 47226945079104 pipeline.py:282] MGnify MSA size: 67 sequences.
+I0630 11:12:24.915172 47226945079104 pipeline.py:283] Final (deduplicated) MSA size: 3224 sequences.
+I0630 11:12:24.915426 47226945079104 pipeline.py:285] Total number of templates (NB: this can include bad templates and is later filtered to top 4): 20.
+I0630 11:12:25.494458 47226945079104 run_alphafold.py:190] Running model model_1_pred_0 on 1
+2022-06-30 11:12:34.365180: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libcuda.so.1'; dlerror: libcuda.so.1: cannot open shared object file: No such file or directory
+2022-06-30 11:12:34.385686: W tensorflow/stream_executor/cuda/cuda_driver.cc:326] failed call to cuInit: UNKNOWN ERROR (303)
+I0630 11:12:40.131136 47226945079104 model.py:165] Running predict with shape(feat) = {'aatype': (32, 168), 'residue_index': (32, 168), 'seq_length': (32,), 'template_aatype': (32, 4, 168), 'template_all_atom_masks': (32, 4, 168, 37), 'template_all_atom_positions': (32, 4, 168, 37, 3), 'template_sum_probs': (32, 4, 1), 'is_distillation': (32,), 'seq_mask': (32, 168), 'msa_mask': (32, 508, 168), 'msa_row_mask': (32, 508), 'random_crop_to_size_seed': (32, 2), 'template_mask': (32, 4), 'template_pseudo_beta': (32, 4, 168, 3), 'template_pseudo_beta_mask': (32, 4, 168), 'atom14_atom_exists': (32, 168, 14), 'residx_atom14_to_atom37': (32, 168, 14), 'residx_atom37_to_atom14': (32, 168, 37), 'atom37_atom_exists': (32, 168, 37), 'extra_msa': (32, 5120, 168), 'extra_msa_mask': (32, 5120, 168), 'extra_msa_row_mask': (32, 5120), 'bert_mask': (32, 508, 168), 'true_msa': (32, 508, 168), 'extra_has_deletion': (32, 5120, 168), 'extra_deletion_value': (32, 5120, 168), 'msa_feat': (32, 508, 168, 49), 'target_feat': (32, 168, 22)}
+2022-06-30 11:17:00.760220: E external/org_tensorflow/tensorflow/compiler/xla/service/slow_operation_alarm.cc:61] 
+********************************
+Very slow compile?  If you want to file a bug, run with envvar XLA_FLAGS=--xla_dump_to=/tmp/foo and attach the results.
+Compiling module jit_apply_fn.135699
+********************************
+I0630 13:40:08.856361 47226945079104 model.py:175] Output shape was {'distogram': {'bin_edges': (63,), 'logits': (168, 168, 64)}, 'experimentally_resolved': {'logits': (168, 37)}, 'masked_msa': {'logits': (508, 168, 23)}, 'predicted_lddt': {'logits': (168, 50)}, 'structure_module': {'final_atom_mask': (168, 37), 'final_atom_positions': (168, 37, 3)}, 'plddt': (168,), 'ranking_confidence': ()}
+I0630 13:40:08.990253 47226945079104 run_alphafold.py:202] Total JAX model model_1_pred_0 on 1 predict time (includes compilation time, see --benchmark): 8848.9s
+I0630 13:40:17.628588 47226945079104 amber_minimize.py:177] alterations info: {'nonstandard_residues': [], 'removed_heterogens': set(), 'missing_residues': {}, 'missing_heavy_atoms': {}, 'missing_terminals': {<Residue 167 (ARG) of chain 0>: ['OXT']}, 'Se_in_MET': [], 'removed_chains': {0: []}}
+I0630 13:40:17.893535 47226945079104 amber_minimize.py:407] Minimizing protein, attempt 1 of 100.
+I0630 13:40:20.224879 47226945079104 amber_minimize.py:68] Restraining 1373 / 2656 particles.
+I0630 13:40:33.402996 47226945079104 amber_minimize.py:177] alterations info: {'nonstandard_residues': [], 'removed_heterogens': set(), 'missing_residues': {}, 'missing_heavy_atoms': {}, 'missing_terminals': {}, 'Se_in_MET': [], 'removed_chains': {0: []}}
+I0630 13:40:36.966206 47226945079104 amber_minimize.py:497] Iteration completed: Einit 4813.35 Efinal -3658.14 Time 13.60 s num residue violations 0 num residue exclusions 0 
+I0630 13:40:40.999596 47226945079104 amber_minimize.py:177] alterations info: {'nonstandard_residues': [], 'removed_heterogens': set(), 'missing_residues': {}, 'missing_heavy_atoms': {}, 'missing_terminals': {<Residue 167 (ARG) of chain 0>: ['OXT']}, 'Se_in_MET': [], 'removed_chains': {0: []}}
+I0630 13:40:41.547806 47226945079104 run_alphafold.py:190] Running model model_2_pred_0 on 1
+I0630 13:40:53.204289 47226945079104 model.py:165] Running predict with shape(feat) = {'aatype': (32, 168), 'residue_index': (32, 168), 'seq_length': (32,), 'template_aatype': (32, 4, 168), 'template_all_atom_masks': (32, 4, 168, 37), 'template_all_atom_positions': (32, 4, 168, 37, 3), 'template_sum_probs': (32, 4, 1), 'is_distillation': (32,), 'seq_mask': (32, 168), 'msa_mask': (32, 508, 168), 'msa_row_mask': (32, 508), 'random_crop_to_size_seed': (32, 2), 'template_mask': (32, 4), 'template_pseudo_beta': (32, 4, 168, 3), 'template_pseudo_beta_mask': (32, 4, 168), 'atom14_atom_exists': (32, 168, 14), 'residx_atom14_to_atom37': (32, 168, 14), 'residx_atom37_to_atom14': (32, 168, 37), 'atom37_atom_exists': (32, 168, 37), 'extra_msa': (32, 1024, 168), 'extra_msa_mask': (32, 1024, 168), 'extra_msa_row_mask': (32, 1024), 'bert_mask': (32, 508, 168), 'true_msa': (32, 508, 168), 'extra_has_deletion': (32, 1024, 168), 'extra_deletion_value': (32, 1024, 168), 'msa_feat': (32, 508, 168, 49), 'target_feat': (32, 168, 22)}
+slurmstepd: error: *** JOB 29749550 ON bc12048 CANCELLED AT 2022-06-30T17:41:41 DUE TO TIME LIMIT ***

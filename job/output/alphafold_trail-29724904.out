@@ -1,0 +1,23 @@
+
+Lmod is automatically replacing "intel/2020.1.217" with "gcc/9.3.0".
+
+
+Due to MODULEPATH changes, the following have been reloaded:
+  1) libfabric/1.10.1     2) openmpi/4.0.3     3) ucx/1.8.0
+
+I0629 13:19:17.155448 47156908771136 templates.py:857] Using precomputed obsolete pdbs /home/fred862/scratch/fred862/data/alphafold/input/database/pdb_mmcif/obsolete.dat.
+I0629 13:19:19.478520 47156908771136 tpu_client.py:50] Starting the local TPU driver.
+I0629 13:19:19.479180 47156908771136 xla_bridge.py:212] Unable to initialize backend 'tpu_driver': NOT_FOUND: Unable to find driver in registry given worker: local://
+2022-06-29 13:19:19.489120: W external/org_tensorflow/tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libcuda.so.1'; dlerror: libcuda.so.1: cannot open shared object file: No such file or directory
+2022-06-29 13:19:19.489610: W external/org_tensorflow/tensorflow/stream_executor/cuda/cuda_driver.cc:269] failed call to cuInit: UNKNOWN ERROR (303)
+I0629 13:19:19.634600 47156908771136 xla_bridge.py:212] Unable to initialize backend 'gpu': FAILED_PRECONDITION: No visible GPU devices.
+I0629 13:19:19.635511 47156908771136 xla_bridge.py:212] Unable to initialize backend 'tpu': INVALID_ARGUMENT: TpuPlatform is not available.
+W0629 13:19:19.635620 47156908771136 xla_bridge.py:215] No GPU/TPU found, falling back to CPU. (Set TF_CPP_MIN_LOG_LEVEL=0 and rerun for more info.)
+W0629 13:19:33.040082 47156908771136 pipeline.py:103] Reading MSA from file /home/fred862/scratch/fred862/data/alphafold/output/1/msas/uniref90_hits.sto
+W0629 13:19:33.042366 47156908771136 pipeline.py:103] Reading MSA from file /home/fred862/scratch/fred862/data/alphafold/output/1/msas/mgnify_hits.sto
+I0629 13:19:33.043751 47156908771136 hhsearch.py:85] Launching subprocess "/cvmfs/soft.computecanada.ca/easybuild/software/2020/Core/hh-suite/3.3.0/bin/hhsearch -i /tmp/tmpnvo1_jyg/query.a3m -o /tmp/tmpnvo1_jyg/output.hhr -maxseq 1000000 -d /home/fred862/scratch/fred862/data/alphafold/input/database/pdb70/pdb70"
+I0629 13:19:33.200646 47156908771136 utils.py:36] Started HHsearch query
+I0629 13:22:16.170367 47156908771136 utils.py:40] Finished HHsearch query in 162.969 seconds
+I0629 13:22:16.198448 47156908771136 hhblits.py:128] Launching subprocess "/cvmfs/soft.computecanada.ca/easybuild/software/2020/Core/hh-suite/3.3.0/bin/hhblits -i /home/fred862/scratch/fred862/data/alphafold/input/seq_to_pred/1.fasta -cpu 4 -oa3m /tmp/tmpxa3d3xj7/output.a3m -o /dev/null -n 3 -e 0.001 -maxseq 1000000 -realign_max 100000 -maxfilt 100000 -min_prefilter_hits 1000 -d /home/fred862/scratch/fred862/data/alphafold/input/database/bfd/bfd_metaclust_clu_complete_id30_c90_final_seq.sorted_opt -d /home/fred862/scratch/fred862/data/alphafold/input/database/uniclust30/uniclust30_2018_08/uniclust30_2018_08"
+I0629 13:22:16.358947 47156908771136 utils.py:36] Started HHblits query
+slurmstepd: error: *** JOB 29724904 ON bc11408 CANCELLED AT 2022-06-30T01:17:00 DUE TO TIME LIMIT ***

@@ -1,0 +1,30 @@
+
+Lmod is automatically replacing "intel/2020.1.217" with "gcc/9.3.0".
+
+
+Due to MODULEPATH changes, the following have been reloaded:
+  1) libfabric/1.10.1     2) openmpi/4.0.3     3) ucx/1.8.0
+
+I0630 10:48:45.389857 47902468839232 templates.py:857] Using precomputed obsolete pdbs /home/fred862/scratch/fred862/data/alphafold/input/database/pdb_mmcif/obsolete.dat.
+I0630 10:48:47.966733 47902468839232 tpu_client.py:50] Starting the local TPU driver.
+I0630 10:48:47.967254 47902468839232 xla_bridge.py:212] Unable to initialize backend 'tpu_driver': NOT_FOUND: Unable to find driver in registry given worker: local://
+2022-06-30 10:48:47.977210: W external/org_tensorflow/tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libcuda.so.1'; dlerror: libcuda.so.1: cannot open shared object file: No such file or directory
+2022-06-30 10:48:47.977743: W external/org_tensorflow/tensorflow/stream_executor/cuda/cuda_driver.cc:269] failed call to cuInit: UNKNOWN ERROR (303)
+I0630 10:48:48.208358 47902468839232 xla_bridge.py:212] Unable to initialize backend 'gpu': FAILED_PRECONDITION: No visible GPU devices.
+I0630 10:48:48.210439 47902468839232 xla_bridge.py:212] Unable to initialize backend 'tpu': INVALID_ARGUMENT: TpuPlatform is not available.
+W0630 10:48:48.210550 47902468839232 xla_bridge.py:215] No GPU/TPU found, falling back to CPU. (Set TF_CPP_MIN_LOG_LEVEL=0 and rerun for more info.)
+I0630 10:49:01.202427 47902468839232 run_alphafold.py:376] Have 5 models: ['model_1_pred_0', 'model_2_pred_0', 'model_3_pred_0', 'model_4_pred_0', 'model_5_pred_0']
+I0630 10:49:01.202683 47902468839232 run_alphafold.py:393] Using random seed 337124787892379624 for the data pipeline
+I0630 10:49:01.202919 47902468839232 run_alphafold.py:161] Predicting 1
+I0630 10:49:01.224271 47902468839232 jackhmmer.py:133] Launching subprocess "/cvmfs/soft.computecanada.ca/easybuild/software/2020/avx512/Core/hmmer/3.2.1/bin/jackhmmer -o /dev/null -A /tmp/tmp7rlm4vqc/output.sto --noali --F1 0.0005 --F2 5e-05 --F3 5e-07 --incE 0.0001 -E 0.0001 --cpu 8 -N 1 /home/fred862/scratch/fred862/data/alphafold/input/seq_to_pred/1.fasta /home/fred862/scratch/fred862/data/alphafold/input/database/uniref90/uniref90.fasta"
+I0630 10:49:01.278195 47902468839232 utils.py:36] Started Jackhmmer (uniref90.fasta) query
+I0630 10:56:26.610820 47902468839232 utils.py:40] Finished Jackhmmer (uniref90.fasta) query in 445.332 seconds
+I0630 10:56:26.701179 47902468839232 jackhmmer.py:133] Launching subprocess "/cvmfs/soft.computecanada.ca/easybuild/software/2020/avx512/Core/hmmer/3.2.1/bin/jackhmmer -o /dev/null -A /tmp/tmpmghzqhx_/output.sto --noali --F1 0.0005 --F2 5e-05 --F3 5e-07 --incE 0.0001 -E 0.0001 --cpu 8 -N 1 /home/fred862/scratch/fred862/data/alphafold/input/seq_to_pred/1.fasta /home/fred862/scratch/fred862/data/alphafold/input/database/mgnify/mgy_clusters_2018_12.fa"
+I0630 10:56:26.736986 47902468839232 utils.py:36] Started Jackhmmer (mgy_clusters_2018_12.fa) query
+I0630 11:05:28.458711 47902468839232 utils.py:40] Finished Jackhmmer (mgy_clusters_2018_12.fa) query in 541.721 seconds
+I0630 11:05:29.094135 47902468839232 hhsearch.py:85] Launching subprocess "/cvmfs/soft.computecanada.ca/easybuild/software/2020/Core/hh-suite/3.3.0/bin/hhsearch -i /tmp/tmpp3vrijiu/query.a3m -o /tmp/tmpp3vrijiu/output.hhr -maxseq 1000000 -d /home/fred862/scratch/fred862/data/alphafold/input/database/pdb70/pdb70"
+I0630 11:05:29.218132 47902468839232 utils.py:36] Started HHsearch query
+I0630 11:09:56.094448 47902468839232 utils.py:40] Finished HHsearch query in 266.876 seconds
+I0630 11:09:56.471070 47902468839232 hhblits.py:128] Launching subprocess "/cvmfs/soft.computecanada.ca/easybuild/software/2020/Core/hh-suite/3.3.0/bin/hhblits -i /home/fred862/scratch/fred862/data/alphafold/input/seq_to_pred/1.fasta -cpu 4 -oa3m /tmp/tmpa4thuitt/output.a3m -o /dev/null -n 3 -e 0.001 -maxseq 1000000 -realign_max 100000 -maxfilt 100000 -min_prefilter_hits 1000 -d /home/fred862/scratch/fred862/data/alphafold/input/database/bfd/bfd_metaclust_clu_complete_id30_c90_final_seq.sorted_opt -d /home/fred862/scratch/fred862/data/alphafold/input/database/uniclust30/uniclust30_2018_08/uniclust30_2018_08"
+I0630 11:09:56.597429 47902468839232 utils.py:36] Started HHblits query
+slurmstepd: error: *** JOB 29749561 ON bc12211 CANCELLED AT 2022-06-30T22:43:08 DUE TO TIME LIMIT ***

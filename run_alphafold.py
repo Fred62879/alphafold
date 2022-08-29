@@ -38,18 +38,24 @@ from alphafold.model import data
 from alphafold.model import model
 from alphafold.relax import relax
 import numpy as np
+print(np.__version__)
 
 # Internal import (7716).
 
 logging.set_verbosity(logging.INFO)
 
+'''
 flags.DEFINE_list(
     'fasta_paths', None, 'Paths to FASTA files, each containing a prediction '
     'target that will be folded one after another. If a FASTA file contains '
     'multiple sequences, then it will be folded as a multimer. Paths should be '
     'separated by commas. All FASTA paths must have a unique basename as the '
     'basename is used to name the output directories for each prediction.')
+'''
+flags.DEFINE_integer('fasta_lo', 0, 'lo id of fasta names from fasta dir')
+flags.DEFINE_integer('fasta_hi', 0, 'hi id of fasta names from fasta dir')
 
+flags.DEFINE_string('fasta_dir', None, 'Path to directory of fasta files to predict.')
 flags.DEFINE_string('data_dir', None, 'Path to directory of supporting data.')
 flags.DEFINE_string('output_dir', None, 'Path to a directory that will '
                     'store the results.')
@@ -151,7 +157,7 @@ def _check_flag(flag_name: str,
 
 
 def predict_structure(
-    fasta_path: str,
+    fasta_dir: str,
     fasta_name: str,
     output_dir_base: str,
     data_pipeline: Union[pipeline.DataPipeline, pipeline_multimer.DataPipeline],
@@ -170,6 +176,8 @@ def predict_structure(
   if not os.path.exists(msa_output_dir):
     os.makedirs(msa_output_dir)
 
+  logging.info('*** output path: %s', msa_output_dir)
+
   # Get features.
   t_0 = time.time()
   features_output_path = os.path.join(output_dir, 'features.pkl')
@@ -179,7 +187,7 @@ def predict_structure(
     feature_dict = pickle.load(open(features_output_path, 'rb'))
   else:
     feature_dict = data_pipeline.process(
-        input_fasta_path=fasta_path,
+      input_fasta_path=os.path.join(fasta_dir, fasta_name),
         msa_output_dir=msa_output_dir)
 
     # Write out features as a pickled dictionary.
@@ -320,7 +328,10 @@ def main(argv):
     num_ensemble = 1
 
   # Check for duplicate FASTA file names.
-  fasta_names = [pathlib.Path(p).stem for p in FLAGS.fasta_paths]
+  fasta_names = os.listdir(FLAGS.fasta_dir)[FLAGS.fasta_lo:FLAGS.fasta_hi]
+  #fasta_names = [pathlib.Path(p).stem for p in FLAGS.fasta_paths]
+  print(FLAGS.run_feature, len(fasta_names), fasta_names)
+
   if len(fasta_names) != len(set(fasta_names)):
     raise ValueError('All FASTA paths must have a unique basename.')
 
@@ -406,10 +417,13 @@ def main(argv):
   logging.info('Using random seed %d for the data pipeline', random_seed)
 
   # Predict structure for each of the sequences.
-  for i, fasta_path in enumerate(FLAGS.fasta_paths):
-    fasta_name = fasta_names[i]
+  #for i, fasta_path in enumerate(FLAGS.fasta_paths):
+  for fasta_name in fasta_names:
+    logging.info('')
+    logging.info('==== fasta %s', fasta_name)
+    #fasta_name = fasta_names[i]
     predict_structure(
-      fasta_path=fasta_path,
+      fasta_dir=FLAGS.fasta_dir,
       fasta_name=fasta_name,
       output_dir_base=FLAGS.output_dir,
       data_pipeline=data_pipeline,
@@ -422,15 +436,17 @@ def main(argv):
 
 if __name__ == '__main__':
   flags.mark_flags_as_required([
-      'fasta_paths',
-      'output_dir',
-      'data_dir',
-      'uniref90_database_path',
-      'mgnify_database_path',
-      'template_mmcif_dir',
-      'max_template_date',
-      'obsolete_pdbs_path',
-      'use_gpu_relax',
+    'fasta_lo',
+    'fasta_hi',
+    'fasta_dir',
+    'output_dir',
+    'data_dir',
+    'uniref90_database_path',
+    'mgnify_database_path',
+    'template_mmcif_dir',
+    'max_template_date',
+    'obsolete_pdbs_path',
+    'use_gpu_relax',
   ])
 
   app.run(main)

@@ -1,0 +1,127 @@
+
+Lmod is automatically replacing "intel/2020.1.217" with "gcc/9.3.0".
+
+
+Due to MODULEPATH changes, the following have been reloaded:
+  1) libfabric/1.10.1     2) openmpi/4.0.3     3) ucx/1.8.0
+
+/home/fred862/env/alphafold_env/lib/python3.8/site-packages/absl/flags/_validators.py:203: UserWarning: Flag --fasta_lo has a non-None default value; therefore, mark_flag_as_required will pass even if flag is not specified in the command line!
+  warnings.warn(
+/home/fred862/env/alphafold_env/lib/python3.8/site-packages/absl/flags/_validators.py:203: UserWarning: Flag --fasta_hi has a non-None default value; therefore, mark_flag_as_required will pass even if flag is not specified in the command line!
+  warnings.warn(
+I0826 12:52:19.136227 47447657015104 templates.py:857] Using precomputed obsolete pdbs /home/fred862/scratch/fred862/data/bioinfo/input/database/pdb_mmcif/obsolete.dat.
+I0826 12:52:20.612831 47447657015104 tpu_client.py:50] Starting the local TPU driver.
+I0826 12:52:20.733695 47447657015104 xla_bridge.py:212] Unable to initialize backend 'tpu_driver': NOT_FOUND: Unable to find driver in registry given worker: local://
+2022-08-26 12:52:20.745486: W external/org_tensorflow/tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libcuda.so.1'; dlerror: libcuda.so.1: cannot open shared object file: No such file or directory
+2022-08-26 12:52:20.746052: W external/org_tensorflow/tensorflow/stream_executor/cuda/cuda_driver.cc:269] failed call to cuInit: UNKNOWN ERROR (303)
+I0826 12:52:20.748105 47447657015104 xla_bridge.py:212] Unable to initialize backend 'gpu': FAILED_PRECONDITION: No visible GPU devices.
+I0826 12:52:20.748953 47447657015104 xla_bridge.py:212] Unable to initialize backend 'tpu': INVALID_ARGUMENT: TpuPlatform is not available.
+W0826 12:52:20.749067 47447657015104 xla_bridge.py:215] No GPU/TPU found, falling back to CPU. (Set TF_CPP_MIN_LOG_LEVEL=0 and rerun for more info.)
+I0826 12:52:30.465988 47447657015104 run_alphafold.py:400] Have 5 models: ['model_1_pred_0', 'model_2_pred_0', 'model_3_pred_0', 'model_4_pred_0', 'model_5_pred_0']
+I0826 12:52:30.466401 47447657015104 run_alphafold.py:417] Using random seed 154402796256568429 for the data pipeline
+I0826 12:52:30.466873 47447657015104 run_alphafold.py:422] 
+I0826 12:52:30.466943 47447657015104 run_alphafold.py:423] ==== fasta 1ER8.fasta
+I0826 12:52:30.467030 47447657015104 run_alphafold.py:170] Predicting 1ER8.fasta
+I0826 12:52:30.470628 47447657015104 run_alphafold.py:179] *** output path: /home/fred862/scratch/fred862/data/bioinfo/output/peptide/1ER8.fasta/msas
+I0826 12:52:30.559650 47447657015104 jackhmmer.py:133] Launching subprocess "/cvmfs/soft.computecanada.ca/easybuild/software/2020/avx512/Core/hmmer/3.2.1/bin/jackhmmer -o /dev/null -A /tmp/tmpx2nbsmnf/output.sto --noali --F1 0.0005 --F2 5e-05 --F3 5e-07 --incE 0.0001 -E 0.0001 --cpu 8 -N 1 /home/fred862/scratch/fred862/data/bioinfo/input/seq_to_pred/peptide/poly_g_6/1ER8.fasta /home/fred862/scratch/fred862/data/bioinfo/input/database/uniref90/uniref90.fasta"
+I0826 12:52:30.690069 47447657015104 utils.py:36] Started Jackhmmer (uniref90.fasta) query
+I0826 13:00:43.854441 47447657015104 utils.py:40] Finished Jackhmmer (uniref90.fasta) query in 493.164 seconds
+I0826 13:00:44.881851 47447657015104 jackhmmer.py:133] Launching subprocess "/cvmfs/soft.computecanada.ca/easybuild/software/2020/avx512/Core/hmmer/3.2.1/bin/jackhmmer -o /dev/null -A /tmp/tmp65phmewc/output.sto --noali --F1 0.0005 --F2 5e-05 --F3 5e-07 --incE 0.0001 -E 0.0001 --cpu 8 -N 1 /home/fred862/scratch/fred862/data/bioinfo/input/seq_to_pred/peptide/poly_g_6/1ER8.fasta /home/fred862/scratch/fred862/data/bioinfo/input/database/mgnify/mgy_clusters_2018_12.fa"
+I0826 13:00:44.979925 47447657015104 utils.py:36] Started Jackhmmer (mgy_clusters_2018_12.fa) query
+I0826 13:09:53.322008 47447657015104 utils.py:40] Finished Jackhmmer (mgy_clusters_2018_12.fa) query in 548.342 seconds
+I0826 13:10:01.972868 47447657015104 hhsearch.py:85] Launching subprocess "/cvmfs/soft.computecanada.ca/easybuild/software/2020/Core/hh-suite/3.3.0/bin/hhsearch -i /tmp/tmp0dxpkq2y/query.a3m -o /tmp/tmp0dxpkq2y/output.hhr -maxseq 1000000 -d /home/fred862/scratch/fred862/data/bioinfo/input/database/pdb70/pdb70"
+I0826 13:10:02.179467 47447657015104 utils.py:36] Started HHsearch query
+I0826 13:15:35.963280 47447657015104 utils.py:40] Finished HHsearch query in 333.783 seconds
+I0826 13:15:39.911766 47447657015104 hhblits.py:128] Launching subprocess "/cvmfs/soft.computecanada.ca/easybuild/software/2020/Core/hh-suite/3.3.0/bin/hhblits -i /home/fred862/scratch/fred862/data/bioinfo/input/seq_to_pred/peptide/poly_g_6/1ER8.fasta -cpu 4 -oa3m /tmp/tmpjebraq2c/output.a3m -o /dev/null -n 3 -e 0.001 -maxseq 1000000 -realign_max 100000 -maxfilt 100000 -min_prefilter_hits 1000 -d /home/fred862/scratch/fred862/data/bioinfo/input/database/bfd/bfd_metaclust_clu_complete_id30_c90_final_seq.sorted_opt -d /home/fred862/scratch/fred862/data/bioinfo/input/database/uniclust30/uniclust30_2018_08/uniclust30_2018_08"
+I0826 13:15:40.120759 47447657015104 utils.py:36] Started HHblits query
+I0826 14:44:59.985516 47447657015104 utils.py:40] Finished HHblits query in 5359.863 seconds
+I0826 14:45:00.273934 47447657015104 templates.py:878] Searching for template for: STGSATTTPIDSLDDAYITPVQIGTPAQTLNLDFDTGSSDLWVFSSETTASEVDGQTIYTPSKSTTAKLLSGATWSISYGDGSSSSGDVYTDTVSVGGLTVTGQAVESAKKVSSSFTEDSTIDGLLGLAFSTLNTVSPTQQKTFFDNAKASLDSPVFTADLGYHAXXPGTYNFGFIDTTAYTGSITYTAVSTKQGFWEWTSTGYAVGSGTFKSTSIXXXDGIADTGTTLLYLPATVVSAYWAQVSGAKSSSSVGGYVFPCSATLPSFTFGVGSARIVIPGDYIDFGPISTGSSSCFGGIQSXXXXSAGIGINIFGDVALKAAFVVFNGATTPTLGFASKGGGGGGHPFHLLVY
+I0826 14:45:01.005852 47447657015104 templates.py:267] Found an exact template match 4y44_A.
+I0826 14:45:01.554605 47447657015104 templates.py:267] Found an exact template match 5p1i_A.
+I0826 14:45:06.368679 47447657015104 templates.py:267] Found an exact template match 1oew_A.
+I0826 14:45:06.669547 47447657015104 templates.py:267] Found an exact template match 3c9x_A.
+I0826 14:45:07.138568 47447657015104 templates.py:267] Found an exact template match 3emy_A.
+I0826 14:45:07.853929 47447657015104 templates.py:267] Found an exact template match 1bxo_A.
+I0826 14:45:08.389238 47447657015104 templates.py:267] Found an exact template match 2wed_A.
+I0826 14:45:09.135017 47447657015104 templates.py:267] Found an exact template match 1ize_A.
+I0826 14:45:09.455298 47447657015104 templates.py:267] Found an exact template match 1izd_A.
+I0826 14:45:09.735904 47447657015104 templates.py:267] Found an exact template match 5mlg_A.
+I0826 14:45:10.577644 47447657015104 templates.py:267] Found an exact template match 5nfg_A.
+I0826 14:45:11.003065 47447657015104 templates.py:267] Found an exact template match 4ybf_A.
+I0826 14:45:11.452274 47447657015104 templates.py:267] Found an exact template match 3qvc_A.
+I0826 14:45:12.176915 47447657015104 templates.py:267] Found an exact template match 1avf_A.
+I0826 14:45:13.036441 47447657015104 templates.py:267] Found an exact template match 1am5_A.
+I0826 14:45:13.400539 47447657015104 templates.py:267] Found an exact template match 1psn_A.
+I0826 14:45:13.828660 47447657015104 templates.py:267] Found an exact template match 3utl_A.
+I0826 14:45:14.088257 47447657015104 templates.py:267] Found an exact template match 1tzs_A.
+I0826 14:45:14.574490 47447657015104 templates.py:267] Found an exact template match 4y9w_A.
+I0826 14:45:15.135796 47447657015104 templates.py:267] Found an exact template match 5n7q_B.
+I0826 14:45:16.242241 47447657015104 pipeline.py:280] Uniref90 MSA size: 10000 sequences.
+I0826 14:45:16.242488 47447657015104 pipeline.py:281] BFD MSA size: 1979 sequences.
+I0826 14:45:16.242570 47447657015104 pipeline.py:282] MGnify MSA size: 501 sequences.
+I0826 14:45:16.242641 47447657015104 pipeline.py:283] Final (deduplicated) MSA size: 12397 sequences.
+I0826 14:45:16.243412 47447657015104 pipeline.py:285] Total number of templates (NB: this can include bad templates and is later filtered to top 4): 20.
+I0826 14:45:16.372981 47447657015104 run_alphafold.py:422] 
+I0826 14:45:16.373188 47447657015104 run_alphafold.py:423] ==== fasta 1CZY.fasta
+I0826 14:45:16.373307 47447657015104 run_alphafold.py:170] Predicting 1CZY.fasta
+I0826 14:45:16.377055 47447657015104 run_alphafold.py:179] *** output path: /home/fred862/scratch/fred862/data/bioinfo/output/peptide/1CZY.fasta/msas
+I0826 14:45:16.611501 47447657015104 jackhmmer.py:133] Launching subprocess "/cvmfs/soft.computecanada.ca/easybuild/software/2020/avx512/Core/hmmer/3.2.1/bin/jackhmmer -o /dev/null -A /tmp/tmpekdlr49z/output.sto --noali --F1 0.0005 --F2 5e-05 --F3 5e-07 --incE 0.0001 -E 0.0001 --cpu 8 -N 1 /home/fred862/scratch/fred862/data/bioinfo/input/seq_to_pred/peptide/poly_g_6/1CZY.fasta /home/fred862/scratch/fred862/data/bioinfo/input/database/uniref90/uniref90.fasta"
+I0826 14:45:16.725032 47447657015104 utils.py:36] Started Jackhmmer (uniref90.fasta) query
+I0826 14:53:42.389387 47447657015104 utils.py:40] Finished Jackhmmer (uniref90.fasta) query in 505.664 seconds
+I0826 14:53:42.513247 47447657015104 jackhmmer.py:133] Launching subprocess "/cvmfs/soft.computecanada.ca/easybuild/software/2020/avx512/Core/hmmer/3.2.1/bin/jackhmmer -o /dev/null -A /tmp/tmp9uv9f0sy/output.sto --noali --F1 0.0005 --F2 5e-05 --F3 5e-07 --incE 0.0001 -E 0.0001 --cpu 8 -N 1 /home/fred862/scratch/fred862/data/bioinfo/input/seq_to_pred/peptide/poly_g_6/1CZY.fasta /home/fred862/scratch/fred862/data/bioinfo/input/database/mgnify/mgy_clusters_2018_12.fa"
+I0826 14:53:42.621683 47447657015104 utils.py:36] Started Jackhmmer (mgy_clusters_2018_12.fa) query
+I0826 15:03:01.109560 47447657015104 utils.py:40] Finished Jackhmmer (mgy_clusters_2018_12.fa) query in 558.487 seconds
+I0826 15:03:02.024195 47447657015104 hhsearch.py:85] Launching subprocess "/cvmfs/soft.computecanada.ca/easybuild/software/2020/Core/hh-suite/3.3.0/bin/hhsearch -i /tmp/tmpca7xeoh5/query.a3m -o /tmp/tmpca7xeoh5/output.hhr -maxseq 1000000 -d /home/fred862/scratch/fred862/data/bioinfo/input/database/pdb70/pdb70"
+I0826 15:03:02.148614 47447657015104 utils.py:36] Started HHsearch query
+I0826 15:06:22.077090 47447657015104 utils.py:40] Finished HHsearch query in 199.928 seconds
+I0826 15:06:22.609359 47447657015104 hhblits.py:128] Launching subprocess "/cvmfs/soft.computecanada.ca/easybuild/software/2020/Core/hh-suite/3.3.0/bin/hhblits -i /home/fred862/scratch/fred862/data/bioinfo/input/seq_to_pred/peptide/poly_g_6/1CZY.fasta -cpu 4 -oa3m /tmp/tmp0a5yjjoc/output.a3m -o /dev/null -n 3 -e 0.001 -maxseq 1000000 -realign_max 100000 -maxfilt 100000 -min_prefilter_hits 1000 -d /home/fred862/scratch/fred862/data/bioinfo/input/database/bfd/bfd_metaclust_clu_complete_id30_c90_final_seq.sorted_opt -d /home/fred862/scratch/fred862/data/bioinfo/input/database/uniclust30/uniclust30_2018_08/uniclust30_2018_08"
+I0826 15:06:22.718378 47447657015104 utils.py:36] Started HHblits query
+I0826 20:18:09.187970 47447657015104 utils.py:40] Finished HHblits query in 18706.468 seconds
+I0826 20:18:09.632939 47447657015104 templates.py:878] Searching for template for: AMADLEQKVLEMEASTYDGVFIWKISDFPRKRQEAVAGRIPAIFSPAFYTSRYGYKMCLRIYLNGDGTGRGTHLSLFFVVMKGPNDALLRWPFNQKVTLMLLDQNNREHVIDAFRPDVTSSSFQRPVNDMNIASGCPLFCPVSKMEAKNSYVRDDAIFIKAIVDLTGLGGGGGGXPQQATDD
+I0826 20:18:14.174559 47447657015104 templates.py:267] Found an exact template match 1d01_F.
+I0826 20:18:14.920256 47447657015104 templates.py:267] Found an exact template match 1d0j_C.
+I0826 20:18:15.288866 47447657015104 templates.py:267] Found an exact template match 1f3v_B.
+I0826 20:18:15.693676 47447657015104 templates.py:267] Found an exact template match 4gjh_C.
+I0826 20:18:16.647832 47447657015104 templates.py:267] Found an exact template match 1ca9_E.
+I0826 20:18:17.077063 47447657015104 templates.py:267] Found an exact template match 1qsc_B.
+I0826 20:18:17.445431 47447657015104 templates.py:267] Found an exact template match 1czz_A.
+I0826 20:18:17.832059 47447657015104 templates.py:267] Found an exact template match 1fll_B.
+I0826 20:18:18.124959 47447657015104 templates.py:267] Found an exact template match 1flk_B.
+I0826 20:18:18.330032 47447657015104 templates.py:267] Found an exact template match 4ghu_A.
+I0826 20:18:18.546895 47447657015104 templates.py:267] Found an exact template match 1l0a_A.
+I0826 20:18:19.156767 47447657015104 templates.py:267] Found an exact template match 3zjb_B.
+I0826 20:18:20.062021 47447657015104 templates.py:267] Found an exact template match 5e1t_A.
+I0826 20:18:20.073308 47447657015104 templates.py:267] Found an exact template match 3zjb_C.
+I0826 20:18:20.082086 47447657015104 templates.py:267] Found an exact template match 5e1t_B.
+I0826 20:18:23.173299 47447657015104 templates.py:267] Found an exact template match 2cr2_A.
+I0826 20:18:23.356428 47447657015104 templates.py:267] Found an exact template match 2foj_A.
+I0826 20:18:23.590376 47447657015104 templates.py:267] Found an exact template match 2f1w_A.
+I0826 20:18:24.071441 47447657015104 templates.py:267] Found an exact template match 1lb6_A.
+I0826 20:18:24.542702 47447657015104 templates.py:267] Found an exact template match 4z8m_B.
+I0826 20:18:24.833437 47447657015104 pipeline.py:280] Uniref90 MSA size: 4472 sequences.
+I0826 20:18:24.833652 47447657015104 pipeline.py:281] BFD MSA size: 1577 sequences.
+I0826 20:18:24.833732 47447657015104 pipeline.py:282] MGnify MSA size: 326 sequences.
+I0826 20:18:24.833801 47447657015104 pipeline.py:283] Final (deduplicated) MSA size: 5904 sequences.
+I0826 20:18:24.834359 47447657015104 pipeline.py:285] Total number of templates (NB: this can include bad templates and is later filtered to top 4): 20.
+I0826 20:18:24.863380 47447657015104 run_alphafold.py:422] 
+I0826 20:18:24.863556 47447657015104 run_alphafold.py:423] ==== fasta gt_chain_bd_ids.pkl
+I0826 20:18:24.863657 47447657015104 run_alphafold.py:170] Predicting gt_chain_bd_ids.pkl
+I0826 20:18:24.866524 47447657015104 run_alphafold.py:179] *** output path: /home/fred862/scratch/fred862/data/bioinfo/output/peptide/gt_chain_bd_ids.pkl/msas
+1.22.2
+True 6 ['1ER8.fasta', '1CZY.fasta', 'gt_chain_bd_ids.pkl', '1AWR.fasta', '1EG4.fasta', '1ELW.fasta']
+Traceback (most recent call last):
+  File "/home/fred862/scratch/fred862/code/bioinfo/alphafold/run_alphafold.py", line 452, in <module>
+    app.run(main)
+  File "/home/fred862/env/alphafold_env/lib/python3.8/site-packages/absl/app.py", line 312, in run
+    _run_main(main, args)
+  File "/home/fred862/env/alphafold_env/lib/python3.8/site-packages/absl/app.py", line 258, in _run_main
+    sys.exit(main(argv))
+  File "/home/fred862/scratch/fred862/code/bioinfo/alphafold/run_alphafold.py", line 425, in main
+    predict_structure(
+  File "/home/fred862/scratch/fred862/code/bioinfo/alphafold/run_alphafold.py", line 189, in predict_structure
+    feature_dict = data_pipeline.process(
+  File "/lustre04/scratch/fred862/fred862/code/bioinfo/alphafold/alphafold/data/pipeline.py", line 157, in process
+    input_fasta_str = f.read()
+  File "/cvmfs/soft.computecanada.ca/easybuild/software/2020/avx512/Core/python/3.8.10/lib/python3.8/codecs.py", line 322, in decode
+    (result, consumed) = self._buffer_decode(data, self.errors, final)
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0x80 in position 0: invalid start byte

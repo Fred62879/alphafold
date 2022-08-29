@@ -1,21 +1,29 @@
 #!/bin/bash
+#SBATCH --time=36:00:00
+#SBATCH --gres=gpu:1
+#SBATCH --ntasks=1
+#SBATCH --mem=40000
+#SBATCH --cpus-per-task=8
+#SBATCH --account=def-gsponer
+#SBATCH --job-name=alphafold_84_multi_glycine_cpu_7_14
+#SBATCH --output=./output/%x-%j.out
 
 #DOWNLOAD_DIR=/datashare/alphafold
 REPO_DIR=~/scratch/fred862/code/bioinfo/alphafold
-OUTPUT_DIR=~/scratch/fred862/data/bioinfo/output/peptide
-DOWNLOAD_DIR=~/scratch/fred862/data/bioinfo/input/database
-#INPUT_DIR=~/scratch/fred862/data/bioinfo/input/seq_to_pred/idr_84/poly_g_6
-INPUT_DIR=~/scratch/fred862/data/bioinfo/input/seq_to_pred/peptide/poly_g_6
+DOWNLOAD_DIR=~/scratch/fred862/data/bioinfo/alphafold/input/database
+INPUT_DIR=~/scratch/fred862/data/bioinfo/alphafold/input/seq_to_pred/84
+OUTPUT_DIR=~/scratch/fred862/data/bioinfo/alphafold/output/84_af_reduced
 
 module load gcc/9.3.0 openmpi/4.0.3 cuda/11.4 cudnn/8.2.0 kalign/2.03 hmmer/3.2.1 openmm-alphafold/7.5.1 hh-suite/3.3.0 python/3.8
 
 source ~/env/alphafold_env/bin/activate
 
 python ${REPO_DIR}/run_alphafold.py \
-       --fasta_lo=0 \
-       --fasta_hi=6 \
+       --fasta_lo=7 \
+       --fasta_hi=14 \
        --run_feature=True \
-       --use_gpu_relax=True \
+       --use_gpu_relax=False \
+       --db_preset=reduced_dbs \
        --use_precomputed_msas=True \
        --model_preset=monomer_casp14 \
        --max_template_date=2020-05-14 \
@@ -31,5 +39,4 @@ python ${REPO_DIR}/run_alphafold.py \
        --obsolete_pdbs_path=${DOWNLOAD_DIR}/pdb_mmcif/obsolete.dat \
        --uniref90_database_path=${DOWNLOAD_DIR}/uniref90/uniref90.fasta  \
        --mgnify_database_path=${DOWNLOAD_DIR}/mgnify/mgy_clusters_2018_12.fa \
-       --uniclust30_database_path=${DOWNLOAD_DIR}/uniclust30/uniclust30_2018_08/uniclust30_2018_08  \
-       --bfd_database_path=${DOWNLOAD_DIR}/bfd/bfd_metaclust_clu_complete_id30_c90_final_seq.sorted_opt
+       --small_bfd_database_path=${DOWNLOAD_DIR}/small_bfd/bfd-first_non_consensus_sequences.fasta

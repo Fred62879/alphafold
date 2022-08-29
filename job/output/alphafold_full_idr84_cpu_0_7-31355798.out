@@ -1,0 +1,812 @@
+
+Lmod is automatically replacing "intel/2020.1.217" with "gcc/9.3.0".
+
+
+Due to MODULEPATH changes, the following have been reloaded:
+  1) libfabric/1.10.1     2) openmpi/4.0.3     3) ucx/1.8.0
+
+/home/fred862/env/alphafold_env/lib/python3.8/site-packages/absl/flags/_validators.py:203: UserWarning: Flag --fasta_lo has a non-None default value; therefore, mark_flag_as_required will pass even if flag is not specified in the command line!
+  warnings.warn(
+/home/fred862/env/alphafold_env/lib/python3.8/site-packages/absl/flags/_validators.py:203: UserWarning: Flag --fasta_hi has a non-None default value; therefore, mark_flag_as_required will pass even if flag is not specified in the command line!
+  warnings.warn(
+I0826 20:51:46.660501 47431783249728 templates.py:857] Using precomputed obsolete pdbs /home/fred862/scratch/fred862/data/bioinfo/input/database/pdb_mmcif/obsolete.dat.
+I0826 20:51:47.538434 47431783249728 tpu_client.py:50] Starting the local TPU driver.
+I0826 20:51:47.543291 47431783249728 xla_bridge.py:212] Unable to initialize backend 'tpu_driver': NOT_FOUND: Unable to find driver in registry given worker: local://
+2022-08-26 20:51:47.544882: W external/org_tensorflow/tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libcuda.so.1'; dlerror: libcuda.so.1: cannot open shared object file: No such file or directory
+2022-08-26 20:51:47.545072: W external/org_tensorflow/tensorflow/stream_executor/cuda/cuda_driver.cc:269] failed call to cuInit: UNKNOWN ERROR (303)
+I0826 20:51:47.546892 47431783249728 xla_bridge.py:212] Unable to initialize backend 'gpu': FAILED_PRECONDITION: No visible GPU devices.
+I0826 20:51:47.547487 47431783249728 xla_bridge.py:212] Unable to initialize backend 'tpu': INVALID_ARGUMENT: TpuPlatform is not available.
+W0826 20:51:47.547586 47431783249728 xla_bridge.py:215] No GPU/TPU found, falling back to CPU. (Set TF_CPP_MIN_LOG_LEVEL=0 and rerun for more info.)
+I0826 20:52:00.285661 47431783249728 run_alphafold.py:400] Have 5 models: ['model_1_pred_0', 'model_2_pred_0', 'model_3_pred_0', 'model_4_pred_0', 'model_5_pred_0']
+I0826 20:52:00.285949 47431783249728 run_alphafold.py:417] Using random seed 197606824959239495 for the data pipeline
+I0826 20:52:00.286314 47431783249728 run_alphafold.py:422] 
+I0826 20:52:00.286384 47431783249728 run_alphafold.py:423] ==== fasta 4U7T.fasta
+I0826 20:52:00.286479 47431783249728 run_alphafold.py:170] Predicting 4U7T.fasta
+I0826 20:52:00.291032 47431783249728 run_alphafold.py:179] *** output path: /home/fred862/scratch/fred862/data/bioinfo/output/idr_84/4U7T.fasta/msas
+I0826 20:52:00.351929 47431783249728 jackhmmer.py:133] Launching subprocess "/cvmfs/soft.computecanada.ca/easybuild/software/2020/avx512/Core/hmmer/3.2.1/bin/jackhmmer -o /dev/null -A /tmp/tmpnlozeno6/output.sto --noali --F1 0.0005 --F2 5e-05 --F3 5e-07 --incE 0.0001 -E 0.0001 --cpu 8 -N 1 /home/fred862/scratch/fred862/data/bioinfo/input/seq_to_pred/idr_84/poly_g_6/4U7T.fasta /home/fred862/scratch/fred862/data/bioinfo/input/database/uniref90/uniref90.fasta"
+I0826 20:52:00.399368 47431783249728 utils.py:36] Started Jackhmmer (uniref90.fasta) query
+I0826 20:59:53.252645 47431783249728 utils.py:40] Finished Jackhmmer (uniref90.fasta) query in 472.853 seconds
+I0826 20:59:53.716718 47431783249728 jackhmmer.py:133] Launching subprocess "/cvmfs/soft.computecanada.ca/easybuild/software/2020/avx512/Core/hmmer/3.2.1/bin/jackhmmer -o /dev/null -A /tmp/tmpoghslnoy/output.sto --noali --F1 0.0005 --F2 5e-05 --F3 5e-07 --incE 0.0001 -E 0.0001 --cpu 8 -N 1 /home/fred862/scratch/fred862/data/bioinfo/input/seq_to_pred/idr_84/poly_g_6/4U7T.fasta /home/fred862/scratch/fred862/data/bioinfo/input/database/mgnify/mgy_clusters_2018_12.fa"
+I0826 20:59:53.764840 47431783249728 utils.py:36] Started Jackhmmer (mgy_clusters_2018_12.fa) query
+I0826 21:08:05.303088 47431783249728 utils.py:40] Finished Jackhmmer (mgy_clusters_2018_12.fa) query in 491.538 seconds
+I0826 21:08:09.332561 47431783249728 hhsearch.py:85] Launching subprocess "/cvmfs/soft.computecanada.ca/easybuild/software/2020/Core/hh-suite/3.3.0/bin/hhsearch -i /tmp/tmpmebsevv6/query.a3m -o /tmp/tmpmebsevv6/output.hhr -maxseq 1000000 -d /home/fred862/scratch/fred862/data/bioinfo/input/database/pdb70/pdb70"
+I0826 21:08:09.386135 47431783249728 utils.py:36] Started HHsearch query
+I0826 21:14:21.264858 47431783249728 utils.py:40] Finished HHsearch query in 371.878 seconds
+I0826 21:14:24.518556 47431783249728 hhblits.py:128] Launching subprocess "/cvmfs/soft.computecanada.ca/easybuild/software/2020/Core/hh-suite/3.3.0/bin/hhblits -i /home/fred862/scratch/fred862/data/bioinfo/input/seq_to_pred/idr_84/poly_g_6/4U7T.fasta -cpu 4 -oa3m /tmp/tmpxig1tif1/output.a3m -o /dev/null -n 3 -e 0.001 -maxseq 1000000 -realign_max 100000 -maxfilt 100000 -min_prefilter_hits 1000 -d /home/fred862/scratch/fred862/data/bioinfo/input/database/bfd/bfd_metaclust_clu_complete_id30_c90_final_seq.sorted_opt -d /home/fred862/scratch/fred862/data/bioinfo/input/database/uniclust30/uniclust30_2018_08/uniclust30_2018_08"
+I0826 21:14:24.572824 47431783249728 utils.py:36] Started HHblits query
+I0826 22:31:29.830505 47431783249728 utils.py:40] Finished HHblits query in 4625.257 seconds
+I0826 22:31:33.027735 47431783249728 templates.py:878] Searching for template for: EFRERLVYEVRQKCRNIEDICISCGSLNVTLEHPLFVGGMCQNCKNCFLECAYQYDDDGYQSYCTICCGGREVLMCGNNNCCRCFCVECVDLLVGPGAAQAAIKEDPWNCYMCGHKGTYGLLRRREDWPSRLQMFFAXXXXXXXXXXKVYPPVPAEKRKPIRVLSLFDGIATGLLVLKDLGIQVDRYIASEVCEDSITVGMVRHQGKIMYVGDVRSVTQKHIQEWGPFDLVIGGSPCNDLSIVNPARKGLYEGTGRLFFEFYRLLHDARPKEGDDRPFFWLFENVVAMGVSDKRDISRFLESNPVMIDAKEVSAAHRARYFWGNLPGMNRPLASTVNDKLELQECLEHGRIAKFSKVRTIXXXXXXXXXXXXQHFPVFMNEKEDILWCTEMERVFGFPVHYTDVSNMSRLARQRLLGRSWSVPVIRHLFAPLKEYFACVXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXCGGGGGGFMFETVPVWRRQPVRVLSLFEDIKKELTSLGFLESGSDPGQLKHVVDVTDTVRKDVEEWGPFDLVYGATPPLGHTCDRPPSWYLFQFHRLLQYARPKPGSPRPFFWMFVDNLVLNKEDLDVASRFLEMEPVTIPDVHGGXXXXXVRVWSNIPAIRSXXXALVSEEELSLLAQNKXSSXXXXXXXTKLVKNCFLPLREYFKYFSGGGGGGEFRERLVYEVRQKCRNIEDICISCGSLNVTLEHPLFVGGMCQNCKNCFLECAYQYDDDGYQSYCTICCGGREVLMCGNNNCCRCFCVECVDLLVGPGAAQAAIKEDPWNCYMCGHKGTYGLLRRREDWPSRLQMFFAXXXXXXXXXPKVYPPVPAEKRKPIRVLSLFDGIATGLLVLKDLGIQVDRYIASEVCEDSITVGMVRHQGKIMYVGDVRSVTQKHIQEWGPFDLVIGGSPCNDLSIVNPARKGLYEGTGRLFFEFYRLLHDARPKEGDDRPFFWLFENVVAMGVSDKRDISRFLESNPVMIDAKEVSAAHRARYFWGNLPGMNRPLASTVNDKLELQECLEHGRIAKFSKVRTIXXXXXXXXXXXXQHFPVFMNEKEDILWCTEMERVFGFPVHYTDVSNMSRLARQRLLGRSWSVPVIRHLFAPLKEYFACVXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXCGGGGGGFMFETVPVWRRQPVRVLSLFEDIKKELTSLGFLESGSDPGQLKHVVDVTDTVRKDVEEWGPFDLVYGATPPLGHTCDRPPSWYLFQFHRLLQYARPKPGSPRPFFWMFVDNLVLNKEDLDVASRFLEMEPVTIPDVHXXXXXXAVRVWSNIPAIRSRHWALVSEEELSLLAQNKQSSXXXXXXPTKLVKNCFLPLREYFKYFSGGGGGGARTKQTARKSGGGGGGARTKQTARKS
+I0826 22:31:33.902791 47431783249728 templates.py:267] Found an exact template match 4u7t_C.
+I0826 22:31:33.928698 47431783249728 templates.py:267] Found an exact template match 4u7t_C.
+I0826 22:31:33.952888 47431783249728 templates.py:267] Found an exact template match 4u7t_A.
+I0826 22:31:33.977090 47431783249728 templates.py:267] Found an exact template match 4u7t_A.
+I0826 22:31:34.985384 47431783249728 templates.py:267] Found an exact template match 2pv0_A.
+I0826 22:31:35.007060 47431783249728 templates.py:267] Found an exact template match 2pv0_C.
+I0826 22:31:35.026781 47431783249728 templates.py:267] Found an exact template match 2pv0_A.
+I0826 22:31:35.047980 47431783249728 templates.py:267] Found an exact template match 2pv0_C.
+I0826 22:31:36.056575 47431783249728 templates.py:267] Found an exact template match 5yx2_A.
+I0826 22:31:36.076465 47431783249728 templates.py:267] Found an exact template match 5yx2_A.
+I0826 22:31:37.482628 47431783249728 templates.py:267] Found an exact template match 6kdb_A.
+I0826 22:31:37.501251 47431783249728 templates.py:267] Found an exact template match 6kdb_A.
+I0826 22:31:37.519025 47431783249728 templates.py:267] Found an exact template match 2pv0_A.
+I0826 22:31:37.539580 47431783249728 templates.py:267] Found an exact template match 2pv0_C.
+I0826 22:31:37.558956 47431783249728 templates.py:267] Found an exact template match 5yx2_C.
+I0826 22:31:38.852898 47431783249728 templates.py:267] Found an exact template match 6fdf_A.
+I0826 22:31:38.873718 47431783249728 templates.py:267] Found an exact template match 6fdf_A.
+I0826 22:31:39.802335 47431783249728 templates.py:267] Found an exact template match 4dkj_A.
+I0826 22:31:39.826101 47431783249728 templates.py:267] Found an exact template match 4dkj_A.
+I0826 22:31:40.237441 47431783249728 templates.py:267] Found an exact template match 3qv2_A.
+I0826 22:31:45.790753 47431783249728 pipeline.py:280] Uniref90 MSA size: 4699 sequences.
+I0826 22:31:45.790976 47431783249728 pipeline.py:281] BFD MSA size: 12629 sequences.
+I0826 22:31:45.791058 47431783249728 pipeline.py:282] MGnify MSA size: 501 sequences.
+I0826 22:31:45.791128 47431783249728 pipeline.py:283] Final (deduplicated) MSA size: 16876 sequences.
+I0826 22:31:45.791373 47431783249728 pipeline.py:285] Total number of templates (NB: this can include bad templates and is later filtered to top 4): 20.
+I0826 22:31:46.221807 47431783249728 run_alphafold.py:422] 
+I0826 22:31:46.221990 47431783249728 run_alphafold.py:423] ==== fasta 2M3M.fasta
+I0826 22:31:46.222095 47431783249728 run_alphafold.py:170] Predicting 2M3M.fasta
+I0826 22:31:46.224934 47431783249728 run_alphafold.py:179] *** output path: /home/fred862/scratch/fred862/data/bioinfo/output/idr_84/2M3M.fasta/msas
+I0826 22:31:46.235871 47431783249728 jackhmmer.py:133] Launching subprocess "/cvmfs/soft.computecanada.ca/easybuild/software/2020/avx512/Core/hmmer/3.2.1/bin/jackhmmer -o /dev/null -A /tmp/tmplblu6jys/output.sto --noali --F1 0.0005 --F2 5e-05 --F3 5e-07 --incE 0.0001 -E 0.0001 --cpu 8 -N 1 /home/fred862/scratch/fred862/data/bioinfo/input/seq_to_pred/idr_84/poly_g_6/2M3M.fasta /home/fred862/scratch/fred862/data/bioinfo/input/database/uniref90/uniref90.fasta"
+I0826 22:31:46.301979 47431783249728 utils.py:36] Started Jackhmmer (uniref90.fasta) query
+I0826 22:39:06.156939 47431783249728 utils.py:40] Finished Jackhmmer (uniref90.fasta) query in 439.855 seconds
+I0826 22:39:07.825290 47431783249728 jackhmmer.py:133] Launching subprocess "/cvmfs/soft.computecanada.ca/easybuild/software/2020/avx512/Core/hmmer/3.2.1/bin/jackhmmer -o /dev/null -A /tmp/tmpubfpjdar/output.sto --noali --F1 0.0005 --F2 5e-05 --F3 5e-07 --incE 0.0001 -E 0.0001 --cpu 8 -N 1 /home/fred862/scratch/fred862/data/bioinfo/input/seq_to_pred/idr_84/poly_g_6/2M3M.fasta /home/fred862/scratch/fred862/data/bioinfo/input/database/mgnify/mgy_clusters_2018_12.fa"
+I0826 22:39:07.891429 47431783249728 utils.py:36] Started Jackhmmer (mgy_clusters_2018_12.fa) query
+I0826 22:46:55.758317 47431783249728 utils.py:40] Finished Jackhmmer (mgy_clusters_2018_12.fa) query in 467.867 seconds
+I0826 22:46:56.406017 47431783249728 hhsearch.py:85] Launching subprocess "/cvmfs/soft.computecanada.ca/easybuild/software/2020/Core/hh-suite/3.3.0/bin/hhsearch -i /tmp/tmpr6uizovv/query.a3m -o /tmp/tmpr6uizovv/output.hhr -maxseq 1000000 -d /home/fred862/scratch/fred862/data/bioinfo/input/database/pdb70/pdb70"
+I0826 22:46:56.473448 47431783249728 utils.py:36] Started HHsearch query
+I0826 22:48:38.873508 47431783249728 utils.py:40] Finished HHsearch query in 102.400 seconds
+I0826 22:48:39.774159 47431783249728 hhblits.py:128] Launching subprocess "/cvmfs/soft.computecanada.ca/easybuild/software/2020/Core/hh-suite/3.3.0/bin/hhblits -i /home/fred862/scratch/fred862/data/bioinfo/input/seq_to_pred/idr_84/poly_g_6/2M3M.fasta -cpu 4 -oa3m /tmp/tmpn7jtufr4/output.a3m -o /dev/null -n 3 -e 0.001 -maxseq 1000000 -realign_max 100000 -maxfilt 100000 -min_prefilter_hits 1000 -d /home/fred862/scratch/fred862/data/bioinfo/input/database/bfd/bfd_metaclust_clu_complete_id30_c90_final_seq.sorted_opt -d /home/fred862/scratch/fred862/data/bioinfo/input/database/uniclust30/uniclust30_2018_08/uniclust30_2018_08"
+I0826 22:48:39.841252 47431783249728 utils.py:36] Started HHblits query
+I0826 23:27:28.651595 47431783249728 utils.py:40] Finished HHblits query in 2328.810 seconds
+I0826 23:27:28.692803 47431783249728 templates.py:878] Searching for template for: MEIKLIKGPKGLGFSIAGGVGNQHIPGDNSIYVTKIIEGGAAHKDGKLQIGDKLLAVNNVCLEEVTHEEAVTALKNTSDFVYLKVAKPTGSHHHGGGGGGERTRQRNETQV
+I0826 23:27:29.089589 47431783249728 templates.py:267] Found an exact template match 2xkx_B.
+I0826 23:27:29.119239 47431783249728 templates.py:267] Found an exact template match 2xkx_A.
+I0826 23:27:35.314268 47431783249728 templates.py:267] Found an exact template match 1z87_A.
+I0826 23:27:35.332271 47431783249728 templates.py:267] Found an exact template match 2xkx_A.
+I0826 23:27:35.347389 47431783249728 templates.py:267] Found an exact template match 2xkx_B.
+I0826 23:27:35.964497 47431783249728 templates.py:267] Found an exact template match 5v6b_A.
+I0826 23:27:35.978125 47431783249728 templates.py:267] Found an exact template match 5v6b_B.
+I0826 23:27:35.989648 47431783249728 templates.py:267] Found an exact template match 2xkx_B.
+I0826 23:27:36.739359 47431783249728 templates.py:267] Found an exact template match 4wsi_A.
+I0826 23:27:36.756464 47431783249728 templates.py:267] Found an exact template match 2xkx_A.
+I0826 23:27:40.805563 47431783249728 templates.py:267] Found an exact template match 2krg_A.
+I0826 23:27:41.928250 47431783249728 templates.py:267] Found an exact template match 3tsw_C.
+I0826 23:27:42.234305 47431783249728 templates.py:267] Found an exact template match 6ird_C.
+I0826 23:27:42.545557 47431783249728 templates.py:267] Found an exact template match 2qt5_A.
+I0826 23:27:43.352674 47431783249728 templates.py:267] Found an exact template match 5n7d_A.
+I0826 23:27:44.218744 47431783249728 templates.py:267] Found an exact template match 5n7f_A.
+I0826 23:27:45.825085 47431783249728 templates.py:267] Found an exact template match 2dc2_A.
+I0826 23:27:46.935731 47431783249728 templates.py:267] Found an exact template match 3egh_C.
+I0826 23:27:47.254184 47431783249728 templates.py:267] Found an exact template match 6mtu_B.
+I0826 23:27:47.260824 47431783249728 templates.py:267] Found an exact template match 2qt5_A.
+I0826 23:27:47.378909 47431783249728 pipeline.py:280] Uniref90 MSA size: 10000 sequences.
+I0826 23:27:47.379115 47431783249728 pipeline.py:281] BFD MSA size: 1368 sequences.
+I0826 23:27:47.379201 47431783249728 pipeline.py:282] MGnify MSA size: 249 sequences.
+I0826 23:27:47.379271 47431783249728 pipeline.py:283] Final (deduplicated) MSA size: 3449 sequences.
+I0826 23:27:47.379350 47431783249728 pipeline.py:285] Total number of templates (NB: this can include bad templates and is later filtered to top 4): 20.
+I0826 23:27:47.406338 47431783249728 run_alphafold.py:422] 
+I0826 23:27:47.406504 47431783249728 run_alphafold.py:423] ==== fasta 2AZE.fasta
+I0826 23:27:47.406605 47431783249728 run_alphafold.py:170] Predicting 2AZE.fasta
+I0826 23:27:47.410387 47431783249728 run_alphafold.py:179] *** output path: /home/fred862/scratch/fred862/data/bioinfo/output/idr_84/2AZE.fasta/msas
+I0826 23:27:47.432940 47431783249728 jackhmmer.py:133] Launching subprocess "/cvmfs/soft.computecanada.ca/easybuild/software/2020/avx512/Core/hmmer/3.2.1/bin/jackhmmer -o /dev/null -A /tmp/tmp62lpozck/output.sto --noali --F1 0.0005 --F2 5e-05 --F3 5e-07 --incE 0.0001 -E 0.0001 --cpu 8 -N 1 /home/fred862/scratch/fred862/data/bioinfo/input/seq_to_pred/idr_84/poly_g_6/2AZE.fasta /home/fred862/scratch/fred862/data/bioinfo/input/database/uniref90/uniref90.fasta"
+I0826 23:27:47.515298 47431783249728 utils.py:36] Started Jackhmmer (uniref90.fasta) query
+I0826 23:35:27.916527 47431783249728 utils.py:40] Finished Jackhmmer (uniref90.fasta) query in 460.401 seconds
+I0826 23:35:28.017045 47431783249728 jackhmmer.py:133] Launching subprocess "/cvmfs/soft.computecanada.ca/easybuild/software/2020/avx512/Core/hmmer/3.2.1/bin/jackhmmer -o /dev/null -A /tmp/tmpokanem1b/output.sto --noali --F1 0.0005 --F2 5e-05 --F3 5e-07 --incE 0.0001 -E 0.0001 --cpu 8 -N 1 /home/fred862/scratch/fred862/data/bioinfo/input/seq_to_pred/idr_84/poly_g_6/2AZE.fasta /home/fred862/scratch/fred862/data/bioinfo/input/database/mgnify/mgy_clusters_2018_12.fa"
+I0826 23:35:28.098180 47431783249728 utils.py:36] Started Jackhmmer (mgy_clusters_2018_12.fa) query
+I0826 23:43:27.638772 47431783249728 utils.py:40] Finished Jackhmmer (mgy_clusters_2018_12.fa) query in 479.540 seconds
+I0826 23:43:28.477603 47431783249728 hhsearch.py:85] Launching subprocess "/cvmfs/soft.computecanada.ca/easybuild/software/2020/Core/hh-suite/3.3.0/bin/hhsearch -i /tmp/tmpollu81nq/query.a3m -o /tmp/tmpollu81nq/output.hhr -maxseq 1000000 -d /home/fred862/scratch/fred862/data/bioinfo/input/database/pdb70/pdb70"
+I0826 23:43:28.560012 47431783249728 utils.py:36] Started HHsearch query
+I0826 23:46:45.343141 47431783249728 utils.py:40] Finished HHsearch query in 196.783 seconds
+I0826 23:46:45.878015 47431783249728 hhblits.py:128] Launching subprocess "/cvmfs/soft.computecanada.ca/easybuild/software/2020/Core/hh-suite/3.3.0/bin/hhblits -i /home/fred862/scratch/fred862/data/bioinfo/input/seq_to_pred/idr_84/poly_g_6/2AZE.fasta -cpu 4 -oa3m /tmp/tmp4yab76nf/output.a3m -o /dev/null -n 3 -e 0.001 -maxseq 1000000 -realign_max 100000 -maxfilt 100000 -min_prefilter_hits 1000 -d /home/fred862/scratch/fred862/data/bioinfo/input/database/bfd/bfd_metaclust_clu_complete_id30_c90_final_seq.sorted_opt -d /home/fred862/scratch/fred862/data/bioinfo/input/database/uniclust30/uniclust30_2018_08/uniclust30_2018_08"
+I0826 23:46:45.959865 47431783249728 utils.py:36] Started HHblits query
+I0827 00:08:13.524853 47431783249728 utils.py:40] Finished HHblits query in 1287.565 seconds
+I0827 00:08:13.655858 47431783249728 templates.py:878] Searching for template for: FAQECQNLEVERQRRLERIKQKQSQLQELILQQIAFKNLVQRNRHAEQQASRPPPPNSVIHLPFIIVNTSKKTVIDCSISNDKFEYLFNFDNTFEIHDDIEVLKRMGMACGLESGSCSAEDLKMARSLVPKALEPYVTEMAQGTVGGVFGGGGGGGRLEGLTQDLRQLQESEQQLDHLMNICTTQLRLLSEDTDSQRLAYVTCQDLRSIADPAEQMVMVIKAPPETQLQAVDSSENFQISLKSKQGPIDVFLCPEEGGGGGGSRILVSIGESFGTSEKFQKINQMVCNSDRVLKRSAEGSNPPKPL
+I0827 00:08:13.925127 47431783249728 templates.py:267] Found an exact template match 2aze_A.
+I0827 00:08:14.226955 47431783249728 templates.py:267] Found an exact template match 5tuu_A.
+I0827 00:08:14.234882 47431783249728 templates.py:267] Found an exact template match 2aze_B.
+I0827 00:08:14.240930 47431783249728 templates.py:267] Found an exact template match 5tuu_B.
+I0827 00:08:14.246753 47431783249728 templates.py:267] Found an exact template match 2aze_C.
+I0827 00:08:14.459941 47431783249728 templates.py:267] Found an exact template match 2yy0_B.
+I0827 00:08:14.802430 47431783249728 templates.py:267] Found an exact template match 5mvw_A.
+I0827 00:08:15.315337 47431783249728 templates.py:267] Found an exact template match 5mw9_A.
+I0827 00:08:15.320114 47431783249728 templates.py:718] hit 4pas_B did not pass prefilter: Proportion of residues aligned to query too small. Align ratio: 0.09477124183006536.
+I0827 00:08:15.320280 47431783249728 templates.py:912] Skipped invalid hit 4PAS_B Gamma-aminobutyric acid type B receptor; GABA(B) receptor, coiled-coil, heterodimer, SIGNALING; 1.62A {Homo sapiens}, error: None, warning: None
+I0827 00:08:16.641542 47431783249728 templates.py:267] Found an exact template match 6bbn_E.
+I0827 00:08:16.659858 47431783249728 templates.py:267] Found an exact template match 2aze_A.
+I0827 00:08:16.667842 47431783249728 templates.py:267] Found an exact template match 5tuu_A.
+I0827 00:08:18.953254 47431783249728 templates.py:267] Found an exact template match 1zxa_B.
+I0827 00:08:19.313316 47431783249728 templates.py:267] Found an exact template match 4r4m_A.
+I0827 00:08:19.318024 47431783249728 templates.py:718] hit 5u5a_A did not pass prefilter: Proportion of residues aligned to query too small. Align ratio: 0.09477124183006536.
+I0827 00:08:19.318195 47431783249728 templates.py:912] Skipped invalid hit 5U5A_A Designed dimeric coiled coil peptide; designed peptide, synthetic, metal coordination; HET: 7WJ; 3.23A {N/A}, error: None, warning: None
+I0827 00:08:19.318295 47431783249728 templates.py:718] hit 5u59_A did not pass prefilter: Proportion of residues aligned to query too small. Align ratio: 0.09477124183006536.
+I0827 00:08:19.318369 47431783249728 templates.py:912] Skipped invalid hit 5U59_A Designed dimeric coiled coil peptide; designed peptide, synthetic, metal coordination; HET: 7WJ, CIT; 2.2A {N/A}, error: None, warning: None
+I0827 00:08:19.703566 47431783249728 pipeline.py:280] Uniref90 MSA size: 3470 sequences.
+I0827 00:08:19.703773 47431783249728 pipeline.py:281] BFD MSA size: 2287 sequences.
+I0827 00:08:19.703854 47431783249728 pipeline.py:282] MGnify MSA size: 122 sequences.
+I0827 00:08:19.703924 47431783249728 pipeline.py:283] Final (deduplicated) MSA size: 5455 sequences.
+I0827 00:08:19.703999 47431783249728 pipeline.py:285] Total number of templates (NB: this can include bad templates and is later filtered to top 4): 13.
+I0827 00:08:19.736034 47431783249728 run_alphafold.py:422] 
+I0827 00:08:19.736217 47431783249728 run_alphafold.py:423] ==== fasta 2QTV.fasta
+I0827 00:08:19.736321 47431783249728 run_alphafold.py:170] Predicting 2QTV.fasta
+I0827 00:08:19.739485 47431783249728 run_alphafold.py:179] *** output path: /home/fred862/scratch/fred862/data/bioinfo/output/idr_84/2QTV.fasta/msas
+I0827 00:08:19.753451 47431783249728 jackhmmer.py:133] Launching subprocess "/cvmfs/soft.computecanada.ca/easybuild/software/2020/avx512/Core/hmmer/3.2.1/bin/jackhmmer -o /dev/null -A /tmp/tmp5po1pi39/output.sto --noali --F1 0.0005 --F2 5e-05 --F3 5e-07 --incE 0.0001 -E 0.0001 --cpu 8 -N 1 /home/fred862/scratch/fred862/data/bioinfo/input/seq_to_pred/idr_84/poly_g_6/2QTV.fasta /home/fred862/scratch/fred862/data/bioinfo/input/database/uniref90/uniref90.fasta"
+I0827 00:08:19.830677 47431783249728 utils.py:36] Started Jackhmmer (uniref90.fasta) query
+I0827 00:16:13.513626 47431783249728 utils.py:40] Finished Jackhmmer (uniref90.fasta) query in 473.683 seconds
+I0827 00:16:15.561953 47431783249728 jackhmmer.py:133] Launching subprocess "/cvmfs/soft.computecanada.ca/easybuild/software/2020/avx512/Core/hmmer/3.2.1/bin/jackhmmer -o /dev/null -A /tmp/tmpr49sw5n0/output.sto --noali --F1 0.0005 --F2 5e-05 --F3 5e-07 --incE 0.0001 -E 0.0001 --cpu 8 -N 1 /home/fred862/scratch/fred862/data/bioinfo/input/seq_to_pred/idr_84/poly_g_6/2QTV.fasta /home/fred862/scratch/fred862/data/bioinfo/input/database/mgnify/mgy_clusters_2018_12.fa"
+I0827 00:16:15.640326 47431783249728 utils.py:36] Started Jackhmmer (mgy_clusters_2018_12.fa) query
+I0827 00:24:18.779848 47431783249728 utils.py:40] Finished Jackhmmer (mgy_clusters_2018_12.fa) query in 483.139 seconds
+I0827 00:24:32.369143 47431783249728 hhsearch.py:85] Launching subprocess "/cvmfs/soft.computecanada.ca/easybuild/software/2020/Core/hh-suite/3.3.0/bin/hhsearch -i /tmp/tmp258e6swc/query.a3m -o /tmp/tmp258e6swc/output.hhr -maxseq 1000000 -d /home/fred862/scratch/fred862/data/bioinfo/input/database/pdb70/pdb70"
+I0827 00:24:32.447703 47431783249728 utils.py:36] Started HHsearch query
+I0827 00:29:36.636744 47431783249728 utils.py:40] Finished HHsearch query in 304.189 seconds
+I0827 00:29:44.101121 47431783249728 hhblits.py:128] Launching subprocess "/cvmfs/soft.computecanada.ca/easybuild/software/2020/Core/hh-suite/3.3.0/bin/hhblits -i /home/fred862/scratch/fred862/data/bioinfo/input/seq_to_pred/idr_84/poly_g_6/2QTV.fasta -cpu 4 -oa3m /tmp/tmpg7dqjk8o/output.a3m -o /dev/null -n 3 -e 0.001 -maxseq 1000000 -realign_max 100000 -maxfilt 100000 -min_prefilter_hits 1000 -d /home/fred862/scratch/fred862/data/bioinfo/input/database/bfd/bfd_metaclust_clu_complete_id30_c90_final_seq.sorted_opt -d /home/fred862/scratch/fred862/data/bioinfo/input/database/uniclust30/uniclust30_2018_08/uniclust30_2018_08"
+I0827 00:29:44.180710 47431783249728 utils.py:36] Started HHblits query
+I0827 02:50:16.224080 47431783249728 utils.py:40] Finished HHblits query in 8432.043 seconds
+I0827 02:50:17.293394 47431783249728 templates.py:878] Searching for template for: DFETNEDINGVRFTWNVFPSTRSDANSNVVPVGCLYTPLKEYDELNVAPYNPVVCSGPHCKSILNPYCVIDPRNSSWSCPICNSRNHLPPQYTNLSQENMPLELQSTTIEYITNKPVTVPPIFFFVVDLTSETENLDSLKESIITSLSLLPPNALIGLITYGNVVQLHDLSSETIDRCNVFRGDREYQLEALTEMLTGQXXXXXXXXXXXXXXXXXKVTPFSLNRFFLPLEQVEFKLNQLLENLSPDQWSVPAGHRPLRATGSALNIASLLLQGCYKNIPARIILFASGPGTVAPGLIVNSELKDPLRSHHDIDSDHAQHYKKACKFYNQIAQRVAANGHTVDIFAGCYDQIGMSEMKQLTDSTGGVLLLTDAFSTAIFKQSYLRLFAKDEEGYLKMAFNGNMAVKTSKDLKVQGLIGHASAVKKTDANNISESEIGIGATSTWKMASLSPYHSYAIFFEIANTXXXXXXXXXXXXXXXXXHLAYTQFITTYQHSSGTNRIRVTTVANQLLPFGTPAIAASFDQEAAAVLMARIAVHKAETDDGADVIRWLDRTLIKLCQKYADYNKDDPQSFRLAPNFSLYPQFTYYLRRSQFLSVFNNSPDETAFYRHIFTREDTTNSLIMIQPTLTSFSMEDDPQPVLLDSISVKPNTILLLDTFFFILIYHGEQIAQWRKAGYQDDPQYADFKALLEEPKLEAAELLVDRFPLPRFIDTEAGGSQARFLLSKLNPSDNYQDMARGGSTIVLTDDVSLQNFMTHLQQVAVSGQAGGGGGGHGKLLFLGLDNAGKTTLLHMLKNDRLATLQPTWHPTSEELAIGNIKFTTFDLGGHIQARRLWKDYFPEVNGIVFLVDAADPERFDEARVELDALFNIAELKDVPFVILGNKIDAPNAVSEAELRSALGLLNTTGXXXIEGQRPVEVFMCSVVMRNGYLEAFQWLSQYGGGGGGVSGQTPHLNRKANDGWNDLPLKVKEKPSRAKAVSVA
+I0827 02:50:18.410453 47431783249728 templates.py:267] Found an exact template match 6gni_A.
+I0827 02:50:19.085092 47431783249728 templates.py:267] Found an exact template match 2qtv_A.
+I0827 02:50:19.961419 47431783249728 templates.py:267] Found an exact template match 1m2v_A.
+I0827 02:50:25.142054 47431783249728 templates.py:267] Found an exact template match 5kyn_A.
+I0827 02:50:26.214116 47431783249728 templates.py:267] Found an exact template match 2nut_A.
+I0827 02:50:27.640044 47431783249728 templates.py:267] Found an exact template match 5vnf_A.
+I0827 02:50:27.675716 47431783249728 templates.py:267] Found an exact template match 1m2v_B.
+I0827 02:50:29.560070 47431783249728 templates.py:267] Found an exact template match 3eh2_C.
+I0827 02:50:30.483026 47431783249728 templates.py:267] Found an exact template match 3efo_B.
+I0827 02:50:31.973087 47431783249728 templates.py:267] Found an exact template match 5kyx_B.
+I0827 02:50:33.400387 47431783249728 templates.py:267] Found an exact template match 5kyy_B.
+I0827 02:50:33.944025 47431783249728 templates.py:267] Found an exact template match 3eh1_A.
+I0827 02:50:34.527672 47431783249728 templates.py:267] Found an exact template match 1pcx_A.
+I0827 02:50:34.566205 47431783249728 templates.py:267] Found an exact template match 6gni_E.
+I0827 02:50:35.090874 47431783249728 templates.py:267] Found an exact template match 1pd0_A.
+I0827 02:50:35.126603 47431783249728 templates.py:267] Found an exact template match 3eh2_A.
+I0827 02:50:35.812362 47431783249728 templates.py:267] Found an exact template match 5a8j_A.
+I0827 02:50:36.136983 47431783249728 templates.py:267] Found an exact template match 2x77_A.
+I0827 02:50:36.818423 47431783249728 templates.py:267] Found an exact template match 4m9q_B.
+I0827 02:50:37.607337 47431783249728 templates.py:267] Found an exact template match 1hur_A.
+I0827 02:50:40.814700 47431783249728 pipeline.py:280] Uniref90 MSA size: 10000 sequences.
+I0827 02:50:40.814983 47431783249728 pipeline.py:281] BFD MSA size: 4990 sequences.
+I0827 02:50:40.815066 47431783249728 pipeline.py:282] MGnify MSA size: 501 sequences.
+I0827 02:50:40.815137 47431783249728 pipeline.py:283] Final (deduplicated) MSA size: 14821 sequences.
+I0827 02:50:40.815233 47431783249728 pipeline.py:285] Total number of templates (NB: this can include bad templates and is later filtered to top 4): 20.
+I0827 02:50:41.097875 47431783249728 run_alphafold.py:422] 
+I0827 02:50:41.098062 47431783249728 run_alphafold.py:423] ==== fasta 2RSN.fasta
+I0827 02:50:41.098179 47431783249728 run_alphafold.py:170] Predicting 2RSN.fasta
+I0827 02:50:41.101243 47431783249728 run_alphafold.py:179] *** output path: /home/fred862/scratch/fred862/data/bioinfo/output/idr_84/2RSN.fasta/msas
+I0827 02:50:41.142186 47431783249728 jackhmmer.py:133] Launching subprocess "/cvmfs/soft.computecanada.ca/easybuild/software/2020/avx512/Core/hmmer/3.2.1/bin/jackhmmer -o /dev/null -A /tmp/tmp1wxnj49e/output.sto --noali --F1 0.0005 --F2 5e-05 --F3 5e-07 --incE 0.0001 -E 0.0001 --cpu 8 -N 1 /home/fred862/scratch/fred862/data/bioinfo/input/seq_to_pred/idr_84/poly_g_6/2RSN.fasta /home/fred862/scratch/fred862/data/bioinfo/input/database/uniref90/uniref90.fasta"
+I0827 02:50:41.222575 47431783249728 utils.py:36] Started Jackhmmer (uniref90.fasta) query
+I0827 02:58:21.940809 47431783249728 utils.py:40] Finished Jackhmmer (uniref90.fasta) query in 460.718 seconds
+I0827 02:58:21.978147 47431783249728 jackhmmer.py:133] Launching subprocess "/cvmfs/soft.computecanada.ca/easybuild/software/2020/avx512/Core/hmmer/3.2.1/bin/jackhmmer -o /dev/null -A /tmp/tmppumntoqn/output.sto --noali --F1 0.0005 --F2 5e-05 --F3 5e-07 --incE 0.0001 -E 0.0001 --cpu 8 -N 1 /home/fred862/scratch/fred862/data/bioinfo/input/seq_to_pred/idr_84/poly_g_6/2RSN.fasta /home/fred862/scratch/fred862/data/bioinfo/input/database/mgnify/mgy_clusters_2018_12.fa"
+I0827 02:58:22.057415 47431783249728 utils.py:36] Started Jackhmmer (mgy_clusters_2018_12.fa) query
+I0827 03:06:28.923345 47431783249728 utils.py:40] Finished Jackhmmer (mgy_clusters_2018_12.fa) query in 486.866 seconds
+I0827 03:06:29.127603 47431783249728 hhsearch.py:85] Launching subprocess "/cvmfs/soft.computecanada.ca/easybuild/software/2020/Core/hh-suite/3.3.0/bin/hhsearch -i /tmp/tmpu_pickrp/query.a3m -o /tmp/tmpu_pickrp/output.hhr -maxseq 1000000 -d /home/fred862/scratch/fred862/data/bioinfo/input/database/pdb70/pdb70"
+I0827 03:06:29.208800 47431783249728 utils.py:36] Started HHsearch query
+I0827 03:09:15.090884 47431783249728 utils.py:40] Finished HHsearch query in 165.882 seconds
+I0827 03:09:15.287143 47431783249728 hhblits.py:128] Launching subprocess "/cvmfs/soft.computecanada.ca/easybuild/software/2020/Core/hh-suite/3.3.0/bin/hhblits -i /home/fred862/scratch/fred862/data/bioinfo/input/seq_to_pred/idr_84/poly_g_6/2RSN.fasta -cpu 4 -oa3m /tmp/tmptoradqtz/output.a3m -o /dev/null -n 3 -e 0.001 -maxseq 1000000 -realign_max 100000 -maxfilt 100000 -min_prefilter_hits 1000 -d /home/fred862/scratch/fred862/data/bioinfo/input/database/bfd/bfd_metaclust_clu_complete_id30_c90_final_seq.sorted_opt -d /home/fred862/scratch/fred862/data/bioinfo/input/database/uniclust30/uniclust30_2018_08/uniclust30_2018_08"
+I0827 03:09:15.366940 47431783249728 utils.py:36] Started HHblits query
+I0827 03:43:19.529901 47431783249728 utils.py:40] Finished HHblits query in 2044.162 seconds
+I0827 03:43:19.625369 47431783249728 templates.py:878] Searching for template for: MVSVKPLPDIDSNEGETDADVYEVEDILADRVNKNGINEYYIKWAGYDWYDNTWEPEQNLFGAEKVLKKWKKRKKGGGGGGARTKQTARKSTGGKAPRY
+I0827 03:43:23.485279 47431783249728 templates.py:267] Found an exact template match 2rsn_A.
+I0827 03:43:25.087051 47431783249728 templates.py:267] Found an exact template match 2rvm_A.
+I0827 03:43:27.304806 47431783249728 templates.py:267] Found an exact template match 2rso_A.
+I0827 03:43:28.613120 47431783249728 templates.py:267] Found an exact template match 2dnt_A.
+I0827 03:43:30.997874 47431783249728 templates.py:267] Found an exact template match 1ap0_A.
+I0827 03:43:31.169265 47431783249728 templates.py:267] Found an exact template match 5ejw_A.
+I0827 03:43:31.672195 47431783249728 templates.py:267] Found an exact template match 4quf_B.
+I0827 03:43:31.823201 47431783249728 templates.py:267] Found an exact template match 4quc_A.
+I0827 03:43:31.972186 47431783249728 templates.py:267] Found an exact template match 3lwe_A.
+I0827 03:43:32.222933 47431783249728 templates.py:267] Found an exact template match 4o42_A.
+I0827 03:43:32.525845 47431783249728 templates.py:267] Found an exact template match 4u68_B.
+I0827 03:43:32.900830 47431783249728 templates.py:267] Found an exact template match 2b2u_C.
+I0827 03:43:33.304752 47431783249728 templates.py:267] Found an exact template match 2b2y_C.
+I0827 03:43:33.555794 47431783249728 templates.py:267] Found an exact template match 6v2s_B.
+I0827 03:43:35.944702 47431783249728 templates.py:267] Found an exact template match 2kvm_A.
+I0827 03:43:37.330059 47431783249728 templates.py:267] Found an exact template match 2d9u_A.
+I0827 03:43:39.492140 47431783249728 templates.py:267] Found an exact template match 1g6z_A.
+I0827 03:43:39.689824 47431783249728 templates.py:267] Found an exact template match 5jjz_A.
+I0827 03:43:40.150934 47431783249728 templates.py:267] Found an exact template match 6v41_AAA.
+I0827 03:43:40.466941 47431783249728 templates.py:267] Found an exact template match 4o9i_X.
+I0827 03:43:40.585293 47431783249728 pipeline.py:280] Uniref90 MSA size: 2606 sequences.
+I0827 03:43:40.585490 47431783249728 pipeline.py:281] BFD MSA size: 1319 sequences.
+I0827 03:43:40.585567 47431783249728 pipeline.py:282] MGnify MSA size: 201 sequences.
+I0827 03:43:40.585654 47431783249728 pipeline.py:283] Final (deduplicated) MSA size: 3880 sequences.
+I0827 03:43:40.585730 47431783249728 pipeline.py:285] Total number of templates (NB: this can include bad templates and is later filtered to top 4): 20.
+I0827 03:43:40.652369 47431783249728 run_alphafold.py:422] 
+I0827 03:43:40.652535 47431783249728 run_alphafold.py:423] ==== fasta 1YCQ.fasta
+I0827 03:43:40.652646 47431783249728 run_alphafold.py:170] Predicting 1YCQ.fasta
+I0827 03:43:40.655415 47431783249728 run_alphafold.py:179] *** output path: /home/fred862/scratch/fred862/data/bioinfo/output/idr_84/1YCQ.fasta/msas
+I0827 03:43:40.826197 47431783249728 jackhmmer.py:133] Launching subprocess "/cvmfs/soft.computecanada.ca/easybuild/software/2020/avx512/Core/hmmer/3.2.1/bin/jackhmmer -o /dev/null -A /tmp/tmpqwqy0occ/output.sto --noali --F1 0.0005 --F2 5e-05 --F3 5e-07 --incE 0.0001 -E 0.0001 --cpu 8 -N 1 /home/fred862/scratch/fred862/data/bioinfo/input/seq_to_pred/idr_84/poly_g_6/1YCQ.fasta /home/fred862/scratch/fred862/data/bioinfo/input/database/uniref90/uniref90.fasta"
+I0827 03:43:40.906707 47431783249728 utils.py:36] Started Jackhmmer (uniref90.fasta) query
+I0827 03:51:26.298708 47431783249728 utils.py:40] Finished Jackhmmer (uniref90.fasta) query in 465.392 seconds
+I0827 03:51:26.427597 47431783249728 jackhmmer.py:133] Launching subprocess "/cvmfs/soft.computecanada.ca/easybuild/software/2020/avx512/Core/hmmer/3.2.1/bin/jackhmmer -o /dev/null -A /tmp/tmp54_pi2ip/output.sto --noali --F1 0.0005 --F2 5e-05 --F3 5e-07 --incE 0.0001 -E 0.0001 --cpu 8 -N 1 /home/fred862/scratch/fred862/data/bioinfo/input/seq_to_pred/idr_84/poly_g_6/1YCQ.fasta /home/fred862/scratch/fred862/data/bioinfo/input/database/mgnify/mgy_clusters_2018_12.fa"
+I0827 03:51:26.508447 47431783249728 utils.py:36] Started Jackhmmer (mgy_clusters_2018_12.fa) query
+I0827 03:59:31.735985 47431783249728 utils.py:40] Finished Jackhmmer (mgy_clusters_2018_12.fa) query in 485.227 seconds
+I0827 03:59:31.919779 47431783249728 hhsearch.py:85] Launching subprocess "/cvmfs/soft.computecanada.ca/easybuild/software/2020/Core/hh-suite/3.3.0/bin/hhsearch -i /tmp/tmp5g1e7k30/query.a3m -o /tmp/tmp5g1e7k30/output.hhr -maxseq 1000000 -d /home/fred862/scratch/fred862/data/bioinfo/input/database/pdb70/pdb70"
+I0827 03:59:32.000533 47431783249728 utils.py:36] Started HHsearch query
+I0827 04:02:02.041954 47431783249728 utils.py:40] Finished HHsearch query in 150.041 seconds
+I0827 04:02:02.195040 47431783249728 hhblits.py:128] Launching subprocess "/cvmfs/soft.computecanada.ca/easybuild/software/2020/Core/hh-suite/3.3.0/bin/hhblits -i /home/fred862/scratch/fred862/data/bioinfo/input/seq_to_pred/idr_84/poly_g_6/1YCQ.fasta -cpu 4 -oa3m /tmp/tmpilrkxe30/output.a3m -o /dev/null -n 3 -e 0.001 -maxseq 1000000 -realign_max 100000 -maxfilt 100000 -min_prefilter_hits 1000 -d /home/fred862/scratch/fred862/data/bioinfo/input/database/bfd/bfd_metaclust_clu_complete_id30_c90_final_seq.sorted_opt -d /home/fred862/scratch/fred862/data/bioinfo/input/database/uniclust30/uniclust30_2018_08/uniclust30_2018_08"
+I0827 04:02:02.275090 47431783249728 utils.py:36] Started HHblits query
+I0827 04:26:24.693359 47431783249728 utils.py:40] Finished HHblits query in 1462.418 seconds
+I0827 04:26:24.899814 47431783249728 templates.py:878] Searching for template for: EKLVQPTPLLLSLLKSAGAQKETFTMKEVIYHLGQYIMAKQLYDEKQQHIVHCSNDPLGELFGVQEFSVKEPRRLYAMISRNLVSANVGGGGGGETFSDLWKLLP
+I0827 04:26:25.604776 47431783249728 templates.py:267] Found an exact template match 2lzg_A.
+I0827 04:26:26.058055 47431783249728 templates.py:267] Found an exact template match 5hmh_B.
+I0827 04:26:27.920601 47431783249728 templates.py:267] Found an exact template match 1ttv_A.
+I0827 04:26:28.068383 47431783249728 templates.py:267] Found an exact template match 2axi_A.
+I0827 04:26:29.006506 47431783249728 templates.py:267] Found an exact template match 2z5t_O.
+I0827 04:26:29.389308 47431783249728 templates.py:267] Found an exact template match 1ycq_A.
+I0827 04:26:31.489646 47431783249728 templates.py:267] Found an exact template match 4ud7_B.
+I0827 04:26:31.703240 47431783249728 templates.py:267] Found an exact template match 5xxk_B.
+I0827 04:26:32.094480 47431783249728 templates.py:267] Found an exact template match 5c5a_B.
+I0827 04:26:32.392796 47431783249728 templates.py:267] Found an exact template match 6q9l_B.
+I0827 04:26:34.195926 47431783249728 templates.py:267] Found an exact template match 2n06_A.
+I0827 04:26:34.437979 47431783249728 templates.py:267] Found an exact template match 3fdo_A.
+I0827 04:26:34.635631 47431783249728 templates.py:267] Found an exact template match 5z02_A.
+I0827 04:26:35.014890 47431783249728 templates.py:267] Found an exact template match 6q9o_A.
+I0827 04:26:35.845867 47431783249728 templates.py:267] Found an exact template match 5swk_B.
+I0827 04:26:36.099345 47431783249728 templates.py:267] Found an exact template match 3dac_A.
+I0827 04:26:36.455596 47431783249728 templates.py:267] Found an exact template match 4lwu_A.
+I0827 04:26:37.079498 47431783249728 templates.py:267] Found an exact template match 3lnz_A.
+I0827 04:26:37.324088 47431783249728 templates.py:267] Found an exact template match 4ode_A.
+I0827 04:26:37.876526 47431783249728 templates.py:267] Found an exact template match 6q9y_B.
+I0827 04:26:37.922259 47431783249728 pipeline.py:280] Uniref90 MSA size: 881 sequences.
+I0827 04:26:37.922452 47431783249728 pipeline.py:281] BFD MSA size: 524 sequences.
+I0827 04:26:37.922532 47431783249728 pipeline.py:282] MGnify MSA size: 4 sequences.
+I0827 04:26:37.922603 47431783249728 pipeline.py:283] Final (deduplicated) MSA size: 1254 sequences.
+I0827 04:26:37.922677 47431783249728 pipeline.py:285] Total number of templates (NB: this can include bad templates and is later filtered to top 4): 20.
+I0827 04:26:38.034946 47431783249728 run_alphafold.py:422] 
+I0827 04:26:38.035119 47431783249728 run_alphafold.py:423] ==== fasta 3DF0.fasta
+I0827 04:26:38.035225 47431783249728 run_alphafold.py:170] Predicting 3DF0.fasta
+I0827 04:26:38.037912 47431783249728 run_alphafold.py:179] *** output path: /home/fred862/scratch/fred862/data/bioinfo/output/idr_84/3DF0.fasta/msas
+I0827 04:26:38.085851 47431783249728 jackhmmer.py:133] Launching subprocess "/cvmfs/soft.computecanada.ca/easybuild/software/2020/avx512/Core/hmmer/3.2.1/bin/jackhmmer -o /dev/null -A /tmp/tmpmg3tifny/output.sto --noali --F1 0.0005 --F2 5e-05 --F3 5e-07 --incE 0.0001 -E 0.0001 --cpu 8 -N 1 /home/fred862/scratch/fred862/data/bioinfo/input/seq_to_pred/idr_84/poly_g_6/3DF0.fasta /home/fred862/scratch/fred862/data/bioinfo/input/database/uniref90/uniref90.fasta"
+I0827 04:26:38.158503 47431783249728 utils.py:36] Started Jackhmmer (uniref90.fasta) query
+I0827 04:34:39.023145 47431783249728 utils.py:40] Finished Jackhmmer (uniref90.fasta) query in 480.864 seconds
+I0827 04:34:42.216772 47431783249728 jackhmmer.py:133] Launching subprocess "/cvmfs/soft.computecanada.ca/easybuild/software/2020/avx512/Core/hmmer/3.2.1/bin/jackhmmer -o /dev/null -A /tmp/tmpgr58fc25/output.sto --noali --F1 0.0005 --F2 5e-05 --F3 5e-07 --incE 0.0001 -E 0.0001 --cpu 8 -N 1 /home/fred862/scratch/fred862/data/bioinfo/input/seq_to_pred/idr_84/poly_g_6/3DF0.fasta /home/fred862/scratch/fred862/data/bioinfo/input/database/mgnify/mgy_clusters_2018_12.fa"
+I0827 04:34:42.293307 47431783249728 utils.py:36] Started Jackhmmer (mgy_clusters_2018_12.fa) query
+I0827 04:42:34.291240 47431783249728 utils.py:40] Finished Jackhmmer (mgy_clusters_2018_12.fa) query in 471.997 seconds
+I0827 04:42:55.054687 47431783249728 hhsearch.py:85] Launching subprocess "/cvmfs/soft.computecanada.ca/easybuild/software/2020/Core/hh-suite/3.3.0/bin/hhsearch -i /tmp/tmpi1uec6u_/query.a3m -o /tmp/tmpi1uec6u_/output.hhr -maxseq 1000000 -d /home/fred862/scratch/fred862/data/bioinfo/input/database/pdb70/pdb70"
+I0827 04:42:55.132158 47431783249728 utils.py:36] Started HHsearch query
+I0827 04:47:30.963049 47431783249728 utils.py:40] Finished HHsearch query in 275.830 seconds
+I0827 04:47:40.107474 47431783249728 hhblits.py:128] Launching subprocess "/cvmfs/soft.computecanada.ca/easybuild/software/2020/Core/hh-suite/3.3.0/bin/hhblits -i /home/fred862/scratch/fred862/data/bioinfo/input/seq_to_pred/idr_84/poly_g_6/3DF0.fasta -cpu 4 -oa3m /tmp/tmppseohaus/output.a3m -o /dev/null -n 3 -e 0.001 -maxseq 1000000 -realign_max 100000 -maxfilt 100000 -min_prefilter_hits 1000 -d /home/fred862/scratch/fred862/data/bioinfo/input/database/bfd/bfd_metaclust_clu_complete_id30_c90_final_seq.sorted_opt -d /home/fred862/scratch/fred862/data/bioinfo/input/database/uniclust30/uniclust30_2018_08/uniclust30_2018_08"
+I0827 04:47:40.184493 47431783249728 utils.py:36] Started HHblits query
+I0827 07:35:29.961002 47431783249728 utils.py:40] Finished HHblits query in 10069.776 seconds
+E0827 07:35:30.002967 47431783249728 hhblits.py:138] HHblits failed. HHblits stderr begin:
+E0827 07:35:30.003206 47431783249728 hhblits.py:141] - 04:48:34.068 INFO: Searching 65983866 column state sequences.
+E0827 07:35:30.003291 47431783249728 hhblits.py:141] - 04:48:36.043 INFO: Searching 15161831 column state sequences.
+E0827 07:35:30.003355 47431783249728 hhblits.py:141] - 04:48:36.187 INFO: /home/fred862/scratch/fred862/data/bioinfo/input/seq_to_pred/idr_84/poly_g_6/3DF0.fasta is in A2M, A3M or FASTA format
+E0827 07:35:30.003424 47431783249728 hhblits.py:141] - 04:48:36.188 INFO: Iteration 1
+E0827 07:35:30.003484 47431783249728 hhblits.py:141] - 04:48:36.664 INFO: Prefiltering database
+E0827 07:35:30.003543 47431783249728 hhblits.py:141] - 05:04:14.376 INFO: HMMs passed 1st prefilter (gapless profile-profile alignment)  : 1450129
+E0827 07:35:30.003600 47431783249728 hhblits.py:141] - 05:06:56.533 INFO: HMMs passed 1st prefilter (gapless profile-profile alignment)  : 379395
+E0827 07:35:30.003658 47431783249728 hhblits.py:141] - 05:07:03.478 INFO: HMMs passed 2nd prefilter (gapped profile-profile alignment)   : 16461
+E0827 07:35:30.003715 47431783249728 hhblits.py:141] - 05:07:03.478 INFO: HMMs passed 2nd prefilter and not found in previous iterations : 16461
+E0827 07:35:30.003773 47431783249728 hhblits.py:141] - 05:07:03.478 INFO: Scoring 16461 HMMs using HMM-HMM Viterbi alignment
+E0827 07:35:30.003831 47431783249728 hhblits.py:141] - 05:07:03.622 INFO: Alternative alignment: 0
+E0827 07:35:30.003891 47431783249728 hhblits.py:141] - 05:07:28.180 INFO: 2000 alignments done
+E0827 07:35:30.003949 47431783249728 hhblits.py:141] - 05:07:56.484 INFO: 4000 alignments done
+E0827 07:35:30.004007 47431783249728 hhblits.py:141] - 05:08:22.568 INFO: 6000 alignments done
+E0827 07:35:30.004065 47431783249728 hhblits.py:141] - 05:08:45.108 INFO: 8000 alignments done
+E0827 07:35:30.004122 47431783249728 hhblits.py:141] - 05:09:31.737 INFO: 10000 alignments done
+E0827 07:35:30.004186 47431783249728 hhblits.py:141] - 05:10:23.069 INFO: 12000 alignments done
+E0827 07:35:30.004245 47431783249728 hhblits.py:141] - 05:10:48.947 INFO: 14000 alignments done
+E0827 07:35:30.004304 47431783249728 hhblits.py:141] - 05:11:06.927 INFO: 16000 alignments done
+E0827 07:35:30.004361 47431783249728 hhblits.py:141] - 05:11:11.142 INFO: 16461 alignments done
+E0827 07:35:30.004418 47431783249728 hhblits.py:141] - 05:11:11.172 INFO: Alternative alignment: 1
+E0827 07:35:30.004476 47431783249728 hhblits.py:141] - 05:11:30.842 INFO: 16439 alignments done
+E0827 07:35:30.004533 47431783249728 hhblits.py:141] - 05:11:30.963 INFO: Alternative alignment: 2
+E0827 07:35:30.004591 47431783249728 hhblits.py:141] - 05:11:48.011 INFO: 13271 alignments done
+E0827 07:35:30.004649 47431783249728 hhblits.py:141] - 05:11:48.051 INFO: Alternative alignment: 3
+E0827 07:35:30.004707 47431783249728 hhblits.py:141] - 05:12:02.065 INFO: 11103 alignments done
+E0827 07:35:30.004765 47431783249728 hhblits.py:141] - 05:12:04.740 INFO: Premerge done
+E0827 07:35:30.004824 47431783249728 hhblits.py:141] - 05:12:04.744 INFO: Realigning 4444 HMM-HMM alignments using Maximum Accuracy algorithm
+E0827 07:35:30.004881 47431783249728 hhblits.py:141] - 05:14:42.422 INFO: 4447 sequences belonging to 4447 database HMMs found with an E-value < 0.001
+E0827 07:35:30.004939 47431783249728 hhblits.py:141] - 05:14:42.422 INFO: Number of effective sequences of resulting query HMM: Neff = 9.89522
+E0827 07:35:30.005008 47431783249728 hhblits.py:141] - 05:14:42.920 INFO: Iteration 2
+E0827 07:35:30.005067 47431783249728 hhblits.py:141] - 05:14:42.920 INFO: Set premerge to 0! (premerge: 3 iteration: 2 hits.Size: 4444)
+E0827 07:35:30.005125 47431783249728 hhblits.py:141] - 05:14:43.391 INFO: Prefiltering database
+E0827 07:35:30.005189 47431783249728 hhblits.py:141] - 05:19:07.902 INFO: HMMs passed 1st prefilter (gapless profile-profile alignment)  : 1511652
+E0827 07:35:30.005247 47431783249728 hhblits.py:141] - 05:20:30.739 INFO: HMMs passed 1st prefilter (gapless profile-profile alignment)  : 339624
+E0827 07:35:30.005304 47431783249728 hhblits.py:141] - 05:20:37.536 WARNING: database contains sequences that exceed maximum allowed size (maxres = 20001). Max sequence length can be increased with parameter -maxres.
+E0827 07:35:30.005371 47431783249728 hhblits.py:141] - 05:20:37.667 INFO: HMMs passed 2nd prefilter (gapped profile-profile alignment)   : 82889
+E0827 07:35:30.005429 47431783249728 hhblits.py:141] - 05:20:37.667 INFO: HMMs passed 2nd prefilter and not found in previous iterations : 79180
+E0827 07:35:30.005486 47431783249728 hhblits.py:141] - 05:20:37.667 INFO: Scoring 79180 HMMs using HMM-HMM Viterbi alignment
+E0827 07:35:30.005544 47431783249728 hhblits.py:141] - 05:20:37.776 INFO: Alternative alignment: 0
+E0827 07:35:30.005601 47431783249728 hhblits.py:141] - 05:20:53.362 INFO: 2000 alignments done
+E0827 07:35:30.005658 47431783249728 hhblits.py:141] - 05:21:07.298 INFO: 4000 alignments done
+E0827 07:35:30.005716 47431783249728 hhblits.py:141] - 05:21:22.704 INFO: 6000 alignments done
+E0827 07:35:30.005773 47431783249728 hhblits.py:141] - 05:21:37.084 INFO: 8000 alignments done
+E0827 07:35:30.005831 47431783249728 hhblits.py:141] - 05:21:51.158 INFO: 10000 alignments done
+E0827 07:35:30.005888 47431783249728 hhblits.py:141] - 05:22:05.567 INFO: 12000 alignments done
+E0827 07:35:30.005945 47431783249728 hhblits.py:141] - 05:22:20.078 INFO: 14000 alignments done
+E0827 07:35:30.006002 47431783249728 hhblits.py:141] - 05:22:34.599 INFO: 16000 alignments done
+E0827 07:35:30.006059 47431783249728 hhblits.py:141] - 05:22:49.267 INFO: 18000 alignments done
+E0827 07:35:30.006116 47431783249728 hhblits.py:141] - 05:23:03.662 INFO: 20000 alignments done
+E0827 07:35:30.006179 47431783249728 hhblits.py:141] - 05:23:17.673 INFO: 22000 alignments done
+E0827 07:35:30.006237 47431783249728 hhblits.py:141] - 05:23:35.467 INFO: 24000 alignments done
+E0827 07:35:30.006294 47431783249728 hhblits.py:141] - 05:23:52.973 INFO: 26000 alignments done
+E0827 07:35:30.006351 47431783249728 hhblits.py:141] - 05:24:07.556 INFO: 28000 alignments done
+E0827 07:35:30.006408 47431783249728 hhblits.py:141] - 05:24:22.551 INFO: 30000 alignments done
+E0827 07:35:30.006466 47431783249728 hhblits.py:141] - 05:24:39.174 INFO: 32000 alignments done
+E0827 07:35:30.006523 47431783249728 hhblits.py:141] - 05:24:54.144 INFO: 34000 alignments done
+E0827 07:35:30.006580 47431783249728 hhblits.py:141] - 05:25:13.065 INFO: 36000 alignments done
+E0827 07:35:30.006638 47431783249728 hhblits.py:141] - 05:25:32.272 INFO: 38000 alignments done
+E0827 07:35:30.006695 47431783249728 hhblits.py:141] - 05:25:50.511 INFO: 40000 alignments done
+E0827 07:35:30.006753 47431783249728 hhblits.py:141] - 05:26:11.993 INFO: 42000 alignments done
+E0827 07:35:30.006810 47431783249728 hhblits.py:141] - 05:26:52.573 INFO: 44000 alignments done
+E0827 07:35:30.006868 47431783249728 hhblits.py:141] - 05:27:38.678 INFO: 46000 alignments done
+E0827 07:35:30.006925 47431783249728 hhblits.py:141] - 05:28:02.770 INFO: 48000 alignments done
+E0827 07:35:30.006983 47431783249728 hhblits.py:141] - 05:28:22.945 INFO: 50000 alignments done
+E0827 07:35:30.007040 47431783249728 hhblits.py:141] - 05:28:43.469 INFO: 52000 alignments done
+E0827 07:35:30.007098 47431783249728 hhblits.py:141] - 05:29:02.581 INFO: 54000 alignments done
+E0827 07:35:30.007156 47431783249728 hhblits.py:141] - 05:29:22.650 INFO: 56000 alignments done
+E0827 07:35:30.007221 47431783249728 hhblits.py:141] - 05:29:40.913 INFO: 58000 alignments done
+E0827 07:35:30.007288 47431783249728 hhblits.py:141] - 05:30:02.836 INFO: 60000 alignments done
+E0827 07:35:30.007346 47431783249728 hhblits.py:141] - 05:30:26.739 INFO: 62000 alignments done
+E0827 07:35:30.007404 47431783249728 hhblits.py:141] - 05:30:42.541 INFO: 64000 alignments done
+E0827 07:35:30.007461 47431783249728 hhblits.py:141] - 05:30:55.922 INFO: 66000 alignments done
+E0827 07:35:30.007519 47431783249728 hhblits.py:141] - 05:31:13.476 INFO: 68000 alignments done
+E0827 07:35:30.007576 47431783249728 hhblits.py:141] - 05:31:45.524 INFO: 70000 alignments done
+E0827 07:35:30.007633 47431783249728 hhblits.py:141] - 05:32:21.639 INFO: 72000 alignments done
+E0827 07:35:30.007690 47431783249728 hhblits.py:141] - 05:32:59.584 INFO: 74000 alignments done
+E0827 07:35:30.007748 47431783249728 hhblits.py:141] - 05:33:21.893 INFO: 76000 alignments done
+E0827 07:35:30.007806 47431783249728 hhblits.py:141] - 05:33:38.865 INFO: 78000 alignments done
+E0827 07:35:30.007863 47431783249728 hhblits.py:141] - 05:33:48.760 INFO: 79180 alignments done
+E0827 07:35:30.007921 47431783249728 hhblits.py:141] - 05:33:48.766 INFO: Alternative alignment: 1
+E0827 07:35:30.007978 47431783249728 hhblits.py:141] - 05:35:15.834 INFO: 78806 alignments done
+E0827 07:35:30.008036 47431783249728 hhblits.py:141] - 05:35:16.508 INFO: Alternative alignment: 2
+E0827 07:35:30.008094 47431783249728 hhblits.py:141] - 05:36:42.279 INFO: 76046 alignments done
+E0827 07:35:30.008151 47431783249728 hhblits.py:141] - 05:36:42.591 INFO: Alternative alignment: 3
+E0827 07:35:30.008217 47431783249728 hhblits.py:141] - 05:38:14.685 INFO: 73660 alignments done
+E0827 07:35:30.008275 47431783249728 hhblits.py:141] - 05:38:18.695 INFO: Realigning 51627 HMM-HMM alignments using Maximum Accuracy algorithm
+E0827 07:35:30.008332 47431783249728 hhblits.py:141] - 06:06:29.660 INFO: 56071 sequences belonging to 56071 database HMMs found with an E-value < 0.001
+E0827 07:35:30.008390 47431783249728 hhblits.py:141] - 06:06:29.661 INFO: Number of effective sequences of resulting query HMM: Neff = 10.8566
+E0827 07:35:30.008447 47431783249728 hhblits.py:141] - 06:06:32.538 INFO: Iteration 3
+E0827 07:35:30.008505 47431783249728 hhblits.py:141] - 06:06:33.045 INFO: Prefiltering database
+E0827 07:35:30.008562 47431783249728 hhblits.py:141] - 06:21:21.978 INFO: HMMs passed 1st prefilter (gapless profile-profile alignment)  : 1847356
+E0827 07:35:30.008619 47431783249728 hhblits.py:141] - 06:28:28.193 INFO: HMMs passed 1st prefilter (gapless profile-profile alignment)  : 401941
+E0827 07:35:30.008677 47431783249728 hhblits.py:141] - 06:28:40.908 WARNING: database contains sequences that exceed maximum allowed size (maxres = 20001). Max sequence length can be increased with parameter -maxres.
+E0827 07:35:30.008734 47431783249728 hhblits.py:141] - 06:28:40.908 INFO: HMMs passed 2nd prefilter (gapped profile-profile alignment)   : 99455
+E0827 07:35:30.008792 47431783249728 hhblits.py:141] - 06:28:40.908 INFO: HMMs passed 2nd prefilter and not found in previous iterations : 76445
+E0827 07:35:30.008849 47431783249728 hhblits.py:141] - 06:28:40.908 INFO: Scoring 76445 HMMs using HMM-HMM Viterbi alignment
+E0827 07:35:30.008906 47431783249728 hhblits.py:141] - 06:28:41.062 INFO: Alternative alignment: 0
+E0827 07:35:30.008963 47431783249728 hhblits.py:141] - 06:29:15.009 INFO: 2000 alignments done
+E0827 07:35:30.009020 47431783249728 hhblits.py:141] - 06:29:45.727 INFO: 4000 alignments done
+E0827 07:35:30.009077 47431783249728 hhblits.py:141] - 06:30:18.660 INFO: 6000 alignments done
+E0827 07:35:30.009134 47431783249728 hhblits.py:141] - 06:30:49.836 INFO: 8000 alignments done
+E0827 07:35:30.009197 47431783249728 hhblits.py:141] - 06:31:17.152 INFO: 10000 alignments done
+E0827 07:35:30.009254 47431783249728 hhblits.py:141] - 06:31:45.813 INFO: 12000 alignments done
+E0827 07:35:30.009312 47431783249728 hhblits.py:141] - 06:32:11.288 INFO: 14000 alignments done
+E0827 07:35:30.009369 47431783249728 hhblits.py:141] - 06:32:39.121 INFO: 16000 alignments done
+E0827 07:35:30.009435 47431783249728 hhblits.py:141] - 06:33:12.286 INFO: 18000 alignments done
+E0827 07:35:30.009493 47431783249728 hhblits.py:141] - 06:33:39.778 INFO: 20000 alignments done
+E0827 07:35:30.009550 47431783249728 hhblits.py:141] - 06:34:06.494 INFO: 22000 alignments done
+E0827 07:35:30.009608 47431783249728 hhblits.py:141] - 06:34:35.704 INFO: 24000 alignments done
+E0827 07:35:30.009665 47431783249728 hhblits.py:141] - 06:35:05.904 INFO: 26000 alignments done
+E0827 07:35:30.009722 47431783249728 hhblits.py:141] - 06:35:33.737 INFO: 28000 alignments done
+E0827 07:35:30.009779 47431783249728 hhblits.py:141] - 06:36:04.469 INFO: 30000 alignments done
+E0827 07:35:30.009837 47431783249728 hhblits.py:141] - 06:36:35.995 INFO: 32000 alignments done
+E0827 07:35:30.009895 47431783249728 hhblits.py:141] - 06:37:05.252 INFO: 34000 alignments done
+E0827 07:35:30.009952 47431783249728 hhblits.py:141] - 06:37:34.939 INFO: 36000 alignments done
+E0827 07:35:30.010009 47431783249728 hhblits.py:141] - 06:38:02.020 INFO: 38000 alignments done
+E0827 07:35:30.010066 47431783249728 hhblits.py:141] - 06:38:29.163 INFO: 40000 alignments done
+E0827 07:35:30.010124 47431783249728 hhblits.py:141] - 06:38:57.610 INFO: 42000 alignments done
+E0827 07:35:30.010189 47431783249728 hhblits.py:141] - 06:39:27.452 INFO: 44000 alignments done
+E0827 07:35:30.010247 47431783249728 hhblits.py:141] - 06:39:56.880 INFO: 46000 alignments done
+E0827 07:35:30.010305 47431783249728 hhblits.py:141] - 06:40:27.159 INFO: 48000 alignments done
+E0827 07:35:30.010362 47431783249728 hhblits.py:141] - 06:40:58.209 INFO: 50000 alignments done
+E0827 07:35:30.010419 47431783249728 hhblits.py:141] - 06:41:29.282 INFO: 52000 alignments done
+E0827 07:35:30.010477 47431783249728 hhblits.py:141] - 06:41:59.759 INFO: 54000 alignments done
+E0827 07:35:30.010534 47431783249728 hhblits.py:141] - 06:42:31.940 INFO: 56000 alignments done
+E0827 07:35:30.010591 47431783249728 hhblits.py:141] - 06:43:01.602 INFO: 58000 alignments done
+E0827 07:35:30.010648 47431783249728 hhblits.py:141] - 06:43:34.360 INFO: 60000 alignments done
+E0827 07:35:30.010705 47431783249728 hhblits.py:141] - 06:44:03.336 INFO: 62000 alignments done
+E0827 07:35:30.010762 47431783249728 hhblits.py:141] - 06:44:34.087 INFO: 64000 alignments done
+E0827 07:35:30.010820 47431783249728 hhblits.py:141] - 06:45:03.900 INFO: 66000 alignments done
+E0827 07:35:30.010877 47431783249728 hhblits.py:141] - 06:45:33.910 INFO: 68000 alignments done
+E0827 07:35:30.010934 47431783249728 hhblits.py:141] - 06:46:03.132 INFO: 70000 alignments done
+E0827 07:35:30.010991 47431783249728 hhblits.py:141] - 06:46:30.498 INFO: 72000 alignments done
+E0827 07:35:30.011048 47431783249728 hhblits.py:141] - 06:46:59.625 INFO: 74000 alignments done
+E0827 07:35:30.011105 47431783249728 hhblits.py:141] - 06:47:27.524 INFO: 76000 alignments done
+E0827 07:35:30.011162 47431783249728 hhblits.py:141] - 06:47:34.811 INFO: 76445 alignments done
+E0827 07:35:30.011225 47431783249728 hhblits.py:141] - 06:47:34.813 INFO: Alternative alignment: 1
+E0827 07:35:30.011282 47431783249728 hhblits.py:141] - 07:00:15.309 INFO: 75347 alignments done
+E0827 07:35:30.011339 47431783249728 hhblits.py:141] - 07:00:15.828 INFO: Alternative alignment: 2
+E0827 07:35:30.011396 47431783249728 hhblits.py:141] - 07:03:51.023 INFO: 73921 alignments done
+E0827 07:35:30.011453 47431783249728 hhblits.py:141] - 07:03:51.337 INFO: Alternative alignment: 3
+E0827 07:35:30.011510 47431783249728 hhblits.py:141] - 07:05:14.208 INFO: 73085 alignments done
+E0827 07:35:30.011569 47431783249728 hhblits.py:141] - 07:05:17.256 INFO: Rescoring previously found HMMs with Viterbi algorithm
+E0827 07:35:30.011626 47431783249728 hhblits.py:141] - 07:05:17.390 INFO: Alternative alignment: 0
+E0827 07:35:30.011684 47431783249728 hhblits.py:141] - 07:06:09.214 INFO: 2000 alignments done
+E0827 07:35:30.011741 47431783249728 hhblits.py:141] - 07:06:55.590 INFO: 4000 alignments done
+E0827 07:35:30.011798 47431783249728 hhblits.py:141] - 07:07:38.846 INFO: 6000 alignments done
+E0827 07:35:30.011855 47431783249728 hhblits.py:141] - 07:08:24.207 INFO: 8000 alignments done
+E0827 07:35:30.011920 47431783249728 hhblits.py:141] - 07:09:10.655 INFO: 10000 alignments done
+E0827 07:35:30.011979 47431783249728 hhblits.py:141] - 07:09:56.134 INFO: 12000 alignments done
+E0827 07:35:30.012036 47431783249728 hhblits.py:141] - 07:10:48.492 INFO: 14000 alignments done
+E0827 07:35:30.012094 47431783249728 hhblits.py:141] - 07:11:36.046 INFO: 16000 alignments done
+E0827 07:35:30.012151 47431783249728 hhblits.py:141] - 07:12:22.141 INFO: 18000 alignments done
+E0827 07:35:30.012215 47431783249728 hhblits.py:141] - 07:13:13.415 INFO: 20000 alignments done
+E0827 07:35:30.012272 47431783249728 hhblits.py:141] - 07:14:00.740 INFO: 22000 alignments done
+E0827 07:35:30.012329 47431783249728 hhblits.py:141] - 07:14:24.437 INFO: 23011 alignments done
+E0827 07:35:30.012387 47431783249728 hhblits.py:141] - 07:14:24.440 INFO: Alternative alignment: 1
+E0827 07:35:30.012444 47431783249728 hhblits.py:141] - 07:14:52.924 INFO: 23011 alignments done
+E0827 07:35:30.012501 47431783249728 hhblits.py:141] - 07:14:53.026 INFO: Alternative alignment: 2
+E0827 07:35:30.012557 47431783249728 hhblits.py:141] - 07:15:16.560 INFO: 19270 alignments done
+E0827 07:35:30.012614 47431783249728 hhblits.py:141] - 07:15:16.617 INFO: Alternative alignment: 3
+E0827 07:35:30.012671 47431783249728 hhblits.py:141] - 07:15:38.977 INFO: 18691 alignments done
+E0827 07:35:30.012729 47431783249728 hhblits.py:141] - 07:15:45.828 INFO: Premerge done
+E0827 07:35:30.012786 47431783249728 hhblits.py:141] - 07:15:45.858 INFO: Realigning 73666 HMM-HMM alignments using Maximum Accuracy algorithm
+E0827 07:35:30.012848 47431783249728 hhblits.py:142] HHblits stderr end
+1.22.2
+True 7 ['4U7T.fasta', '2M3M.fasta', '2AZE.fasta', '2QTV.fasta', '2RSN.fasta', '1YCQ.fasta', '3DF0.fasta']
+Traceback (most recent call last):
+  File "/home/fred862/scratch/fred862/code/bioinfo/alphafold/run_alphafold.py", line 452, in <module>
+    app.run(main)
+  File "/home/fred862/env/alphafold_env/lib/python3.8/site-packages/absl/app.py", line 312, in run
+    _run_main(main, args)
+  File "/home/fred862/env/alphafold_env/lib/python3.8/site-packages/absl/app.py", line 258, in _run_main
+    sys.exit(main(argv))
+  File "/home/fred862/scratch/fred862/code/bioinfo/alphafold/run_alphafold.py", line 425, in main
+    predict_structure(
+  File "/home/fred862/scratch/fred862/code/bioinfo/alphafold/run_alphafold.py", line 189, in predict_structure
+    feature_dict = data_pipeline.process(
+  File "/lustre04/scratch/fred862/fred862/code/bioinfo/alphafold/alphafold/data/pipeline.py", line 261, in process
+    hhblits_bfd_uniclust_result = run_msa_tool(
+  File "/lustre04/scratch/fred862/fred862/code/bioinfo/alphafold/alphafold/data/pipeline.py", line 96, in run_msa_tool
+    result = msa_runner.query(input_fasta_path)[0]
+  File "/lustre04/scratch/fred862/fred862/code/bioinfo/alphafold/alphafold/data/tools/hhblits.py", line 143, in query
+    raise RuntimeError('HHblits failed\nstdout:\n%s\n\nstderr:\n%s\n' % (
+RuntimeError: HHblits failed
+stdout:
+
+
+stderr:
+- 04:48:34.068 INFO: Searching 65983866 column state sequences.
+
+- 04:48:36.043 INFO: Searching 15161831 column state sequences.
+
+- 04:48:36.187 INFO: /home/fred862/scratch/fred862/data/bioinfo/input/seq_to_pred/idr_84/poly_g_6/3DF0.fasta is in A2M, A3M or FASTA format
+
+- 04:48:36.188 INFO: Iteration 1
+
+- 04:48:36.664 INFO: Prefiltering database
+
+- 05:04:14.376 INFO: HMMs passed 1st prefilter (gapless profile-profile alignment)  : 1450129
+
+- 05:06:56.533 INFO: HMMs passed 1st prefilter (gapless profile-profile alignment)  : 379395
+
+- 05:07:03.478 INFO: HMMs passed 2nd prefilter (gapped profile-profile alignment)   : 16461
+
+- 05:07:03.478 INFO: HMMs passed 2nd prefilter and not found in previous iterations : 16461
+
+- 05:07:03.478 INFO: Scoring 16461 HMMs using HMM-HMM Viterbi alignment
+
+- 05:07:03.622 INFO: Alternative alignment: 0
+
+- 05:07:28.180 INFO: 2000 alignments done
+
+- 05:07:56.484 INFO: 4000 alignments done
+
+- 05:08:22.568 INFO: 6000 alignments done
+
+- 05:08:45.108 INFO: 8000 alignments done
+
+- 05:09:31.737 INFO: 10000 alignments done
+
+- 05:10:23.069 INFO: 12000 alignments done
+
+- 05:10:48.947 INFO: 14000 alignments done
+
+- 05:11:06.927 INFO: 16000 alignments done
+
+- 05:11:11.142 INFO: 16461 alignments done
+
+- 05:11:11.172 INFO: Alternative alignment: 1
+
+- 05:11:30.842 INFO: 16439 alignments done
+
+- 05:11:30.963 INFO: Alternative alignment: 2
+
+- 05:11:48.011 INFO: 13271 alignments done
+
+- 05:11:48.051 INFO: Alternative alignment: 3
+
+- 05:12:02.065 INFO: 11103 alignments done
+
+- 05:12:04.740 INFO: Premerge done
+
+- 05:12:04.744 INFO: Realigning 4444 HMM-HMM alignments using Maximum Accuracy algorithm
+
+- 05:14:42.422 INFO: 4447 sequences belonging to 4447 database HMMs found with an E-value < 0.001
+
+- 05:14:42.422 INFO: Number of effective sequences of resulting query HMM: Neff = 9.89522
+
+- 05:14:42.920 INFO: Iteration 2
+
+- 05:14:42.920 INFO: Set premerge to 0! (premerge: 3 iteration: 2 hits.Size: 4444)
+
+- 05:14:43.391 INFO: Prefiltering database
+
+- 05:19:07.902 INFO: HMMs passed 1st prefilter (gapless profile-profile alignment)  : 1511652
+
+- 05:20:30.739 INFO: HMMs passed 1st prefilter (gapless profile-profile alignment)  : 339624
+
+- 05:20:37.536 WARNING: database contains sequences that exceed maximum allowed size (maxres = 20001). Max sequence length can be increased with parameter -maxres.
+
+- 05:20:37.667 INFO: HMMs passed 2nd prefilter (gapped profile-profile alignment)   : 82889
+
+- 05:20:37.667 INFO: HMMs passed 2nd prefilter and not found in previous iterations : 79180
+
+- 05:20:37.667 INFO: Scoring 79180 HMMs using HMM-HMM Viterbi alignment
+
+- 05:20:37.776 INFO: Alternative alignment: 0
+
+- 05:20:53.362 INFO: 2000 alignments done
+
+- 05:21:07.298 INFO: 4000 alignments done
+
+- 05:21:22.704 INFO: 6000 alignments done
+
+- 05:21:37.084 INFO: 8000 alignments done
+
+- 05:21:51.158 INFO: 10000 alignments done
+
+- 05:22:05.567 INFO: 12000 alignments done
+
+- 05:22:20.078 INFO: 14000 alignments done
+
+- 05:22:34.599 INFO: 16000 alignments done
+
+- 05:22:49.267 INFO: 18000 alignments done
+
+- 05:23:03.662 INFO: 20000 alignments done
+
+- 05:23:17.673 INFO: 22000 alignments done
+
+- 05:23:35.467 INFO: 24000 alignments done
+
+- 05:23:52.973 INFO: 26000 alignments done
+
+- 05:24:07.556 INFO: 28000 alignments done
+
+- 05:24:22.551 INFO: 30000 alignments done
+
+- 05:24:39.174 INFO: 32000 alignments done
+
+- 05:24:54.144 INFO: 34000 alignments done
+
+- 05:25:13.065 INFO: 36000 alignments done
+
+- 05:25:32.272 INFO: 38000 alignments done
+
+- 05:25:50.511 INFO: 40000 alignments done
+
+- 05:26:11.993 INFO: 42000 alignments done
+
+- 05:26:52.573 INFO: 44000 alignments done
+
+- 05:27:38.678 INFO: 46000 alignments done
+
+- 05:28:02.770 INFO: 48000 alignments done
+
+- 05:28:22.945 INFO: 50000 alignments done
+
+- 05:28:43.469 INFO: 52000 alignments done
+
+- 05:29:02.581 INFO: 54000 alignments done
+
+- 05:29:22.650 INFO: 56000 alignments done
+
+- 05:29:40.913 INFO: 58000 alignments done
+
+- 05:30:02.836 INFO: 60000 alignments done
+
+- 05:30:26.739 INFO: 62000 alignments done
+
+- 05:30:42.541 INFO: 64000 alignments done
+
+- 05:30:55.922 INFO: 66000 alignments done
+
+- 05:31:13.476 INFO: 68000 alignments done
+
+- 05:31:45.524 INFO: 70000 alignments done
+
+- 05:32:21.639 INFO: 72000 alignments done
+
+- 05:32:59.584 INFO: 74000 alignments done
+
+- 05:33:21.893 INFO: 76000 alignments done
+
+- 05:33:38.865 INFO: 78000 alignments done
+
+- 05:33:48.760 INFO: 79180 alignments done
+
+- 05:33:48.766 INFO: Alternative alignment: 1
+
+- 05:35:15.834 INFO: 78806 alignments done
+
+- 05:35:16.508 INFO: Alternative alignment: 2
+
+- 05:36:42.279 INFO: 76046 alignments done
+
+- 05:36:42.591 INFO: Alternative alignment: 3
+
+- 05:38:14.685 INFO: 73660 alignments done
+
+- 05:38:18.695 INFO: Realigning 51627 HMM-HMM alignments using Maximum Accuracy algorithm
+
+- 06:06:29.660 INFO: 56071 sequences belonging to 56071 database HMMs found with an E-value < 0.001
+
+- 06:06:29.661 INFO: Number of effective sequences of resulting query HMM: Neff = 10.8566
+
+- 06:06:32.538 INFO: Iteration 3
+
+- 06:06:33.045 INFO: Prefiltering database
+
+- 06:21:21.978 INFO: HMMs passed 1st prefilter (gapless profile-profile alignment)  : 1847356
+
+- 06:28:28.193 INFO: HMMs passed 1st prefilter (gapless profile-profile alignment)  : 401941
+
+- 06:28:40.908 WARNING: database contains sequences that exceed maximum allowed size (maxres = 20001). Max sequence length can be increased with parameter -maxres.
+
+- 06:28:40.908 INFO: HMMs passed 2nd prefilter (gapped profile-profile alignment)   : 99455
+
+- 06:28:40.908 INFO: HMMs passed 2nd prefilter and not found in previous iterations : 76445
+
+- 06:28:40.908 INFO: Scoring 76445 HMMs using HMM-HMM Viterbi alignment
+
+- 06:28:41.062 INFO: Alternative alignment: 0
+
+- 06:29:15.009 INFO: 2000 alignments done
+
+- 06:29:45.727 INFO: 4000 alignments done
+
+- 06:30:18.660 INFO: 6000 alignments done
+
+- 06:30:49.836 INFO: 8000 alignments done
+
+- 06:31:17.152 INFO: 10000 alignments done
+
+- 06:31:45.813 INFO: 12000 alignments done
+
+- 06:32:11.288 INFO: 14000 alignments done
+
+- 06:32:39.121 INFO: 16000 alignments done
+
+- 06:33:12.286 INFO: 18000 alignments done
+
+- 06:33:39.778 INFO: 20000 alignments done
+
+- 06:34:06.494 INFO: 22000 alignments done
+
+- 06:34:35.704 INFO: 24000 alignments done
+
+- 06:35:05.904 INFO: 26000 alignments done
+
+- 06:35:33.737 INFO: 28000 alignments done
+
+- 06:36:04.469 INFO: 30000 alignments done
+
+- 06:36:35.995 INFO: 32000 alignments done
+
+- 06:37:05.252 INFO: 34000 alignments done
+
+- 06:37:34.939 INFO: 36000 alignments done
+
+- 06:38:02.020 INFO: 38000 alignments done
+
+- 06:38:29.163 INFO: 40000 alignments done
+
+- 06:38:57.610 INFO: 42000 alignments done
+
+- 06:39:27.452 INFO: 44000 alignments done
+
+- 06:39:56.880 INFO: 46000 alignments done
+
+- 06:40:27.159 INFO: 48000 alignments done
+
+- 06:40:58.209 INFO: 50000 alignments done
+
+- 06:41:29.282 INFO: 52000 alignments done
+
+- 06:41:59.759 INFO: 54000 alignments done
+
+- 06:42:31.940 INFO: 56000 alignments done
+
+- 06:43:01.602 INFO: 58000 alignments done
+
+- 06:43:34.360 INFO: 60000 alignments done
+
+- 06:44:03.336 INFO: 62000 alignments done
+
+- 06:44:34.087 INFO: 64000 alignments done
+
+- 06:45:03.900 INFO: 66000 alignments done
+
+- 06:45:33.910 INFO: 68000 alignments done
+
+- 06:46:03.132 INFO: 70000 alignments done
+
+- 06:46:30.498 INFO: 72000 alignments done
+
+- 06:46:59.625 INFO: 74000 alignments done
+
+- 06:47:27.524 INFO: 76000 alignments done
+
+- 06:47:34.811 INFO: 76445 alignments done
+
+- 06:47:34.813 INFO: Alternative alignment: 1
+
+- 07:00:15.309 INFO: 75347 alignments done
+
+- 07:00:15.828 INFO: Alternative alignment: 2
+
+- 07:03:51.023 INFO: 73921 alignments done
+
+- 07:03:51.337 INFO: Alternative alignment: 3
+
+- 07:05:14.208 INFO: 73085 alignments done
+
+- 07:05:17.256 INFO: Rescoring previously found HMMs with Viterbi algorithm
+
+- 07:05:17.390 INFO: Alternative alignment: 0
+
+- 07:06:09.214 INFO: 2000 alignments done
+
+- 07:06:55.590 INFO: 4000 alignments done
+
+- 07:07:38.846 INFO: 6000 alignments done
+
+- 07:08:24.207 INFO: 8000 alignments done
+
+- 07:09:10.655 INFO: 10000 alignments done
+
+- 07:09:56.134 INFO: 12000 alignments done
+
+- 07:10:48.492 INFO: 14000 alignments done
+
+- 07:11:36.046 INFO: 16000 alignments done
+
+- 07:12:22.141 INFO: 18000 alignments done
+
+- 07:13:13.415 INFO: 20000 alignments done
+
+- 07:14:00.740 INFO: 22000 alignments done
+
+- 07:14:24.437 INFO: 23011 alignments done
+
+- 07:14:24.440 INFO: Alternative alignment: 1
+
+- 07:14:52.924 INFO: 23011 alignments done
+
+- 07:14:53.026 INFO: Alternative alignment: 2
+
+- 07:15:16.560 INFO: 19270 alignments done
+
+- 07:15:16.617 INFO: Alternative alignment: 3
+
+- 07:15:38.977 INFO: 18691 alignments done
+
+- 07:15:45.828 INFO: Premerge done
+
+- 07:15:45.858 INFO: Realigning 73666 HMM-HMM alignments using Maximum Accuracy algorithm
+
+
+
+slurmstepd: error: Detected 1 oom-kill event(s) in StepId=31355798.batch. Some of your processes may have been killed by the cgroup out-of-memory handler.

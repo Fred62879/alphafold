@@ -1,0 +1,395 @@
+
+Lmod is automatically replacing "intel/2020.1.217" with "gcc/9.3.0".
+
+
+Due to MODULEPATH changes, the following have been reloaded:
+  1) libfabric/1.10.1     2) openmpi/4.0.3     3) ucx/1.8.0
+
+/home/fred862/env/alphafold_env/lib/python3.8/site-packages/absl/flags/_validators.py:203: UserWarning: Flag --fasta_lo has a non-None default value; therefore, mark_flag_as_required will pass even if flag is not specified in the command line!
+  warnings.warn(
+/home/fred862/env/alphafold_env/lib/python3.8/site-packages/absl/flags/_validators.py:203: UserWarning: Flag --fasta_hi has a non-None default value; therefore, mark_flag_as_required will pass even if flag is not specified in the command line!
+  warnings.warn(
+I0827 23:20:36.068883 47572873779008 templates.py:857] Using precomputed obsolete pdbs /home/fred862/scratch/fred862/data/bioinfo/input/database/pdb_mmcif/obsolete.dat.
+I0827 23:20:37.366827 47572873779008 tpu_client.py:50] Starting the local TPU driver.
+I0827 23:20:37.447408 47572873779008 xla_bridge.py:212] Unable to initialize backend 'tpu_driver': NOT_FOUND: Unable to find driver in registry given worker: local://
+I0827 23:20:37.650759 47572873779008 xla_bridge.py:212] Unable to initialize backend 'tpu': INVALID_ARGUMENT: TpuPlatform is not available.
+I0827 23:20:46.883694 47572873779008 run_alphafold.py:400] Have 5 models: ['model_1_pred_0', 'model_2_pred_0', 'model_3_pred_0', 'model_4_pred_0', 'model_5_pred_0']
+I0827 23:20:46.884038 47572873779008 run_alphafold.py:417] Using random seed 1774234967384242475 for the data pipeline
+I0827 23:20:46.884298 47572873779008 run_alphafold.py:422] 
+I0827 23:20:46.884370 47572873779008 run_alphafold.py:423] ==== fasta 4U7T.fasta
+I0827 23:20:46.884454 47572873779008 run_alphafold.py:170] Predicting 4U7T.fasta
+I0827 23:20:46.888217 47572873779008 run_alphafold.py:179] *** output path: /home/fred862/scratch/fred862/data/bioinfo/output/idr_84/4U7T.fasta/msas
+I0827 23:20:47.427885 47572873779008 run_alphafold.py:211] Running model model_1_pred_0 on 4U7T.fasta
+I0827 23:22:23.545972 47572873779008 model.py:165] Running predict with shape(feat) = {'aatype': (32, 1518), 'residue_index': (32, 1518), 'seq_length': (32,), 'template_aatype': (32, 4, 1518), 'template_all_atom_masks': (32, 4, 1518, 37), 'template_all_atom_positions': (32, 4, 1518, 37, 3), 'template_sum_probs': (32, 4, 1), 'is_distillation': (32,), 'seq_mask': (32, 1518), 'msa_mask': (32, 508, 1518), 'msa_row_mask': (32, 508), 'random_crop_to_size_seed': (32, 2), 'template_mask': (32, 4), 'template_pseudo_beta': (32, 4, 1518, 3), 'template_pseudo_beta_mask': (32, 4, 1518), 'atom14_atom_exists': (32, 1518, 14), 'residx_atom14_to_atom37': (32, 1518, 14), 'residx_atom37_to_atom14': (32, 1518, 37), 'atom37_atom_exists': (32, 1518, 37), 'extra_msa': (32, 5120, 1518), 'extra_msa_mask': (32, 5120, 1518), 'extra_msa_row_mask': (32, 5120), 'bert_mask': (32, 508, 1518), 'true_msa': (32, 508, 1518), 'extra_has_deletion': (32, 5120, 1518), 'extra_deletion_value': (32, 5120, 1518), 'msa_feat': (32, 508, 1518, 49), 'target_feat': (32, 1518, 22)}
+2022-08-27 23:25:52.033677: W external/org_tensorflow/tensorflow/core/common_runtime/bfc_allocator.cc:479] Allocator (GPU_0_bfc) ran out of memory trying to allocate 17.35GiB (rounded to 18633998080)requested by op 
+2022-08-27 23:25:52.035224: W external/org_tensorflow/tensorflow/core/common_runtime/bfc_allocator.cc:491] *******************************************************************************_____________________
+2022-08-27 23:25:52.072742: E external/org_tensorflow/tensorflow/compiler/xla/pjrt/pjrt_stream_executor_client.cc:2141] Execution of replica 0 failed: RESOURCE_EXHAUSTED: Out of memory while trying to allocate 18633997944 bytes.
+BufferAssignment OOM Debugging.
+BufferAssignment stats:
+             parameter allocation:    8.97GiB
+              constant allocation:    43.0KiB
+        maybe_live_out allocation:  631.60MiB
+     preallocated temp allocation:   17.35GiB
+  preallocated temp fragmentation:   66.15MiB (0.37%)
+                 total allocation:   26.94GiB
+              total fragmentation:  696.85MiB (2.53%)
+Peak buffers:
+	Buffer 1:
+		Size: 4.50GiB
+		Entry Parameter Subshape: f32[32,508,1518,49]
+		==========================
+
+	Buffer 2:
+		Size: 1.85GiB
+		Operator: op_type="reduce_sum" op_name="jit(apply_fn)/while/body/while/body/scan/while/body/reduce_sum[ axes=(2,) ]" source_file="/home/fred862/env/alphafold_env/lib/python3.8/site-packages/haiku/_src/layer_norm.py" source_line=124
+		XLA Label: fusion
+		Shape: f32[5120,1518,64]
+		==========================
+
+	Buffer 3:
+		Size: 1.13GiB
+		Operator: op_type="dynamic_slice" op_name="jit(apply_fn)/while/body/dynamic_slice[ slice_sizes=(8, 508, 1518, 49) ]" source_file="/lustre04/scratch/fred862/fred862/code/bioinfo/alphafold/alphafold/model/modules.py" source_line=329
+		XLA Label: fusion
+		Shape: f32[8,508,1518,49]
+		==========================
+
+	Buffer 4:
+		Size: 1.10GiB
+		XLA Label: parameter
+		Shape: f32[1518,1518,128]
+		==========================
+
+	Buffer 5:
+		Size: 1.10GiB
+		Operator: op_type="sub" op_name="jit(apply_fn)/while/body/sub" source_file="/home/fred862/env/alphafold_env/lib/python3.8/site-packages/haiku/_src/layer_norm.py" source_line=124
+		XLA Label: fusion
+		Shape: f32[1518,1518,128]
+		==========================
+
+	Buffer 6:
+		Size: 1.10GiB
+		Operator: op_type="add" op_name="jit(apply_fn)/while/body/while/body/scan/while/body/add" source_file="/lustre04/scratch/fred862/fred862/code/bioinfo/alphafold/alphafold/model/modules.py" source_line=93
+		XLA Label: fusion
+		Shape: f32[1518,1518,128]
+		==========================
+
+	Buffer 7:
+		Size: 1.10GiB
+		XLA Label: fusion
+		Shape: f32[128,1518,1518]
+		==========================
+
+	Buffer 8:
+		Size: 1.10GiB
+		XLA Label: fusion
+		Shape: f32[128,1518,1518]
+		==========================
+
+	Buffer 9:
+		Size: 1.10GiB
+		XLA Label: custom-call
+		Shape: f32[2304324,128]
+		==========================
+
+	Buffer 10:
+		Size: 1.10GiB
+		XLA Label: custom-call
+		Shape: f32[2304324,128]
+		==========================
+
+	Buffer 11:
+		Size: 1.10GiB
+		XLA Label: custom-call
+		Shape: f32[2304324,128]
+		==========================
+
+	Buffer 12:
+		Size: 1.10GiB
+		XLA Label: custom-call
+		Shape: f32[2304324,128]
+		==========================
+
+	Buffer 13:
+		Size: 1.10GiB
+		XLA Label: custom-call
+		Shape: f32[2304324,128]
+		==========================
+
+	Buffer 14:
+		Size: 1.10GiB
+		Operator: op_type="broadcast_in_dim" op_name="jit(apply_fn)/while/body/while/body/scan/while/body/broadcast_in_dim[ broadcast_dimensions=(  )\n                                                                      shape=(1518, 1518, 128) ]" source_file="/lustre04/scratch/fred862/fred862/code/bioinfo/alphafold/alphafold/model/mapping.py" source_line=182
+		XLA Label: broadcast
+		Shape: f32[1518,1518,128]
+		==========================
+
+	Buffer 15:
+		Size: 948.75MiB
+		XLA Label: copy
+		Shape: f32[32,5120,1518]
+		==========================
+
+
+1.22.2
+False 7 ['4U7T.fasta', '2M3M.fasta', '2AZE.fasta', '2QTV.fasta', '2RSN.fasta', '1YCQ.fasta', '3DF0.fasta']
+Traceback (most recent call last):
+  File "/home/fred862/scratch/fred862/code/bioinfo/alphafold/run_alphafold.py", line 452, in <module>
+    app.run(main)
+  File "/home/fred862/env/alphafold_env/lib/python3.8/site-packages/absl/app.py", line 312, in run
+    _run_main(main, args)
+  File "/home/fred862/env/alphafold_env/lib/python3.8/site-packages/absl/app.py", line 258, in _run_main
+    sys.exit(main(argv))
+  File "/home/fred862/scratch/fred862/code/bioinfo/alphafold/run_alphafold.py", line 425, in main
+    predict_structure(
+  File "/home/fred862/scratch/fred862/code/bioinfo/alphafold/run_alphafold.py", line 219, in predict_structure
+    prediction_result = model_runner.predict(processed_feature_dict,
+  File "/lustre04/scratch/fred862/fred862/code/bioinfo/alphafold/alphafold/model/model.py", line 167, in predict
+    result = self.apply(self.params, jax.random.PRNGKey(random_seed), feat)
+  File "/home/fred862/env/alphafold_env/lib/python3.8/site-packages/jax/_src/traceback_util.py", line 183, in reraise_with_filtered_traceback
+    return fun(*args, **kwargs)
+  File "/home/fred862/env/alphafold_env/lib/python3.8/site-packages/jax/_src/api.py", line 424, in cache_miss
+    out_flat = xla.xla_call(
+  File "/home/fred862/env/alphafold_env/lib/python3.8/site-packages/jax/core.py", line 1560, in bind
+    return call_bind(self, fun, *args, **params)
+  File "/home/fred862/env/alphafold_env/lib/python3.8/site-packages/jax/core.py", line 1551, in call_bind
+    outs = primitive.process(top_trace, fun, tracers, params)
+  File "/home/fred862/env/alphafold_env/lib/python3.8/site-packages/jax/core.py", line 1563, in process
+    return trace.process_call(self, fun, tracers, params)
+  File "/home/fred862/env/alphafold_env/lib/python3.8/site-packages/jax/core.py", line 606, in process_call
+    return primitive.impl(f, *tracers, **params)
+  File "/home/fred862/env/alphafold_env/lib/python3.8/site-packages/jax/interpreters/xla.py", line 595, in _xla_call_impl
+    return compiled_fun(*args)
+  File "/home/fred862/env/alphafold_env/lib/python3.8/site-packages/jax/interpreters/xla.py", line 893, in _execute_compiled
+    out_bufs = compiled.execute(input_bufs)
+jax._src.traceback_util.UnfilteredStackTrace: RuntimeError: RESOURCE_EXHAUSTED: Out of memory while trying to allocate 18633997944 bytes.
+BufferAssignment OOM Debugging.
+BufferAssignment stats:
+             parameter allocation:    8.97GiB
+              constant allocation:    43.0KiB
+        maybe_live_out allocation:  631.60MiB
+     preallocated temp allocation:   17.35GiB
+  preallocated temp fragmentation:   66.15MiB (0.37%)
+                 total allocation:   26.94GiB
+              total fragmentation:  696.85MiB (2.53%)
+Peak buffers:
+	Buffer 1:
+		Size: 4.50GiB
+		Entry Parameter Subshape: f32[32,508,1518,49]
+		==========================
+
+	Buffer 2:
+		Size: 1.85GiB
+		Operator: op_type="reduce_sum" op_name="jit(apply_fn)/while/body/while/body/scan/while/body/reduce_sum[ axes=(2,) ]" source_file="/home/fred862/env/alphafold_env/lib/python3.8/site-packages/haiku/_src/layer_norm.py" source_line=124
+		XLA Label: fusion
+		Shape: f32[5120,1518,64]
+		==========================
+
+	Buffer 3:
+		Size: 1.13GiB
+		Operator: op_type="dynamic_slice" op_name="jit(apply_fn)/while/body/dynamic_slice[ slice_sizes=(8, 508, 1518, 49) ]" source_file="/lustre04/scratch/fred862/fred862/code/bioinfo/alphafold/alphafold/model/modules.py" source_line=329
+		XLA Label: fusion
+		Shape: f32[8,508,1518,49]
+		==========================
+
+	Buffer 4:
+		Size: 1.10GiB
+		XLA Label: parameter
+		Shape: f32[1518,1518,128]
+		==========================
+
+	Buffer 5:
+		Size: 1.10GiB
+		Operator: op_type="sub" op_name="jit(apply_fn)/while/body/sub" source_file="/home/fred862/env/alphafold_env/lib/python3.8/site-packages/haiku/_src/layer_norm.py" source_line=124
+		XLA Label: fusion
+		Shape: f32[1518,1518,128]
+		==========================
+
+	Buffer 6:
+		Size: 1.10GiB
+		Operator: op_type="add" op_name="jit(apply_fn)/while/body/while/body/scan/while/body/add" source_file="/lustre04/scratch/fred862/fred862/code/bioinfo/alphafold/alphafold/model/modules.py" source_line=93
+		XLA Label: fusion
+		Shape: f32[1518,1518,128]
+		==========================
+
+	Buffer 7:
+		Size: 1.10GiB
+		XLA Label: fusion
+		Shape: f32[128,1518,1518]
+		==========================
+
+	Buffer 8:
+		Size: 1.10GiB
+		XLA Label: fusion
+		Shape: f32[128,1518,1518]
+		==========================
+
+	Buffer 9:
+		Size: 1.10GiB
+		XLA Label: custom-call
+		Shape: f32[2304324,128]
+		==========================
+
+	Buffer 10:
+		Size: 1.10GiB
+		XLA Label: custom-call
+		Shape: f32[2304324,128]
+		==========================
+
+	Buffer 11:
+		Size: 1.10GiB
+		XLA Label: custom-call
+		Shape: f32[2304324,128]
+		==========================
+
+	Buffer 12:
+		Size: 1.10GiB
+		XLA Label: custom-call
+		Shape: f32[2304324,128]
+		==========================
+
+	Buffer 13:
+		Size: 1.10GiB
+		XLA Label: custom-call
+		Shape: f32[2304324,128]
+		==========================
+
+	Buffer 14:
+		Size: 1.10GiB
+		Operator: op_type="broadcast_in_dim" op_name="jit(apply_fn)/while/body/while/body/scan/while/body/broadcast_in_dim[ broadcast_dimensions=(  )\n                                                                      shape=(1518, 1518, 128) ]" source_file="/lustre04/scratch/fred862/fred862/code/bioinfo/alphafold/alphafold/model/mapping.py" source_line=182
+		XLA Label: broadcast
+		Shape: f32[1518,1518,128]
+		==========================
+
+	Buffer 15:
+		Size: 948.75MiB
+		XLA Label: copy
+		Shape: f32[32,5120,1518]
+		==========================
+
+The stack trace below excludes JAX-internal frames.
+The preceding is the original exception that occurred, unmodified.
+
+--------------------
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/fred862/scratch/fred862/code/bioinfo/alphafold/run_alphafold.py", line 452, in <module>
+    app.run(main)
+  File "/home/fred862/env/alphafold_env/lib/python3.8/site-packages/absl/app.py", line 312, in run
+    _run_main(main, args)
+  File "/home/fred862/env/alphafold_env/lib/python3.8/site-packages/absl/app.py", line 258, in _run_main
+    sys.exit(main(argv))
+  File "/home/fred862/scratch/fred862/code/bioinfo/alphafold/run_alphafold.py", line 425, in main
+    predict_structure(
+  File "/home/fred862/scratch/fred862/code/bioinfo/alphafold/run_alphafold.py", line 219, in predict_structure
+    prediction_result = model_runner.predict(processed_feature_dict,
+  File "/lustre04/scratch/fred862/fred862/code/bioinfo/alphafold/alphafold/model/model.py", line 167, in predict
+    result = self.apply(self.params, jax.random.PRNGKey(random_seed), feat)
+  File "/home/fred862/env/alphafold_env/lib/python3.8/site-packages/jax/interpreters/xla.py", line 893, in _execute_compiled
+    out_bufs = compiled.execute(input_bufs)
+RuntimeError: RESOURCE_EXHAUSTED: Out of memory while trying to allocate 18633997944 bytes.
+BufferAssignment OOM Debugging.
+BufferAssignment stats:
+             parameter allocation:    8.97GiB
+              constant allocation:    43.0KiB
+        maybe_live_out allocation:  631.60MiB
+     preallocated temp allocation:   17.35GiB
+  preallocated temp fragmentation:   66.15MiB (0.37%)
+                 total allocation:   26.94GiB
+              total fragmentation:  696.85MiB (2.53%)
+Peak buffers:
+	Buffer 1:
+		Size: 4.50GiB
+		Entry Parameter Subshape: f32[32,508,1518,49]
+		==========================
+
+	Buffer 2:
+		Size: 1.85GiB
+		Operator: op_type="reduce_sum" op_name="jit(apply_fn)/while/body/while/body/scan/while/body/reduce_sum[ axes=(2,) ]" source_file="/home/fred862/env/alphafold_env/lib/python3.8/site-packages/haiku/_src/layer_norm.py" source_line=124
+		XLA Label: fusion
+		Shape: f32[5120,1518,64]
+		==========================
+
+	Buffer 3:
+		Size: 1.13GiB
+		Operator: op_type="dynamic_slice" op_name="jit(apply_fn)/while/body/dynamic_slice[ slice_sizes=(8, 508, 1518, 49) ]" source_file="/lustre04/scratch/fred862/fred862/code/bioinfo/alphafold/alphafold/model/modules.py" source_line=329
+		XLA Label: fusion
+		Shape: f32[8,508,1518,49]
+		==========================
+
+	Buffer 4:
+		Size: 1.10GiB
+		XLA Label: parameter
+		Shape: f32[1518,1518,128]
+		==========================
+
+	Buffer 5:
+		Size: 1.10GiB
+		Operator: op_type="sub" op_name="jit(apply_fn)/while/body/sub" source_file="/home/fred862/env/alphafold_env/lib/python3.8/site-packages/haiku/_src/layer_norm.py" source_line=124
+		XLA Label: fusion
+		Shape: f32[1518,1518,128]
+		==========================
+
+	Buffer 6:
+		Size: 1.10GiB
+		Operator: op_type="add" op_name="jit(apply_fn)/while/body/while/body/scan/while/body/add" source_file="/lustre04/scratch/fred862/fred862/code/bioinfo/alphafold/alphafold/model/modules.py" source_line=93
+		XLA Label: fusion
+		Shape: f32[1518,1518,128]
+		==========================
+
+	Buffer 7:
+		Size: 1.10GiB
+		XLA Label: fusion
+		Shape: f32[128,1518,1518]
+		==========================
+
+	Buffer 8:
+		Size: 1.10GiB
+		XLA Label: fusion
+		Shape: f32[128,1518,1518]
+		==========================
+
+	Buffer 9:
+		Size: 1.10GiB
+		XLA Label: custom-call
+		Shape: f32[2304324,128]
+		==========================
+
+	Buffer 10:
+		Size: 1.10GiB
+		XLA Label: custom-call
+		Shape: f32[2304324,128]
+		==========================
+
+	Buffer 11:
+		Size: 1.10GiB
+		XLA Label: custom-call
+		Shape: f32[2304324,128]
+		==========================
+
+	Buffer 12:
+		Size: 1.10GiB
+		XLA Label: custom-call
+		Shape: f32[2304324,128]
+		==========================
+
+	Buffer 13:
+		Size: 1.10GiB
+		XLA Label: custom-call
+		Shape: f32[2304324,128]
+		==========================
+
+	Buffer 14:
+		Size: 1.10GiB
+		Operator: op_type="broadcast_in_dim" op_name="jit(apply_fn)/while/body/while/body/scan/while/body/broadcast_in_dim[ broadcast_dimensions=(  )\n                                                                      shape=(1518, 1518, 128) ]" source_file="/lustre04/scratch/fred862/fred862/code/bioinfo/alphafold/alphafold/model/mapping.py" source_line=182
+		XLA Label: broadcast
+		Shape: f32[1518,1518,128]
+		==========================
+
+	Buffer 15:
+		Size: 948.75MiB
+		XLA Label: copy
+		Shape: f32[32,5120,1518]
+		==========================
+
+

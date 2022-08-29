@@ -1,4 +1,13 @@
 #!/bin/bash
+#SBATCH --time=2:00:00
+#SBATCH --gres=gpu:1
+#SBATCH --nodes=1      
+#SBATCH --ntasks=1
+#SBATCH --mem=40000
+#SBATCH --cpus-per-task=8
+#SBATCH --account=def-gsponer
+#SBATCH --job-name=alphafold_peptide_gpu_0_0
+#SBATCH --output=./output/%x-%j.out
 
 #DOWNLOAD_DIR=/datashare/alphafold
 REPO_DIR=~/scratch/fred862/code/bioinfo/alphafold
@@ -13,8 +22,8 @@ source ~/env/alphafold_env/bin/activate
 
 python ${REPO_DIR}/run_alphafold.py \
        --fasta_lo=0 \
-       --fasta_hi=6 \
-       --run_feature=True \
+       --fasta_hi=1 \
+       --run_feature=False \
        --use_gpu_relax=True \
        --use_precomputed_msas=True \
        --model_preset=monomer_casp14 \

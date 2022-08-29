@@ -1,0 +1,303 @@
+/home/fred862/env/alphafold_env/lib/python3.8/site-packages/absl/flags/_validators.py:203: UserWarning: Flag --fasta_lo has a non-None default value; therefore, mark_flag_as_required will pass even if flag is not specified in the command line!
+  warnings.warn(
+/home/fred862/env/alphafold_env/lib/python3.8/site-packages/absl/flags/_validators.py:203: UserWarning: Flag --fasta_hi has a non-None default value; therefore, mark_flag_as_required will pass even if flag is not specified in the command line!
+  warnings.warn(
+I0816 20:32:15.722814 47167848511296 run_alphafold.py:308] 
+I0816 20:32:15.722989 47167848511296 run_alphafold.py:309] ==== main starts ====
+I0816 20:32:17.251183 47167848511296 templates.py:857] Using precomputed obsolete pdbs /home/fred862/scratch/fred862/data/bioinfo/alphafold/input/database/pdb_mmcif/obsolete.dat.
+I0816 20:32:18.517390 47167848511296 tpu_client.py:50] Starting the local TPU driver.
+I0816 20:32:18.588889 47167848511296 xla_bridge.py:212] Unable to initialize backend 'tpu_driver': NOT_FOUND: Unable to find driver in registry given worker: local://
+I0816 20:32:18.798465 47167848511296 xla_bridge.py:212] Unable to initialize backend 'tpu': INVALID_ARGUMENT: TpuPlatform is not available.
+I0816 20:32:30.512165 47167848511296 run_alphafold.py:402] Have 5 models: ['model_1_pred_0', 'model_2_pred_0', 'model_3_pred_0', 'model_4_pred_0', 'model_5_pred_0']
+I0816 20:32:30.512650 47167848511296 run_alphafold.py:419] Using random seed 607007599420464860 for the data pipeline
+I0816 20:32:30.513378 47167848511296 run_alphafold.py:169] Predicting 2AZE.fasta
+I0816 20:32:30.518326 47167848511296 run_alphafold.py:178] *** output path: /home/fred862/scratch/fred862/data/bioinfo/alphafold/output/84_af_reduced/2AZE.fasta/msas
+I0816 20:32:30.567538 47167848511296 jackhmmer.py:133] Launching subprocess "/cvmfs/soft.computecanada.ca/easybuild/software/2020/avx512/Core/hmmer/3.2.1/bin/jackhmmer -o /dev/null -A /tmp/tmpchcrkuti/output.sto --noali --F1 0.0005 --F2 5e-05 --F3 5e-07 --incE 0.0001 -E 0.0001 --cpu 8 -N 1 /home/fred862/scratch/fred862/data/bioinfo/alphafold/input/seq_to_pred/84/2AZE.fasta /home/fred862/scratch/fred862/data/bioinfo/alphafold/input/database/uniref90/uniref90.fasta"
+I0816 20:32:30.638729 47167848511296 utils.py:36] Started Jackhmmer (uniref90.fasta) query
+I0816 20:40:37.123034 47167848511296 utils.py:40] Finished Jackhmmer (uniref90.fasta) query in 486.484 seconds
+I0816 20:40:37.248271 47167848511296 jackhmmer.py:133] Launching subprocess "/cvmfs/soft.computecanada.ca/easybuild/software/2020/avx512/Core/hmmer/3.2.1/bin/jackhmmer -o /dev/null -A /tmp/tmpbx1x7u9s/output.sto --noali --F1 0.0005 --F2 5e-05 --F3 5e-07 --incE 0.0001 -E 0.0001 --cpu 8 -N 1 /home/fred862/scratch/fred862/data/bioinfo/alphafold/input/seq_to_pred/84/2AZE.fasta /home/fred862/scratch/fred862/data/bioinfo/alphafold/input/database/mgnify/mgy_clusters_2018_12.fa"
+I0816 20:40:37.301672 47167848511296 utils.py:36] Started Jackhmmer (mgy_clusters_2018_12.fa) query
+I0816 20:49:44.503217 47167848511296 utils.py:40] Finished Jackhmmer (mgy_clusters_2018_12.fa) query in 547.201 seconds
+I0816 20:50:22.565043 47167848511296 hhsearch.py:85] Launching subprocess "/cvmfs/soft.computecanada.ca/easybuild/software/2020/Core/hh-suite/3.3.0/bin/hhsearch -i /tmp/tmp2fm_q2rv/query.a3m -o /tmp/tmp2fm_q2rv/output.hhr -maxseq 1000000 -d /home/fred862/scratch/fred862/data/bioinfo/alphafold/input/database/pdb70/pdb70"
+I0816 20:50:22.698436 47167848511296 utils.py:36] Started HHsearch query
+I0816 20:52:13.589657 47167848511296 utils.py:40] Finished HHsearch query in 110.891 seconds
+I0816 20:52:30.558073 47167848511296 jackhmmer.py:133] Launching subprocess "/cvmfs/soft.computecanada.ca/easybuild/software/2020/avx512/Core/hmmer/3.2.1/bin/jackhmmer -o /dev/null -A /tmp/tmpcb97m1x8/output.sto --noali --F1 0.0005 --F2 5e-05 --F3 5e-07 --incE 0.0001 -E 0.0001 --cpu 8 -N 1 /home/fred862/scratch/fred862/data/bioinfo/alphafold/input/seq_to_pred/84/2AZE.fasta /home/fred862/scratch/fred862/data/bioinfo/alphafold/input/database/small_bfd/bfd-first_non_consensus_sequences.fasta"
+I0816 20:52:30.607059 47167848511296 utils.py:36] Started Jackhmmer (bfd-first_non_consensus_sequences.fasta) query
+I0816 20:54:25.914185 47167848511296 utils.py:40] Finished Jackhmmer (bfd-first_non_consensus_sequences.fasta) query in 115.307 seconds
+I0816 20:54:50.552154 47167848511296 templates.py:878] Searching for template for: GEFAQECQNLEVERQRRLERIKQKQSQLQELILQQIAFKNLVQRNRHAEQQASRPPPPNSVIHLPFIIVNTSKKTVIDCSISNDKFEYLFNFDNTFEIHDDIEVLKRMGMACGLESGSCSAEDLKMARSLVPKALEPYVTEMAQGTVGGVFITTAGGGGGGGSHMGGRLEGLTQDLRQLQESEQQLDHLMNICTTQLRLLSEDTDSQRLAYVTCQDLRSIADPAEQMVMVIKAPPETQLQAVDSSENFQISLKSKQGPIDVFLCPEEGGGGGGSRILVSIGESFGTSEKFQKINQMVCNSDRVLKRSAEGSNPPKPLKK
+I0816 20:54:50.838060 47167848511296 templates.py:267] Found an exact template match 2aze_A.
+I0816 20:54:51.514536 47167848511296 templates.py:267] Found an exact template match 5tuu_A.
+I0816 20:54:51.521945 47167848511296 templates.py:267] Found an exact template match 2aze_B.
+I0816 20:54:51.527579 47167848511296 templates.py:267] Found an exact template match 5tuu_B.
+I0816 20:54:51.533029 47167848511296 templates.py:267] Found an exact template match 2aze_C.
+I0816 20:54:52.125637 47167848511296 templates.py:267] Found an exact template match 5ed9_B.
+I0816 20:54:52.130136 47167848511296 templates.py:267] Found an exact template match 5ed9_C.
+I0816 20:54:52.653642 47167848511296 templates.py:267] Found an exact template match 5fiy_C.
+I0816 20:54:52.951937 47167848511296 templates.py:267] Found an exact template match 3he5_B.
+I0816 20:54:52.955437 47167848511296 templates.py:267] Found an exact template match 3he5_D.
+I0816 20:54:53.513421 47167848511296 templates.py:267] Found an exact template match 5mvw_A.
+I0816 20:54:54.009948 47167848511296 templates.py:267] Found an exact template match 5mw9_A.
+I0816 20:54:54.328165 47167848511296 templates.py:267] Found an exact template match 2yy0_B.
+I0816 20:54:54.331695 47167848511296 templates.py:718] hit 4pas_B did not pass prefilter: Proportion of residues aligned to query too small. Align ratio: 0.09404388714733543.
+I0816 20:54:54.331853 47167848511296 templates.py:912] Skipped invalid hit 4PAS_B Gamma-aminobutyric acid type B receptor; GABA(B) receptor, coiled-coil, heterodimer, SIGNALING; 1.62A {Homo sapiens}, error: None, warning: None
+I0816 20:54:56.058790 47167848511296 templates.py:267] Found an exact template match 1zxa_B.
+I0816 20:54:57.377757 47167848511296 templates.py:267] Found an exact template match 6bbn_E.
+I0816 20:54:57.773624 47167848511296 templates.py:267] Found an exact template match 4r4m_A.
+I0816 20:54:58.719352 47167848511296 templates.py:267] Found an exact template match 6b0l_K.
+I0816 20:54:59.893603 47167848511296 templates.py:267] Found an exact template match 6b0i_K.
+I0816 20:54:59.910032 47167848511296 templates.py:718] hit 4dzn_A did not pass prefilter: Proportion of residues aligned to query too small. Align ratio: 0.08463949843260188.
+I0816 20:54:59.910228 47167848511296 templates.py:912] Skipped invalid hit 4DZN_A Peptide; DE NOVO PROTEIN; HET: PHI; 1.59A {N/A}, error: None, warning: None
+I0816 20:54:59.910324 47167848511296 templates.py:718] hit 3u06_B did not pass prefilter: Proportion of residues aligned to query too small. Align ratio: 0.09717868338557993.
+I0816 20:54:59.910397 47167848511296 templates.py:912] Skipped invalid hit 3U06_B Protein claret segregational; motor domain, stalk rotation, power; HET: ADP, GOL; 2.35A {Drosophila melanogaster}, error: None, warning: None
+I0816 20:54:59.910477 47167848511296 templates.py:718] hit 1kd9_A did not pass prefilter: Proportion of residues aligned to query too small. Align ratio: 0.09090909090909091.
+I0816 20:54:59.910544 47167848511296 templates.py:912] Skipped invalid hit 1KD9_A GABH ALL/GABH BLL; coiled coil heterodimer, DE NOVO; HET: ACE; 2.1A {N/A} SCOP: h.1.3.1, error: None, warning: None
+I0816 20:54:59.910620 47167848511296 templates.py:718] hit 3l1c_A did not pass prefilter: Proportion of residues aligned to query too small. Align ratio: 0.07836990595611286.
+I0816 20:54:59.910686 47167848511296 templates.py:912] Skipped invalid hit 3L1C_A Kinesin-14 Ncd; kinesin ncd, ATP-binding, MOTOR PROTEIN; HET: ADP; 2.75A {Drosophila melanogaster}, error: None, warning: None
+I0816 20:54:59.910785 47167848511296 templates.py:718] hit 1kd8_D did not pass prefilter: Proportion of residues aligned to query too small. Align ratio: 0.08150470219435736.
+I0816 20:54:59.910853 47167848511296 templates.py:912] Skipped invalid hit 1KD8_D GABH AIV/GABH BLL; coiled coil heterodimer, DE NOVO; HET: ACE; 1.9A {N/A} SCOP: h.1.3.1, error: None, warning: None
+I0816 20:55:00.160356 47167848511296 pipeline.py:280] Uniref90 MSA size: 3559 sequences.
+I0816 20:55:00.160678 47167848511296 pipeline.py:281] BFD MSA size: 179 sequences.
+I0816 20:55:00.160758 47167848511296 pipeline.py:282] MGnify MSA size: 124 sequences.
+I0816 20:55:00.160831 47167848511296 pipeline.py:283] Final (deduplicated) MSA size: 3340 sequences.
+I0816 20:55:00.161168 47167848511296 pipeline.py:285] Total number of templates (NB: this can include bad templates and is later filtered to top 4): 18.
+I0816 20:55:00.273739 47167848511296 run_alphafold.py:169] Predicting 2M3M.fasta
+I0816 20:55:00.283644 47167848511296 run_alphafold.py:178] *** output path: /home/fred862/scratch/fred862/data/bioinfo/alphafold/output/84_af_reduced/2M3M.fasta/msas
+I0816 20:55:00.323592 47167848511296 jackhmmer.py:133] Launching subprocess "/cvmfs/soft.computecanada.ca/easybuild/software/2020/avx512/Core/hmmer/3.2.1/bin/jackhmmer -o /dev/null -A /tmp/tmp5oihmz83/output.sto --noali --F1 0.0005 --F2 5e-05 --F3 5e-07 --incE 0.0001 -E 0.0001 --cpu 8 -N 1 /home/fred862/scratch/fred862/data/bioinfo/alphafold/input/seq_to_pred/84/2M3M.fasta /home/fred862/scratch/fred862/data/bioinfo/alphafold/input/database/uniref90/uniref90.fasta"
+I0816 20:55:00.380009 47167848511296 utils.py:36] Started Jackhmmer (uniref90.fasta) query
+I0816 21:03:30.052899 47167848511296 utils.py:40] Finished Jackhmmer (uniref90.fasta) query in 509.672 seconds
+I0816 21:03:31.745930 47167848511296 jackhmmer.py:133] Launching subprocess "/cvmfs/soft.computecanada.ca/easybuild/software/2020/avx512/Core/hmmer/3.2.1/bin/jackhmmer -o /dev/null -A /tmp/tmpg5prarc5/output.sto --noali --F1 0.0005 --F2 5e-05 --F3 5e-07 --incE 0.0001 -E 0.0001 --cpu 8 -N 1 /home/fred862/scratch/fred862/data/bioinfo/alphafold/input/seq_to_pred/84/2M3M.fasta /home/fred862/scratch/fred862/data/bioinfo/alphafold/input/database/mgnify/mgy_clusters_2018_12.fa"
+I0816 21:03:31.802217 47167848511296 utils.py:36] Started Jackhmmer (mgy_clusters_2018_12.fa) query
+I0816 21:12:56.934310 47167848511296 utils.py:40] Finished Jackhmmer (mgy_clusters_2018_12.fa) query in 565.132 seconds
+I0816 21:13:06.863785 47167848511296 hhsearch.py:85] Launching subprocess "/cvmfs/soft.computecanada.ca/easybuild/software/2020/Core/hh-suite/3.3.0/bin/hhsearch -i /tmp/tmpgpacwhbf/query.a3m -o /tmp/tmpgpacwhbf/output.hhr -maxseq 1000000 -d /home/fred862/scratch/fred862/data/bioinfo/alphafold/input/database/pdb70/pdb70"
+I0816 21:13:06.920619 47167848511296 utils.py:36] Started HHsearch query
+I0816 21:14:52.391014 47167848511296 utils.py:40] Finished HHsearch query in 105.470 seconds
+I0816 21:14:53.300786 47167848511296 jackhmmer.py:133] Launching subprocess "/cvmfs/soft.computecanada.ca/easybuild/software/2020/avx512/Core/hmmer/3.2.1/bin/jackhmmer -o /dev/null -A /tmp/tmpc7rahrh2/output.sto --noali --F1 0.0005 --F2 5e-05 --F3 5e-07 --incE 0.0001 -E 0.0001 --cpu 8 -N 1 /home/fred862/scratch/fred862/data/bioinfo/alphafold/input/seq_to_pred/84/2M3M.fasta /home/fred862/scratch/fred862/data/bioinfo/alphafold/input/database/small_bfd/bfd-first_non_consensus_sequences.fasta"
+I0816 21:14:53.357779 47167848511296 utils.py:36] Started Jackhmmer (bfd-first_non_consensus_sequences.fasta) query
+I0816 21:16:50.896831 47167848511296 utils.py:40] Finished Jackhmmer (bfd-first_non_consensus_sequences.fasta) query in 117.539 seconds
+I0816 21:16:56.950602 47167848511296 templates.py:878] Searching for template for: MEIKLIKGPKGLGFSIAGGVGNQHIPGDNSIYVTKIIEGGAAHKDGKLQIGDKLLAVNNVCLEEVTHEEAVTALKNTSDFVYLKVAKPTGSHHHHHHGGGGGGQRTRQRNETQV
+I0816 21:16:57.341944 47167848511296 templates.py:267] Found an exact template match 2xkx_B.
+I0816 21:16:57.407712 47167848511296 templates.py:267] Found an exact template match 2xkx_A.
+I0816 21:17:06.247271 47167848511296 templates.py:267] Found an exact template match 1z87_A.
+I0816 21:17:06.266843 47167848511296 templates.py:267] Found an exact template match 2xkx_A.
+I0816 21:17:06.281261 47167848511296 templates.py:267] Found an exact template match 2xkx_B.
+I0816 21:17:06.295462 47167848511296 templates.py:267] Found an exact template match 2xkx_B.
+I0816 21:17:06.987008 47167848511296 templates.py:267] Found an exact template match 5v6b_A.
+I0816 21:17:07.000663 47167848511296 templates.py:267] Found an exact template match 5v6b_B.
+I0816 21:17:11.270332 47167848511296 templates.py:267] Found an exact template match 2krg_A.
+I0816 21:17:11.304105 47167848511296 templates.py:267] Found an exact template match 2xkx_A.
+I0816 21:17:12.031315 47167848511296 templates.py:267] Found an exact template match 4wsi_A.
+I0816 21:17:13.414895 47167848511296 templates.py:267] Found an exact template match 6pcv_A.
+I0816 21:17:14.268377 47167848511296 templates.py:267] Found an exact template match 5n7d_A.
+I0816 21:17:22.767642 47167848511296 templates.py:267] Found an exact template match 5n7f_A.
+I0816 21:17:23.362211 47167848511296 templates.py:267] Found an exact template match 3shw_A.
+I0816 21:17:24.170040 47167848511296 templates.py:267] Found an exact template match 3tsz_A.
+I0816 21:17:28.751448 47167848511296 templates.py:267] Found an exact template match 2ka9_A.
+I0816 21:17:28.763900 47167848511296 templates.py:267] Found an exact template match 6pcv_A.
+I0816 21:17:29.615558 47167848511296 templates.py:267] Found an exact template match 3tsw_C.
+I0816 21:17:30.163987 47167848511296 templates.py:267] Found an exact template match 4wyu_A.
+I0816 21:17:30.297046 47167848511296 pipeline.py:280] Uniref90 MSA size: 10000 sequences.
+I0816 21:17:30.297318 47167848511296 pipeline.py:281] BFD MSA size: 1765 sequences.
+I0816 21:17:30.297396 47167848511296 pipeline.py:282] MGnify MSA size: 247 sequences.
+I0816 21:17:30.297466 47167848511296 pipeline.py:283] Final (deduplicated) MSA size: 3774 sequences.
+I0816 21:17:30.298919 47167848511296 pipeline.py:285] Total number of templates (NB: this can include bad templates and is later filtered to top 4): 20.
+I0816 21:18:43.153339 47167848511296 run_alphafold.py:169] Predicting 4U7T.fasta
+I0816 21:18:43.157030 47167848511296 run_alphafold.py:178] *** output path: /home/fred862/scratch/fred862/data/bioinfo/alphafold/output/84_af_reduced/4U7T.fasta/msas
+I0816 21:18:43.244924 47167848511296 jackhmmer.py:133] Launching subprocess "/cvmfs/soft.computecanada.ca/easybuild/software/2020/avx512/Core/hmmer/3.2.1/bin/jackhmmer -o /dev/null -A /tmp/tmpvf_u88_6/output.sto --noali --F1 0.0005 --F2 5e-05 --F3 5e-07 --incE 0.0001 -E 0.0001 --cpu 8 -N 1 /home/fred862/scratch/fred862/data/bioinfo/alphafold/input/seq_to_pred/84/4U7T.fasta /home/fred862/scratch/fred862/data/bioinfo/alphafold/input/database/uniref90/uniref90.fasta"
+I0816 21:18:43.329482 47167848511296 utils.py:36] Started Jackhmmer (uniref90.fasta) query
+I0816 21:27:14.368622 47167848511296 utils.py:40] Finished Jackhmmer (uniref90.fasta) query in 511.039 seconds
+I0816 21:27:52.871341 47167848511296 jackhmmer.py:133] Launching subprocess "/cvmfs/soft.computecanada.ca/easybuild/software/2020/avx512/Core/hmmer/3.2.1/bin/jackhmmer -o /dev/null -A /tmp/tmpqvkvo3pd/output.sto --noali --F1 0.0005 --F2 5e-05 --F3 5e-07 --incE 0.0001 -E 0.0001 --cpu 8 -N 1 /home/fred862/scratch/fred862/data/bioinfo/alphafold/input/seq_to_pred/84/4U7T.fasta /home/fred862/scratch/fred862/data/bioinfo/alphafold/input/database/mgnify/mgy_clusters_2018_12.fa"
+I0816 21:27:52.954334 47167848511296 utils.py:36] Started Jackhmmer (mgy_clusters_2018_12.fa) query
+I0816 21:37:30.678781 47167848511296 utils.py:40] Finished Jackhmmer (mgy_clusters_2018_12.fa) query in 577.724 seconds
+I0816 21:37:33.501525 47167848511296 hhsearch.py:85] Launching subprocess "/cvmfs/soft.computecanada.ca/easybuild/software/2020/Core/hh-suite/3.3.0/bin/hhsearch -i /tmp/tmp5cl0a6q3/query.a3m -o /tmp/tmp5cl0a6q3/output.hhr -maxseq 1000000 -d /home/fred862/scratch/fred862/data/bioinfo/alphafold/input/database/pdb70/pdb70"
+I0816 21:37:33.585439 47167848511296 utils.py:36] Started HHsearch query
+I0816 21:40:23.335579 47167848511296 utils.py:40] Finished HHsearch query in 169.750 seconds
+I0816 21:40:46.483115 47167848511296 jackhmmer.py:133] Launching subprocess "/cvmfs/soft.computecanada.ca/easybuild/software/2020/avx512/Core/hmmer/3.2.1/bin/jackhmmer -o /dev/null -A /tmp/tmp82irsw26/output.sto --noali --F1 0.0005 --F2 5e-05 --F3 5e-07 --incE 0.0001 -E 0.0001 --cpu 8 -N 1 /home/fred862/scratch/fred862/data/bioinfo/alphafold/input/seq_to_pred/84/4U7T.fasta /home/fred862/scratch/fred862/data/bioinfo/alphafold/input/database/small_bfd/bfd-first_non_consensus_sequences.fasta"
+I0816 21:40:46.566336 47167848511296 utils.py:36] Started Jackhmmer (bfd-first_non_consensus_sequences.fasta) query
+I0816 21:42:45.216076 47167848511296 utils.py:40] Finished Jackhmmer (bfd-first_non_consensus_sequences.fasta) query in 118.649 seconds
+I0816 21:43:13.517807 47167848511296 templates.py:878] Searching for template for: GPLGSPEFRERLVYEVRQKCRNIEDICISCGSLNVTLEHPLFVGGMCQNCKNCFLECAYQYDDDGYQSYCTICCGGREVLMCGNNNCCRCFCVECVDLLVGPGAAQAAIKEDPWNCYMCGHKGTYGLLRRREDWPSRLQMFFANNHDQEFDPPKVYPPVPAEKRKPIRVLSLFDGIATGLLVLKDLGIQVDRYIASEVCEDSITVGMVRHQGKIMYVGDVRSVTQKHIQEWGPFDLVIGGSPCNDLSIVNPARKGLYEGTGRLFFEFYRLLHDARPKEGDDRPFFWLFENVVAMGVSDKRDISRFLESNPVMIDAKEVSAAHRARYFWGNLPGMNRPLASTVNDKLELQECLEHGRIAKFSKVRTITTRSNSIKQGKDQHFPVFMNEKEDILWCTEMERVFGFPVHYTDVSNMSRLARQRLLGRSWSVPVIRHLFAPLKEYFACVGGGGGGGPLGSEFMFETVPVWRRQPVRVLSLFEDIKKELTSLGFLESGSDPGQLKHVVDVTDTVRKDVEEWGPFDLVYGATPPLGHTCDRPPSWYLFQFHRLLQYARPKPGSPRPFFWMFVDNLVLNKEDLDVASRFLEMEPVTIPDVHGGSLQNAVRVWSNIPAIRSRHWALVSEEELSLLAQNKQSSKLAAKWPTKLVKNCFLPLREYFKYFSGGGGGGARTKQTARKSTG
+I0816 21:43:14.311635 47167848511296 templates.py:267] Found an exact template match 4u7t_C.
+I0816 21:43:14.526918 47167848511296 templates.py:267] Found an exact template match 4u7t_A.
+I0816 21:43:15.142042 47167848511296 templates.py:267] Found an exact template match 2pv0_A.
+I0816 21:43:15.160568 47167848511296 templates.py:267] Found an exact template match 2pv0_C.
+I0816 21:43:16.199028 47167848511296 templates.py:267] Found an exact template match 5yx2_A.
+I0816 21:43:18.988324 47167848511296 templates.py:267] Found an exact template match 6kdb_A.
+I0816 21:43:19.003775 47167848511296 templates.py:267] Found an exact template match 2pv0_A.
+I0816 21:43:19.021882 47167848511296 templates.py:267] Found an exact template match 2pv0_C.
+I0816 21:43:19.038208 47167848511296 templates.py:267] Found an exact template match 5yx2_C.
+I0816 21:43:20.332723 47167848511296 templates.py:267] Found an exact template match 6fdf_A.
+I0816 21:43:20.946197 47167848511296 templates.py:267] Found an exact template match 4dkj_A.
+I0816 21:43:21.330845 47167848511296 templates.py:267] Found an exact template match 3qv2_A.
+I0816 21:43:21.347303 47167848511296 templates.py:267] Found an exact template match 6fdf_B.
+I0816 21:43:22.584799 47167848511296 templates.py:267] Found an exact template match 4h0n_B.
+I0816 21:43:23.118592 47167848511296 templates.py:267] Found an exact template match 3lx6_A.
+I0816 21:43:23.495648 47167848511296 templates.py:267] Found an exact template match 5ciy_A.
+I0816 21:43:23.845441 47167848511296 templates.py:267] Found an exact template match 8mht_A.
+I0816 21:43:24.207348 47167848511296 templates.py:267] Found an exact template match 3me5_A.
+I0816 21:43:25.073608 47167848511296 templates.py:267] Found an exact template match 3ubt_B.
+I0816 21:43:25.734040 47167848511296 templates.py:267] Found an exact template match 3g7u_A.
+I0816 21:43:26.398714 47167848511296 pipeline.py:280] Uniref90 MSA size: 4742 sequences.
+I0816 21:43:26.399039 47167848511296 pipeline.py:281] BFD MSA size: 229 sequences.
+I0816 21:43:26.399121 47167848511296 pipeline.py:282] MGnify MSA size: 501 sequences.
+I0816 21:43:26.399194 47167848511296 pipeline.py:283] Final (deduplicated) MSA size: 4402 sequences.
+I0816 21:43:26.421623 47167848511296 pipeline.py:285] Total number of templates (NB: this can include bad templates and is later filtered to top 4): 20.
+I0816 21:43:26.495280 47167848511296 run_alphafold.py:169] Predicting 2QTV.fasta
+I0816 21:43:26.504202 47167848511296 run_alphafold.py:178] *** output path: /home/fred862/scratch/fred862/data/bioinfo/alphafold/output/84_af_reduced/2QTV.fasta/msas
+I0816 21:43:26.636344 47167848511296 jackhmmer.py:133] Launching subprocess "/cvmfs/soft.computecanada.ca/easybuild/software/2020/avx512/Core/hmmer/3.2.1/bin/jackhmmer -o /dev/null -A /tmp/tmp8om3fmha/output.sto --noali --F1 0.0005 --F2 5e-05 --F3 5e-07 --incE 0.0001 -E 0.0001 --cpu 8 -N 1 /home/fred862/scratch/fred862/data/bioinfo/alphafold/input/seq_to_pred/84/2QTV.fasta /home/fred862/scratch/fred862/data/bioinfo/alphafold/input/database/uniref90/uniref90.fasta"
+I0816 21:43:26.717474 47167848511296 utils.py:36] Started Jackhmmer (uniref90.fasta) query
+I0816 21:52:19.910770 47167848511296 utils.py:40] Finished Jackhmmer (uniref90.fasta) query in 533.193 seconds
+I0816 21:52:22.018857 47167848511296 jackhmmer.py:133] Launching subprocess "/cvmfs/soft.computecanada.ca/easybuild/software/2020/avx512/Core/hmmer/3.2.1/bin/jackhmmer -o /dev/null -A /tmp/tmp__ts6z49/output.sto --noali --F1 0.0005 --F2 5e-05 --F3 5e-07 --incE 0.0001 -E 0.0001 --cpu 8 -N 1 /home/fred862/scratch/fred862/data/bioinfo/alphafold/input/seq_to_pred/84/2QTV.fasta /home/fred862/scratch/fred862/data/bioinfo/alphafold/input/database/mgnify/mgy_clusters_2018_12.fa"
+I0816 21:52:22.112652 47167848511296 utils.py:36] Started Jackhmmer (mgy_clusters_2018_12.fa) query
+I0816 22:01:29.814316 47167848511296 utils.py:40] Finished Jackhmmer (mgy_clusters_2018_12.fa) query in 547.701 seconds
+I0816 22:01:43.351895 47167848511296 hhsearch.py:85] Launching subprocess "/cvmfs/soft.computecanada.ca/easybuild/software/2020/Core/hh-suite/3.3.0/bin/hhsearch -i /tmp/tmpve25vscm/query.a3m -o /tmp/tmpve25vscm/output.hhr -maxseq 1000000 -d /home/fred862/scratch/fred862/data/bioinfo/alphafold/input/database/pdb70/pdb70"
+I0816 22:01:43.439799 47167848511296 utils.py:36] Started HHsearch query
+I0816 22:05:22.535677 47167848511296 utils.py:40] Finished HHsearch query in 219.095 seconds
+I0816 22:05:40.119220 47167848511296 jackhmmer.py:133] Launching subprocess "/cvmfs/soft.computecanada.ca/easybuild/software/2020/avx512/Core/hmmer/3.2.1/bin/jackhmmer -o /dev/null -A /tmp/tmpaqexn44j/output.sto --noali --F1 0.0005 --F2 5e-05 --F3 5e-07 --incE 0.0001 -E 0.0001 --cpu 8 -N 1 /home/fred862/scratch/fred862/data/bioinfo/alphafold/input/seq_to_pred/84/2QTV.fasta /home/fred862/scratch/fred862/data/bioinfo/alphafold/input/database/small_bfd/bfd-first_non_consensus_sequences.fasta"
+I0816 22:05:40.205302 47167848511296 utils.py:36] Started Jackhmmer (bfd-first_non_consensus_sequences.fasta) query
+I0816 22:07:48.957949 47167848511296 utils.py:40] Finished Jackhmmer (bfd-first_non_consensus_sequences.fasta) query in 128.752 seconds
+I0816 22:07:49.789437 47167848511296 templates.py:878] Searching for template for: GAMGSDFETNEDINGVRFTWNVFPSTRSDANSNVVPVGCLYTPLKEYDELNVAPYNPVVCSGPHCKSILNPYCVIDPRNSSWSCPICNSRNHLPPQYTNLSQENMPLELQSTTIEYITNKPVTVPPIFFFVVDLTSETENLDSLKESIITSLSLLPPNALIGLITYGNVVQLHDLSSETIDRCNVFRGDREYQLEALTEMLTGQKPTGPGGAASHLPNAMNKVTPFSLNRFFLPLEQVEFKLNQLLENLSPDQWSVPAGHRPLRATGSALNIASLLLQGCYKNIPARIILFASGPGTVAPGLIVNSELKDPLRSHHDIDSDHAQHYKKACKFYNQIAQRVAANGHTVDIFAGCYDQIGMSEMKQLTDSTGGVLLLTDAFSTAIFKQSYLRLFAKDEEGYLKMAFNGNMAVKTSKDLKVQGLIGHASAVKKTDANNISESEIGIGATSTWKMASLSPYHSYAIFFEIANTAANSNPMMSAPGSADRPHLAYTQFITTYQHSSGTNRIRVTTVANQLLPFGTPAIAASFDQEAAAVLMARIAVHKAETDDGADVIRWLDRTLIKLCQKYADYNKDDPQSFRLAPNFSLYPQFTYYLRRSQFLSVFNNSPDETAFYRHIFTREDTTNSLIMIQPTLTSFSMEDDPQPVLLDSISVKPNTILLLDTFFFILIYHGEQIAQWRKAGYQDDPQYADFKALLEEPKLEAAELLVDRFPLPRFIDTEAGGSQARFLLSKLNPSDNYQDMARGGSTIVLTDDVSLQNFMTHLQQVAVSGQAGGGGGGHGKLLFLGLDNAGKTTLLHMLKNDRLATLQPTWHPTSEELAIGNIKFTTFDLGGHIQARRLWKDYFPEVNGIVFLVDAADPERFDEARVELDALFNIAELKDVPFVILGNKIDAPNAVSEAELRSALGLLNTTGSQRIEGQRPVEVFMCSVVMRNGYLEAFQWLSQYGGGGGGPSQPPINAVSGQTPHLNRKANDGWNDLPLKVKEKPSRAKAVSVAPPNIL
+I0816 22:07:52.664414 47167848511296 templates.py:267] Found an exact template match 2qtv_A.
+I0816 22:07:53.690374 47167848511296 templates.py:267] Found an exact template match 6gni_A.
+I0816 22:07:54.604203 47167848511296 templates.py:267] Found an exact template match 1m2v_A.
+I0816 22:07:55.934312 47167848511296 templates.py:267] Found an exact template match 5kyn_A.
+I0816 22:07:57.588121 47167848511296 templates.py:267] Found an exact template match 2nut_A.
+I0816 22:07:59.047174 47167848511296 templates.py:267] Found an exact template match 5vnf_A.
+I0816 22:07:59.080946 47167848511296 templates.py:267] Found an exact template match 1m2v_B.
+I0816 22:08:00.401458 47167848511296 templates.py:267] Found an exact template match 3eh2_C.
+I0816 22:08:01.870481 47167848511296 templates.py:267] Found an exact template match 3efo_B.
+I0816 22:08:03.237495 47167848511296 templates.py:267] Found an exact template match 5kyx_B.
+I0816 22:08:04.252868 47167848511296 templates.py:267] Found an exact template match 5kyy_B.
+I0816 22:08:04.839051 47167848511296 templates.py:267] Found an exact template match 3eh1_A.
+I0816 22:08:05.386359 47167848511296 templates.py:267] Found an exact template match 1pcx_A.
+I0816 22:08:05.420922 47167848511296 templates.py:267] Found an exact template match 6gni_E.
+I0816 22:08:06.812191 47167848511296 templates.py:267] Found an exact template match 1pd0_A.
+I0816 22:08:06.846562 47167848511296 templates.py:267] Found an exact template match 3eh2_A.
+I0816 22:08:07.493089 47167848511296 templates.py:267] Found an exact template match 5a8j_A.
+I0816 22:08:08.187383 47167848511296 templates.py:267] Found an exact template match 4m9q_B.
+I0816 22:08:08.500728 47167848511296 templates.py:267] Found an exact template match 2x77_A.
+I0816 22:08:08.513349 47167848511296 templates.py:267] Found an exact template match 4m9q_C.
+I0816 22:08:10.899156 47167848511296 pipeline.py:280] Uniref90 MSA size: 10000 sequences.
+I0816 22:08:10.899417 47167848511296 pipeline.py:281] BFD MSA size: 1731 sequences.
+I0816 22:08:10.899495 47167848511296 pipeline.py:282] MGnify MSA size: 501 sequences.
+I0816 22:08:10.899568 47167848511296 pipeline.py:283] Final (deduplicated) MSA size: 11278 sequences.
+I0816 22:08:10.899651 47167848511296 pipeline.py:285] Total number of templates (NB: this can include bad templates and is later filtered to top 4): 20.
+I0816 22:08:11.152155 47167848511296 run_alphafold.py:169] Predicting 1YCQ.fasta
+I0816 22:08:11.157637 47167848511296 run_alphafold.py:178] *** output path: /home/fred862/scratch/fred862/data/bioinfo/alphafold/output/84_af_reduced/1YCQ.fasta/msas
+I0816 22:08:11.210407 47167848511296 jackhmmer.py:133] Launching subprocess "/cvmfs/soft.computecanada.ca/easybuild/software/2020/avx512/Core/hmmer/3.2.1/bin/jackhmmer -o /dev/null -A /tmp/tmpemmztnr2/output.sto --noali --F1 0.0005 --F2 5e-05 --F3 5e-07 --incE 0.0001 -E 0.0001 --cpu 8 -N 1 /home/fred862/scratch/fred862/data/bioinfo/alphafold/input/seq_to_pred/84/1YCQ.fasta /home/fred862/scratch/fred862/data/bioinfo/alphafold/input/database/uniref90/uniref90.fasta"
+I0816 22:08:11.286160 47167848511296 utils.py:36] Started Jackhmmer (uniref90.fasta) query
+I0816 22:16:34.239237 47167848511296 utils.py:40] Finished Jackhmmer (uniref90.fasta) query in 502.953 seconds
+I0816 22:16:36.653898 47167848511296 jackhmmer.py:133] Launching subprocess "/cvmfs/soft.computecanada.ca/easybuild/software/2020/avx512/Core/hmmer/3.2.1/bin/jackhmmer -o /dev/null -A /tmp/tmpk_2h5_ei/output.sto --noali --F1 0.0005 --F2 5e-05 --F3 5e-07 --incE 0.0001 -E 0.0001 --cpu 8 -N 1 /home/fred862/scratch/fred862/data/bioinfo/alphafold/input/seq_to_pred/84/1YCQ.fasta /home/fred862/scratch/fred862/data/bioinfo/alphafold/input/database/mgnify/mgy_clusters_2018_12.fa"
+I0816 22:16:36.731620 47167848511296 utils.py:36] Started Jackhmmer (mgy_clusters_2018_12.fa) query
+I0816 22:25:45.679919 47167848511296 utils.py:40] Finished Jackhmmer (mgy_clusters_2018_12.fa) query in 548.948 seconds
+I0816 22:26:01.277414 47167848511296 hhsearch.py:85] Launching subprocess "/cvmfs/soft.computecanada.ca/easybuild/software/2020/Core/hh-suite/3.3.0/bin/hhsearch -i /tmp/tmpsx78agja/query.a3m -o /tmp/tmpsx78agja/output.hhr -maxseq 1000000 -d /home/fred862/scratch/fred862/data/bioinfo/alphafold/input/database/pdb70/pdb70"
+I0816 22:26:01.345743 47167848511296 utils.py:36] Started HHsearch query
+I0816 22:28:15.514573 47167848511296 utils.py:40] Finished HHsearch query in 134.168 seconds
+I0816 22:28:32.412617 47167848511296 jackhmmer.py:133] Launching subprocess "/cvmfs/soft.computecanada.ca/easybuild/software/2020/avx512/Core/hmmer/3.2.1/bin/jackhmmer -o /dev/null -A /tmp/tmpm41cytom/output.sto --noali --F1 0.0005 --F2 5e-05 --F3 5e-07 --incE 0.0001 -E 0.0001 --cpu 8 -N 1 /home/fred862/scratch/fred862/data/bioinfo/alphafold/input/seq_to_pred/84/1YCQ.fasta /home/fred862/scratch/fred862/data/bioinfo/alphafold/input/database/small_bfd/bfd-first_non_consensus_sequences.fasta"
+I0816 22:28:32.490407 47167848511296 utils.py:36] Started Jackhmmer (bfd-first_non_consensus_sequences.fasta) query
+I0816 22:30:24.922385 47167848511296 utils.py:40] Finished Jackhmmer (bfd-first_non_consensus_sequences.fasta) query in 112.431 seconds
+I0816 22:30:57.844231 47167848511296 templates.py:878] Searching for template for: NHISTSDQEKLVQPTPLLLSLLKSAGAQKETFTMKEVIYHLGQYIMAKQLYDEKQQHIVHCSNDPLGELFGVQEFSVKEPRRLYAMISRNLVSANVKESSEDIFGNVGGGGGGPLSQETFSDLWKLLPEN
+I0816 22:30:59.785278 47167848511296 templates.py:267] Found an exact template match 1ttv_A.
+I0816 22:31:00.832145 47167848511296 templates.py:267] Found an exact template match 2lzg_A.
+I0816 22:31:05.545545 47167848511296 templates.py:267] Found an exact template match 4ud7_B.
+I0816 22:31:05.944179 47167848511296 templates.py:267] Found an exact template match 5hmh_B.
+I0816 22:31:06.177814 47167848511296 templates.py:267] Found an exact template match 5xxk_B.
+I0816 22:31:06.735370 47167848511296 templates.py:267] Found an exact template match 6q9o_A.
+I0816 22:31:07.047469 47167848511296 templates.py:267] Found an exact template match 6q9l_B.
+I0816 22:31:07.248519 47167848511296 templates.py:267] Found an exact template match 4ode_A.
+I0816 22:31:07.440555 47167848511296 templates.py:267] Found an exact template match 2axi_A.
+I0816 22:31:07.758755 47167848511296 templates.py:267] Found an exact template match 2z5t_O.
+I0816 22:31:08.160364 47167848511296 templates.py:267] Found an exact template match 5c5a_B.
+I0816 22:31:08.297734 47167848511296 templates.py:267] Found an exact template match 1ycq_A.
+I0816 22:31:10.855446 47167848511296 templates.py:267] Found an exact template match 2ruh_A.
+I0816 22:31:11.121063 47167848511296 templates.py:267] Found an exact template match 5z02_A.
+I0816 22:31:12.139427 47167848511296 templates.py:267] Found an exact template match 5swk_B.
+I0816 22:31:13.223940 47167848511296 templates.py:267] Found an exact template match 3dac_A.
+I0816 22:31:13.540566 47167848511296 templates.py:267] Found an exact template match 6q9y_B.
+I0816 22:31:15.590146 47167848511296 templates.py:267] Found an exact template match 2n06_A.
+I0816 22:31:16.061078 47167848511296 templates.py:267] Found an exact template match 3fdo_A.
+I0816 22:31:16.299971 47167848511296 templates.py:267] Found an exact template match 4lwu_A.
+I0816 22:31:16.338397 47167848511296 pipeline.py:280] Uniref90 MSA size: 905 sequences.
+I0816 22:31:16.338556 47167848511296 pipeline.py:281] BFD MSA size: 26 sequences.
+I0816 22:31:16.338635 47167848511296 pipeline.py:282] MGnify MSA size: 4 sequences.
+I0816 22:31:16.338703 47167848511296 pipeline.py:283] Final (deduplicated) MSA size: 774 sequences.
+I0816 22:31:16.368125 47167848511296 pipeline.py:285] Total number of templates (NB: this can include bad templates and is later filtered to top 4): 20.
+I0816 22:31:16.399785 47167848511296 run_alphafold.py:169] Predicting 2RSN.fasta
+I0816 22:31:16.423459 47167848511296 run_alphafold.py:178] *** output path: /home/fred862/scratch/fred862/data/bioinfo/alphafold/output/84_af_reduced/2RSN.fasta/msas
+I0816 22:31:16.510267 47167848511296 jackhmmer.py:133] Launching subprocess "/cvmfs/soft.computecanada.ca/easybuild/software/2020/avx512/Core/hmmer/3.2.1/bin/jackhmmer -o /dev/null -A /tmp/tmpuc50k8up/output.sto --noali --F1 0.0005 --F2 5e-05 --F3 5e-07 --incE 0.0001 -E 0.0001 --cpu 8 -N 1 /home/fred862/scratch/fred862/data/bioinfo/alphafold/input/seq_to_pred/84/2RSN.fasta /home/fred862/scratch/fred862/data/bioinfo/alphafold/input/database/uniref90/uniref90.fasta"
+I0816 22:31:16.573974 47167848511296 utils.py:36] Started Jackhmmer (uniref90.fasta) query
+I0816 22:39:42.453034 47167848511296 utils.py:40] Finished Jackhmmer (uniref90.fasta) query in 505.879 seconds
+I0816 22:39:42.509120 47167848511296 jackhmmer.py:133] Launching subprocess "/cvmfs/soft.computecanada.ca/easybuild/software/2020/avx512/Core/hmmer/3.2.1/bin/jackhmmer -o /dev/null -A /tmp/tmpylvqa1tu/output.sto --noali --F1 0.0005 --F2 5e-05 --F3 5e-07 --incE 0.0001 -E 0.0001 --cpu 8 -N 1 /home/fred862/scratch/fred862/data/bioinfo/alphafold/input/seq_to_pred/84/2RSN.fasta /home/fred862/scratch/fred862/data/bioinfo/alphafold/input/database/mgnify/mgy_clusters_2018_12.fa"
+I0816 22:39:42.573884 47167848511296 utils.py:36] Started Jackhmmer (mgy_clusters_2018_12.fa) query
+I0816 22:48:44.476489 47167848511296 utils.py:40] Finished Jackhmmer (mgy_clusters_2018_12.fa) query in 541.902 seconds
+I0816 22:48:44.698774 47167848511296 hhsearch.py:85] Launching subprocess "/cvmfs/soft.computecanada.ca/easybuild/software/2020/Core/hh-suite/3.3.0/bin/hhsearch -i /tmp/tmp1l6brsim/query.a3m -o /tmp/tmp1l6brsim/output.hhr -maxseq 1000000 -d /home/fred862/scratch/fred862/data/bioinfo/alphafold/input/database/pdb70/pdb70"
+I0816 22:48:44.763301 47167848511296 utils.py:36] Started HHsearch query
+I0816 22:51:33.016136 47167848511296 utils.py:40] Finished HHsearch query in 168.252 seconds
+I0816 22:51:38.170548 47167848511296 jackhmmer.py:133] Launching subprocess "/cvmfs/soft.computecanada.ca/easybuild/software/2020/avx512/Core/hmmer/3.2.1/bin/jackhmmer -o /dev/null -A /tmp/tmp8b5r529a/output.sto --noali --F1 0.0005 --F2 5e-05 --F3 5e-07 --incE 0.0001 -E 0.0001 --cpu 8 -N 1 /home/fred862/scratch/fred862/data/bioinfo/alphafold/input/seq_to_pred/84/2RSN.fasta /home/fred862/scratch/fred862/data/bioinfo/alphafold/input/database/small_bfd/bfd-first_non_consensus_sequences.fasta"
+I0816 22:51:38.234404 47167848511296 utils.py:36] Started Jackhmmer (bfd-first_non_consensus_sequences.fasta) query
+I0816 22:53:30.664710 47167848511296 utils.py:40] Finished Jackhmmer (bfd-first_non_consensus_sequences.fasta) query in 112.430 seconds
+I0816 22:53:52.700492 47167848511296 templates.py:878] Searching for template for: MVSVKPLPDIDSNEGETDADVYEVEDILADRVNKNGINEYYIKWAGYDWYDNTWEPEQNLFGAEKVLKKWKKRKKGGGGGGARTKQTARKSTGGKAPRY
+I0816 22:53:57.933943 47167848511296 templates.py:267] Found an exact template match 2rsn_A.
+I0816 22:53:59.658128 47167848511296 templates.py:267] Found an exact template match 2rvm_A.
+I0816 22:54:01.743901 47167848511296 templates.py:267] Found an exact template match 2rso_A.
+I0816 22:54:03.082782 47167848511296 templates.py:267] Found an exact template match 2dnt_A.
+I0816 22:54:05.445010 47167848511296 templates.py:267] Found an exact template match 1ap0_A.
+I0816 22:54:05.982379 47167848511296 templates.py:267] Found an exact template match 5ejw_A.
+I0816 22:54:06.874539 47167848511296 templates.py:267] Found an exact template match 4quf_B.
+I0816 22:54:07.223166 47167848511296 templates.py:267] Found an exact template match 4quc_A.
+I0816 22:54:07.445997 47167848511296 templates.py:267] Found an exact template match 3lwe_A.
+I0816 22:54:07.730129 47167848511296 templates.py:267] Found an exact template match 4o42_A.
+I0816 22:54:08.027760 47167848511296 templates.py:267] Found an exact template match 4u68_B.
+I0816 22:54:08.362688 47167848511296 templates.py:267] Found an exact template match 2b2u_C.
+I0816 22:54:08.809455 47167848511296 templates.py:267] Found an exact template match 2b2y_C.
+I0816 22:54:09.086556 47167848511296 templates.py:267] Found an exact template match 6v2s_B.
+I0816 22:54:11.606462 47167848511296 templates.py:267] Found an exact template match 2kvm_A.
+I0816 22:54:12.967621 47167848511296 templates.py:267] Found an exact template match 2d9u_A.
+I0816 22:54:14.652466 47167848511296 templates.py:267] Found an exact template match 1g6z_A.
+I0816 22:54:14.850118 47167848511296 templates.py:267] Found an exact template match 5jjz_A.
+I0816 22:54:15.101066 47167848511296 templates.py:267] Found an exact template match 6v41_AAA.
+I0816 22:54:15.431396 47167848511296 templates.py:267] Found an exact template match 4o9i_X.
+I0816 22:54:15.619747 47167848511296 pipeline.py:280] Uniref90 MSA size: 2606 sequences.
+I0816 22:54:15.619953 47167848511296 pipeline.py:281] BFD MSA size: 1003 sequences.
+I0816 22:54:15.620032 47167848511296 pipeline.py:282] MGnify MSA size: 201 sequences.
+I0816 22:54:15.620102 47167848511296 pipeline.py:283] Final (deduplicated) MSA size: 3393 sequences.
+I0816 22:54:15.644886 47167848511296 pipeline.py:285] Total number of templates (NB: this can include bad templates and is later filtered to top 4): 20.
+I0816 22:54:15.669782 47167848511296 run_alphafold.py:169] Predicting 3DF0.fasta
+I0816 22:54:15.678556 47167848511296 run_alphafold.py:178] *** output path: /home/fred862/scratch/fred862/data/bioinfo/alphafold/output/84_af_reduced/3DF0.fasta/msas
+I0816 22:54:15.737734 47167848511296 jackhmmer.py:133] Launching subprocess "/cvmfs/soft.computecanada.ca/easybuild/software/2020/avx512/Core/hmmer/3.2.1/bin/jackhmmer -o /dev/null -A /tmp/tmp9ew2skm4/output.sto --noali --F1 0.0005 --F2 5e-05 --F3 5e-07 --incE 0.0001 -E 0.0001 --cpu 8 -N 1 /home/fred862/scratch/fred862/data/bioinfo/alphafold/input/seq_to_pred/84/3DF0.fasta /home/fred862/scratch/fred862/data/bioinfo/alphafold/input/database/uniref90/uniref90.fasta"
+I0816 22:54:15.803782 47167848511296 utils.py:36] Started Jackhmmer (uniref90.fasta) query
+I0816 23:03:28.438116 47167848511296 utils.py:40] Finished Jackhmmer (uniref90.fasta) query in 552.634 seconds
+I0816 23:03:55.865187 47167848511296 jackhmmer.py:133] Launching subprocess "/cvmfs/soft.computecanada.ca/easybuild/software/2020/avx512/Core/hmmer/3.2.1/bin/jackhmmer -o /dev/null -A /tmp/tmpn7wtg8hl/output.sto --noali --F1 0.0005 --F2 5e-05 --F3 5e-07 --incE 0.0001 -E 0.0001 --cpu 8 -N 1 /home/fred862/scratch/fred862/data/bioinfo/alphafold/input/seq_to_pred/84/3DF0.fasta /home/fred862/scratch/fred862/data/bioinfo/alphafold/input/database/mgnify/mgy_clusters_2018_12.fa"
+I0816 23:03:55.931739 47167848511296 utils.py:36] Started Jackhmmer (mgy_clusters_2018_12.fa) query
+I0816 23:13:48.910475 47167848511296 utils.py:40] Finished Jackhmmer (mgy_clusters_2018_12.fa) query in 592.978 seconds
+I0816 23:14:20.934456 47167848511296 hhsearch.py:85] Launching subprocess "/cvmfs/soft.computecanada.ca/easybuild/software/2020/Core/hh-suite/3.3.0/bin/hhsearch -i /tmp/tmpfdh7p5t8/query.a3m -o /tmp/tmpfdh7p5t8/output.hhr -maxseq 1000000 -d /home/fred862/scratch/fred862/data/bioinfo/alphafold/input/database/pdb70/pdb70"
+I0816 23:14:21.006708 47167848511296 utils.py:36] Started HHsearch query
+I0816 23:18:47.296348 47167848511296 utils.py:40] Finished HHsearch query in 266.289 seconds
+I0816 23:18:56.769033 47167848511296 jackhmmer.py:133] Launching subprocess "/cvmfs/soft.computecanada.ca/easybuild/software/2020/avx512/Core/hmmer/3.2.1/bin/jackhmmer -o /dev/null -A /tmp/tmp35u2xf79/output.sto --noali --F1 0.0005 --F2 5e-05 --F3 5e-07 --incE 0.0001 -E 0.0001 --cpu 8 -N 1 /home/fred862/scratch/fred862/data/bioinfo/alphafold/input/seq_to_pred/84/3DF0.fasta /home/fred862/scratch/fred862/data/bioinfo/alphafold/input/database/small_bfd/bfd-first_non_consensus_sequences.fasta"
+I0816 23:18:56.850001 47167848511296 utils.py:36] Started Jackhmmer (bfd-first_non_consensus_sequences.fasta) query
+I0816 23:21:03.806880 47167848511296 utils.py:40] Finished Jackhmmer (bfd-first_non_consensus_sequences.fasta) query in 126.956 seconds
+I0816 23:21:05.361294 47167848511296 templates.py:878] Searching for template for: MAGIAMKLAKDREAAEGLGSHERAIKYLNQDYETLRNECLEAGALFQDPSFPALPSSLGFKELGPYSSKTRGIEWKRPTEICADPQFIIGGATRTDICQGALGDSWLLAAIASLTLNEEILARVVPLDQSFQENYAGIFHFQFWQYGEWVEVVVDDRLPTKDGELLFVHSAEGSEFWSALLEKAYAKINGCYEALSGGATTEGFEDFTGGIAEWYELRKPPPNLFKIIQKALEKGSLLGCSIDITSAADSEAVTYQKLVKGHAYSVTGAEEVESSGSLQKLIRIRNPWGQVEWTGKWNDNCPSWNTVDPEVRANLTERQEDGEFWMSFSDFLRHYSRLEICNLTPDTLTCDSYKKWKLTKMDGNWRRGSTAGGCRNYPNTFWMNPQYLIKLEEEDEDDEDGERGCTFLVGLIQKHRRRQRKMGEDMHTIGFGIYEVPEELTGQTNIHLSKNFFLTTRARERSDTFINLREVLNRFKLPPGEYVLVPSTFEPHKNGDFCIRVFSEKKADYQTVDDEIEANIEEIEANEEDIGDGFRRLFAQLAGEDAEISAFELQTILRRVLAKREDIKSDGFSIETCKIMVDMLDEDGSGKLGLKEFYILWTKIQKYQKIYREIDVDRSGTMNSYEMRKALEEAGFKLPCQLHQVIVARFADDELIIDFDNFVRCLVRLEILFKIFKQLDPENTGTIQLDLISWLSFSVLGKLAAALEHHHHHHGGGGGGMHYSNIEANESEEERQFRKLFVQLAGDDMEVSATELMNILNKVVTRHPDLKTDGFGIDTCRSMVAVMDSDTTGKLGFEEFKYLWNNIKKWQGIYKRFDTDRSGTIGSNELPGAFEAAGFHLNQHIYSMIIRRYSDETGNMDFDNFISCLVRLDAMFRAFRSLDKNGTGQIQVNIQEWLQLTMYSGGGGGGAALDDLIDTLGECEDTNKDDPPYTGPVVLDPMDSTYLEALGIKEGTIPPEYRKLLEKNEAITGPLPDSPKPMGIDHAIDALSSDFT
+I0816 23:21:09.899993 47167848511296 templates.py:267] Found an exact template match 1kfu_L.
+I0816 23:21:10.998346 47167848511296 templates.py:267] Found an exact template match 1qxp_B.
+I0816 23:21:11.643530 47167848511296 templates.py:267] Found an exact template match 3bow_A.
+I0816 23:21:12.034050 47167848511296 templates.py:267] Found an exact template match 2r9f_A.
+I0816 23:21:12.394715 47167848511296 templates.py:267] Found an exact template match 2r9c_A.
+I0816 23:21:12.729186 47167848511296 templates.py:267] Found an exact template match 1zcm_A.
+I0816 23:21:13.183219 47167848511296 templates.py:267] Found an exact template match 2nqa_B.
+I0816 23:21:13.642828 47167848511296 templates.py:267] Found an exact template match 2p0r_A.
+I0816 23:21:14.839448 47167848511296 templates.py:267] Found an exact template match 6p3q_A.
+I0816 23:21:15.738003 47167848511296 templates.py:267] Found an exact template match 6bdt_B.
+I0816 23:21:16.068551 47167848511296 templates.py:267] Found an exact template match 1ziv_A.
+I0816 23:21:18.363749 47167848511296 templates.py:267] Found an exact template match 4i5l_E.
+I0816 23:21:18.848792 47167848511296 templates.py:267] Found an exact template match 4mew_A.
+I0816 23:21:20.259621 47167848511296 templates.py:267] Found an exact template match 4p5w_A.
+I0816 23:21:20.769572 47167848511296 templates.py:267] Found an exact template match 6eaz_A.
+I0816 23:21:21.863588 47167848511296 templates.py:267] Found an exact template match 6iih_A.
+I0816 23:21:21.898181 47167848511296 templates.py:267] Found an exact template match 6eaz_B.
+I0816 23:21:22.531126 47167848511296 templates.py:267] Found an exact template match 4p60_B.
+I0816 23:21:24.450200 47167848511296 templates.py:267] Found an exact template match 6le5_H.
+I0816 23:21:24.778471 47167848511296 templates.py:267] Found an exact template match 4p5x_A.
+I0816 23:21:27.337035 47167848511296 pipeline.py:280] Uniref90 MSA size: 10000 sequences.
+I0816 23:21:27.337320 47167848511296 pipeline.py:281] BFD MSA size: 2395 sequences.
+I0816 23:21:27.337405 47167848511296 pipeline.py:282] MGnify MSA size: 501 sequences.
+I0816 23:21:27.337484 47167848511296 pipeline.py:283] Final (deduplicated) MSA size: 11950 sequences.
+I0816 23:21:27.338928 47167848511296 pipeline.py:285] Total number of templates (NB: this can include bad templates and is later filtered to top 4): 20.
+True 7 ['2AZE.fasta', '2M3M.fasta', '4U7T.fasta', '2QTV.fasta', '1YCQ.fasta', '2RSN.fasta', '3DF0.fasta']

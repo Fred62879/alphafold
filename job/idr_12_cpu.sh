@@ -1,4 +1,13 @@
 #!/bin/bash
+#SBATCH --array=0,1
+#SBATCH --time=24:00:00
+#SBATCH --nodes=1      
+#SBATCH --ntasks=1
+#SBATCH --mem=40000
+#SBATCH --cpus-per-task=8
+#SBATCH --account=def-gsponer
+#SBATCH --job-name=alphafold_full_idr_poly_g_12_cpu_compl
+#SBATCH --output=./output/%x-%j.out
 
 #DOWNLOAD_DIR=/datashare/alphafold
 REPO_DIR=~/scratch/fred862/code/bioinfo/alphafold
@@ -14,7 +23,7 @@ source ~/env/alphafold_env/bin/activate
 
 python ${REPO_DIR}/run_alphafold.py \
        --batch_sz=7 \
-       --batch_id=0 \
+       --batch_id=$SLURM_ARRAY_TASK_ID \
        --run_feature=True \
        --use_gpu_relax=True \
        --use_precomputed_msas=True \

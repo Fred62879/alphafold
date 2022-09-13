@@ -1,27 +1,31 @@
 #!/bin/bash
-#SBATCH --time=24:00:00
-#SBATCH --nodes=1      
+#SBATCH --array=0
+#SBATCH --time=12:00:00
+#SBATCH --gres=gpu:1
+#SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --mem=40000
 #SBATCH --cpus-per-task=8
 #SBATCH --account=def-gsponer
-#SBATCH --job-name=alphafold_full_idr84_cpu_0_7
+#SBATCH --job-name=alphafold_full_dibs_poly_g_12_gpu_batch_0
 #SBATCH --output=./output/%x-%j.out
 
 #DOWNLOAD_DIR=/datashare/alphafold
 REPO_DIR=~/scratch/fred862/code/bioinfo/alphafold
-OUTPUT_DIR=~/scratch/fred862/data/bioinfo/output/idr_84
 DOWNLOAD_DIR=~/scratch/fred862/data/bioinfo/input/database
-INPUT_DIR=~/scratch/fred862/data/bioinfo/input/seq_to_pred/idr_84/poly_g_6
+OUTPUT_DIR=~/scratch/fred862/data/bioinfo/output/dibs_af_full/poly_g_12
+INPUT_DIR=~/scratch/fred862/data/bioinfo/input/seq_to_pred/dibs/poly_g_12
+FASTA_FN=~/scratch/fred862/data/bioinfo/input/seq_to_pred/dibs/pdb_cho0.npy
+EXCLUDE_FN=~/scratch/fred862/data/bioinfo/input/seq_to_pred/dibs/pdb_exclude.npy
 
 module load gcc/9.3.0 openmpi/4.0.3 cuda/11.4 cudnn/8.2.0 kalign/2.03 hmmer/3.2.1 openmm-alphafold/7.5.1 hh-suite/3.3.0 python/3.8
 
 source ~/env/alphafold_env/bin/activate
 
 python ${REPO_DIR}/run_alphafold.py \
-       --fasta_lo=0 \
-       --fasta_hi=7 \
-       --run_feature=True \
+       --batch_sz=5 \
+       --batch_id=$SLURM_ARRAY_TASK_ID \
+       --run_feature=False \
        --use_gpu_relax=True \
        --use_precomputed_msas=True \
        --model_preset=monomer_casp14 \
@@ -29,6 +33,8 @@ python ${REPO_DIR}/run_alphafold.py \
        --fasta_dir=${INPUT_DIR} \
        --data_dir=${DOWNLOAD_DIR} \
        --output_dir=${OUTPUT_DIR} \
+       --fasta_names_fn=${FASTA_FN} \
+       --fasta_exclude_fn=${EXCLUDE_FN} \
        --kalign_binary_path=${EBROOTKALIGN}/bin/kalign \
        --pdb70_database_path=${DOWNLOAD_DIR}/pdb70/pdb70 \
        --jackhmmer_binary_path=${EBROOTHMMER}/bin/jackhmmer \

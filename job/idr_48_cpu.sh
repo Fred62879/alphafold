@@ -1,10 +1,19 @@
 #!/bin/bash
+#SBATCH --array=0,1
+#SBATCH --time=24:00:00
+#SBATCH --nodes=1      
+#SBATCH --ntasks=1
+#SBATCH --mem=40000
+#SBATCH --cpus-per-task=8
+#SBATCH --account=def-gsponer
+#SBATCH --job-name=alphafold_full_idr_poly_g_48_cpu
+#SBATCH --output=./output/%x-%j.out
 
 #DOWNLOAD_DIR=/datashare/alphafold
 REPO_DIR=~/scratch/fred862/code/bioinfo/alphafold
 DOWNLOAD_DIR=~/scratch/fred862/data/bioinfo/input/database
-OUTPUT_DIR=~/scratch/fred862/data/bioinfo/output/idr_af_full/poly_g_12
-INPUT_DIR=~/scratch/fred862/data/bioinfo/input/seq_to_pred/idr/poly_g_12
+OUTPUT_DIR=~/scratch/fred862/data/bioinfo/output/idr_af_full/poly_g_48
+INPUT_DIR=~/scratch/fred862/data/bioinfo/input/seq_to_pred/idr/poly_g_48
 FASTA_FN=~/scratch/fred862/data/bioinfo/input/seq_to_pred/idr/pdb_cho0.npy
 EXCLUDE_FN=~/scratch/fred862/data/bioinfo/input/seq_to_pred/dibs/pdb_exclude.npy
 
@@ -14,7 +23,7 @@ source ~/env/alphafold_env/bin/activate
 
 python ${REPO_DIR}/run_alphafold.py \
        --batch_sz=7 \
-       --batch_id=0 \
+       --batch_id=$SLURM_ARRAY_TASK_ID \
        --run_feature=True \
        --use_gpu_relax=True \
        --use_precomputed_msas=True \

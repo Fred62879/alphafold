@@ -19,17 +19,18 @@
 # Usage: bash download_all_data.sh /path/to/download/directory
 set -e
 
-if [[ $# -eq 0 ]]; then
-  echo "Error: download directory must be provided as an input argument."
+#if [[ $# -eq 0 ]]; then
+#  echo "Error: download directory must be provided as an input argument."
+#  exit 1
+#fi
+
+if ! command -v wget &> /dev/null ; then
+  echo "Error: wget could not be found. Please install wget (sudo apt install aria2)."
   exit 1
 fi
 
-if ! command -v aria2c &> /dev/null ; then
-  echo "Error: aria2c could not be found. Please install aria2c (sudo apt install aria2)."
-  exit 1
-fi
-
-DOWNLOAD_DIR="$1"
+#DOWNLOAD_DIR="$1"
+DOWNLOAD_DIR="/home/fred862/scratch/fred862/data/bioinfo/input/database"
 DOWNLOAD_MODE="${2:-full_dbs}"  # Default mode to full_dbs.
 if [[ "${DOWNLOAD_MODE}" != full_dbs && "${DOWNLOAD_MODE}" != reduced_dbs ]]
 then
@@ -37,7 +38,8 @@ then
   exit 1
 fi
 
-SCRIPT_DIR="$(dirname "$(realpath "$0")")"
+#SCRIPT_DIR="$(dirname "$(realpath "$0")")"
+SCRIPT_DIR="/home/fred862/scratch/fred862/code/bioinfo/alphafold/scripts"
 
 echo "Downloading AlphaFold parameters..."
 bash "${SCRIPT_DIR}/download_alphafold_params.sh" "${DOWNLOAD_DIR}"

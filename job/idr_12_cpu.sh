@@ -15,7 +15,7 @@ DOWNLOAD_DIR=~/scratch/fred862/data/bioinfo/input/database
 OUTPUT_DIR=~/scratch/fred862/data/bioinfo/output/idr_af_full/poly_g_12
 INPUT_DIR=~/scratch/fred862/data/bioinfo/input/seq_to_pred/idr/poly_g_12
 FASTA_FN=~/scratch/fred862/data/bioinfo/input/seq_to_pred/idr/pdb_cho0.npy
-EXCLUDE_FN=~/scratch/fred862/data/bioinfo/input/seq_to_pred/dibs/pdb_exclude.npy
+EXCLUDE_FN=~/scratch/fred862/data/bioinfo/input/seq_to_pred/dibs/pdb_exclude0.npy
 
 module load gcc/9.3.0 openmpi/4.0.3 cuda/11.4 cudnn/8.2.0 kalign/2.03 hmmer/3.2.1 openmm-alphafold/7.5.1 hh-suite/3.3.0 python/3.8
 

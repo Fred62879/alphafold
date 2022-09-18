@@ -3,8 +3,8 @@
 #DOWNLOAD_DIR=/datashare/alphafold
 REPO_DIR=~/scratch/fred862/code/bioinfo/alphafold
 DOWNLOAD_DIR=~/scratch/fred862/data/bioinfo/input/database
-OUTPUT_DIR=~/scratch/fred862/data/bioinfo/output/idr_af_full/poly_g_12
-INPUT_DIR=~/scratch/fred862/data/bioinfo/input/seq_to_pred/idr/poly_g_12
+OUTPUT_DIR=~/scratch/fred862/data/bioinfo/output/idr_af_full/poly_g_96
+INPUT_DIR=~/scratch/fred862/data/bioinfo/input/seq_to_pred/idr/poly_g_96
 FASTA_FN=~/scratch/fred862/data/bioinfo/input/seq_to_pred/idr/pdb_cho0.npy
 EXCLUDE_FN=~/scratch/fred862/data/bioinfo/input/seq_to_pred/dibs/pdb_exclude.npy
 

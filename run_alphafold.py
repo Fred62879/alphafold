@@ -327,6 +327,11 @@ def main(argv):
   _check_flag('uniprot_database_path', 'model_preset',
               should_be_set=run_multimer_system)
 
+  # return if already predicted
+  pred_fn = os.path.join(FLAGS.output_dir, 'ranked_0.pdb')
+  if os.path.exists(pred_fn):
+    return 0
+  
   if FLAGS.model_preset == 'monomer_casp14':
     num_ensemble = 8
   else:
@@ -341,7 +346,7 @@ def main(argv):
   fasta_names = fasta_names[lo:hi]
 
   # exclude pdb that takes unreasonably long time to run
-  fasta_names = set(np.load(FLAGS.fasta_names_fn))
+  fasta_names = set(fasta_names)
   fasta_exclude = set(np.load(FLAGS.fasta_exclude_fn))
   fasta_names = np.array(list(fasta_names - fasta_exclude))
   

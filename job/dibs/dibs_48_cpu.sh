@@ -1,23 +1,30 @@
 #!/bin/bash
+#SBATCH --array=0
+#SBATCH --time=24:00:00
+#SBATCH --nodes=1      
+#SBATCH --ntasks=1
+#SBATCH --mem=40000
+#SBATCH --cpus-per-task=8
+#SBATCH --account=def-gsponer
+#SBATCH --job-name=alphafold_full_dibs_poly_g_48_cpu
+#SBATCH --output=./output/%x-%j.out
 
 DOWNLOAD_DIR=/datashare/alphafold
 REPO_DIR=~/scratch/fred862/code/bioinfo/alphafold
 #DOWNLOAD_DIR=~/scratch/fred862/data/bioinfo/input/database
-OUTPUT_DIR=~/scratch/fred862/data/bioinfo/output/ds1_af_full/poly_g_20_fasta
-INPUT_DIR=~/scratch/fred862/data/bioinfo/input/seq_to_pred/ds1/poly_g_20_fasta
-FASTA_FN=~/scratch/fred862/data/bioinfo/input/seq_to_pred/ds1/pdb_ids0.npy
-DONE_FN=~/scratch/fred862/data/bioinfo/input/seq_to_pred/ds1/pdb_cpu_done0.npy
-CPU_EXCLUDE_FN=~/scratch/fred862/data/bioinfo/input/seq_to_pred/ds1/pdb_cpu_exclude0.npy
-GPU_EXCLUDE_FN=~/scratch/fred862/data/bioinfo/input/seq_to_pred/ds1/pdb_gpu_exclude0.npy
+OUTPUT_DIR=~/scratch/fred862/data/bioinfo/output/dibs_af_full/poly_g_48
+INPUT_DIR=~/scratch/fred862/data/bioinfo/input/seq_to_pred/dibs/poly_g_48
+FASTA_FN=~/scratch/fred862/data/bioinfo/input/seq_to_pred/dibs/pdb_cho0.npy
+EXCLUDE_FN=~/scratch/fred862/data/bioinfo/input/seq_to_pred/dibs/pdb_exclude0.npy
 
 module load gcc/9.3.0 openmpi/4.0.3 cuda/11.4 cudnn/8.2.0 kalign/2.03 hmmer/3.2.1 openmm-alphafold/7.5.1 hh-suite/3.3.0 python/3.8
 
 source ~/env/alphafold_env/bin/activate
 
 python ${REPO_DIR}/run_alphafold.py \
-       --batch_sz=15 \
-       --batch_id=0 \
-       --run_feature=False \
+       --batch_sz=10 \
+       --batch_id=$SLURM_ARRAY_TASK_ID \
+       --run_feature=True \
        --use_gpu_relax=True \
        --use_precomputed_msas=True \
        --model_preset=monomer_casp14 \
@@ -25,10 +32,8 @@ python ${REPO_DIR}/run_alphafold.py \
        --fasta_dir=${INPUT_DIR} \
        --data_dir=${DOWNLOAD_DIR} \
        --output_dir=${OUTPUT_DIR} \
-       --fasta_done_fn=${DONE_FN} \
        --fasta_names_fn=${FASTA_FN} \
-       --fasta_cpu_exclude_fn=${CPU_EXCLUDE_FN} \
-       --fasta_gpu_exclude_fn=${GPU_EXCLUDE_FN} \
+       --fasta_exclude_fn=${EXCLUDE_FN} \
        --kalign_binary_path=${EBROOTKALIGN}/bin/kalign \
        --pdb70_database_path=${DOWNLOAD_DIR}/pdb70/pdb70 \
        --jackhmmer_binary_path=${EBROOTHMMER}/bin/jackhmmer \

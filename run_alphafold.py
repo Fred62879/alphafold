@@ -62,7 +62,9 @@ flags.DEFINE_string('data_dir', None, 'Path to directory of supporting data.')
 flags.DEFINE_string('output_dir', None, 'Path to a directory that will '
                     'store the results.')
 flags.DEFINE_string('fasta_names_fn', None, 'Filename of pdb ids')
-flags.DEFINE_string('fasta_exclude_fn', None, 'Filename of pdb ids to exlude')
+flags.DEFINE_string('fasta_cpu_exclude_fn', None, 'Filename of pdb ids done with cpu')
+flags.DEFINE_string('fasta_gpu_exclude_fn', None, 'Filename of pdb ids done with gpu')
+flags.DEFINE_string('fasta_done_fn', None, 'Filename of pdb ids that is finished')
 flags.DEFINE_string('jackhmmer_binary_path', shutil.which('jackhmmer'),
                     'Path to the JackHMMER executable.')
 flags.DEFINE_string('hhblits_binary_path', shutil.which('hhblits'),
@@ -340,15 +342,22 @@ def main(argv):
   # Check for duplicate FASTA file names.
   fasta_names = np.load(FLAGS.fasta_names_fn)
 
+  # exclude pdb that takes unreasonably long time to run and pdb thats done
+  fasta_names = set(fasta_names)
+  fasta_done = set(np.load(FLAGS.fasta_done_fn))
+  cpu_exclude = set(np.load(FLAGS.fasta_cpu_exclude_fn))
+  fasta_names = fasta_names - cpu_exclude - fasta_done
+  if not FLAGS.run_feature:
+    assert(FLAGS.fasta_gpu_exclude_fn is not None)
+    gpu_exclude = set(np.load(FLAGS.fasta_gpu_exclude_fn))
+    fasta_names -= gpu_exclude
+  fasta_names = np.sort(np.array(list(fasta_names)))
+  print('all pdb ids', fasta_names)
+
   # get pdb to run for current batch
   lo = FLAGS.batch_id * FLAGS.batch_sz
   hi = lo + FLAGS.batch_sz
   fasta_names = fasta_names[lo:hi]
-
-  # exclude pdb that takes unreasonably long time to run
-  fasta_names = set(fasta_names)
-  fasta_exclude = set(np.load(FLAGS.fasta_exclude_fn))
-  fasta_names = np.array(list(fasta_names - fasta_exclude))
   
   fasta_names = [name + '.fasta' for name in fasta_names]
   #fasta_names = os.listdir(FLAGS.fasta_dir)[FLAGS.fasta_lo:FLAGS.fasta_hi]
@@ -464,8 +473,10 @@ if __name__ == '__main__':
     'fasta_dir',
     'output_dir',
     'data_dir',
+    'fasta_done_fn',
     'fasta_names_fn',
-    'fasta_exclude_fn',
+    'fasta_cpu_exclude_fn',
+    'fasta_gpu_exclude_fn',
     'uniref90_database_path',
     'mgnify_database_path',
     'template_mmcif_dir',

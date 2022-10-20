@@ -9,9 +9,9 @@
 #SBATCH --job-name=alphafold_full_idr_poly_g_48_cpu
 #SBATCH --output=./output/%x-%j.out
 
-#DOWNLOAD_DIR=/datashare/alphafold
+DOWNLOAD_DIR=/datashare/alphafold
 REPO_DIR=~/scratch/fred862/code/bioinfo/alphafold
-DOWNLOAD_DIR=~/scratch/fred862/data/bioinfo/input/database
+#DOWNLOAD_DIR=~/scratch/fred862/data/bioinfo/input/database
 OUTPUT_DIR=~/scratch/fred862/data/bioinfo/output/idr_af_full/poly_g_48
 INPUT_DIR=~/scratch/fred862/data/bioinfo/input/seq_to_pred/idr/poly_g_48
 FASTA_FN=~/scratch/fred862/data/bioinfo/input/seq_to_pred/idr/pdb_cho0.npy
@@ -22,7 +22,7 @@ module load gcc/9.3.0 openmpi/4.0.3 cuda/11.4 cudnn/8.2.0 kalign/2.03 hmmer/3.2.
 source ~/env/alphafold_env/bin/activate
 
 python ${REPO_DIR}/run_alphafold.py \
-       --batch_sz=6 \
+       --batch_sz=5 \
        --batch_id=$SLURM_ARRAY_TASK_ID \
        --run_feature=True \
        --use_gpu_relax=True \

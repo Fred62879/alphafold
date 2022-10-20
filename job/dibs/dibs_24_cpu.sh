@@ -1,20 +1,20 @@
 #!/bin/bash
-#SBATCH --array=0,1
+#SBATCH --array=0
 #SBATCH --time=24:00:00
 #SBATCH --nodes=1      
 #SBATCH --ntasks=1
 #SBATCH --mem=40000
 #SBATCH --cpus-per-task=8
 #SBATCH --account=def-gsponer
-#SBATCH --job-name=alphafold_full_idr_poly_g_6_cpu
+#SBATCH --job-name=alphafold_full_dibs_poly_g_24_cpu
 #SBATCH --output=./output/%x-%j.out
 
-#DOWNLOAD_DIR=/datashare/alphafold
+DOWNLOAD_DIR=/datashare/alphafold
 REPO_DIR=~/scratch/fred862/code/bioinfo/alphafold
-DOWNLOAD_DIR=~/scratch/fred862/data/bioinfo/input/database
-OUTPUT_DIR=~/scratch/fred862/data/bioinfo/output/idr_af_full/poly_g_6
-INPUT_DIR=~/scratch/fred862/data/bioinfo/input/seq_to_pred/idr/poly_g_6
-FASTA_FN=~/scratch/fred862/data/bioinfo/input/seq_to_pred/idr/pdb_cho0.npy
+#DOWNLOAD_DIR=~/scratch/fred862/data/bioinfo/input/database
+OUTPUT_DIR=~/scratch/fred862/data/bioinfo/output/dibs_af_full/poly_g_24
+INPUT_DIR=~/scratch/fred862/data/bioinfo/input/seq_to_pred/dibs/poly_g_24
+FASTA_FN=~/scratch/fred862/data/bioinfo/input/seq_to_pred/dibs/pdb_cho0.npy
 EXCLUDE_FN=~/scratch/fred862/data/bioinfo/input/seq_to_pred/dibs/pdb_exclude0.npy
 
 module load gcc/9.3.0 openmpi/4.0.3 cuda/11.4 cudnn/8.2.0 kalign/2.03 hmmer/3.2.1 openmm-alphafold/7.5.1 hh-suite/3.3.0 python/3.8
@@ -22,7 +22,7 @@ module load gcc/9.3.0 openmpi/4.0.3 cuda/11.4 cudnn/8.2.0 kalign/2.03 hmmer/3.2.
 source ~/env/alphafold_env/bin/activate
 
 python ${REPO_DIR}/run_alphafold.py \
-       --batch_sz=6 \
+       --batch_sz=10 \
        --batch_id=$SLURM_ARRAY_TASK_ID \
        --run_feature=True \
        --use_gpu_relax=True \

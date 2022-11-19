@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH --array=0
-#SBATCH --time=12:00:00
-#SBATCH --gres=gpu:1
+#SBATCH --time=6:00:00
+#SBATCH --gres=gpu:a100:1
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --mem=40000
@@ -10,9 +10,9 @@
 #SBATCH --job-name=alphafold_full_ds1_poly_g_20_fasta_gpu
 #SBATCH --output=./output/%x-%j.out
 
-DOWNLOAD_DIR=/datashare/alphafold
+#DOWNLOAD_DIR=/datashare/alphafold
 REPO_DIR=~/scratch/fred862/code/bioinfo/alphafold
-#DOWNLOAD_DIR=~/scratch/fred862/data/bioinfo/input/database
+DOWNLOAD_DIR=~/scratch/fred862/data/bioinfo/input/database
 OUTPUT_DIR=~/scratch/fred862/data/bioinfo/output/ds1_af_full/poly_g_20_fasta
 INPUT_DIR=~/scratch/fred862/data/bioinfo/input/seq_to_pred/ds1/poly_g_20_fasta
 FASTA_FN=~/scratch/fred862/data/bioinfo/input/seq_to_pred/ds1/pdb_ids0.npy

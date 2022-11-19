@@ -62,6 +62,7 @@ flags.DEFINE_string('data_dir', None, 'Path to directory of supporting data.')
 flags.DEFINE_string('output_dir', None, 'Path to a directory that will '
                     'store the results.')
 flags.DEFINE_string('fasta_names_fn', None, 'Filename of pdb ids')
+flags.DEFINE_string('fasta_oom_fn', None, 'Filename of pdb ids oom')
 flags.DEFINE_string('fasta_cpu_exclude_fn', None, 'Filename of pdb ids done with cpu')
 flags.DEFINE_string('fasta_gpu_exclude_fn', None, 'Filename of pdb ids done with gpu')
 flags.DEFINE_string('fasta_done_fn', None, 'Filename of pdb ids that is finished')
@@ -344,25 +345,26 @@ def main(argv):
 
   # exclude pdb that takes unreasonably long time to run and pdb thats done
   fasta_names = set(fasta_names)
+  oom = set(np.load(FLAGS.fasta_oom_fn))
   fasta_done = set(np.load(FLAGS.fasta_done_fn))
   cpu_exclude = set(np.load(FLAGS.fasta_cpu_exclude_fn))
-  fasta_names = fasta_names - cpu_exclude - fasta_done
+
+  fasta_names = fasta_names - cpu_exclude - fasta_done - oom
   if not FLAGS.run_feature:
     assert(FLAGS.fasta_gpu_exclude_fn is not None)
     gpu_exclude = set(np.load(FLAGS.fasta_gpu_exclude_fn))
     fasta_names -= gpu_exclude
   fasta_names = np.sort(np.array(list(fasta_names)))
-  print('all pdb ids', fasta_names)
 
   # get pdb to run for current batch
+  print(fasta_names)
   lo = FLAGS.batch_id * FLAGS.batch_sz
   hi = lo + FLAGS.batch_sz
-  fasta_names = fasta_names[lo:hi]
-  
+  print(lo, hi)
+  fasta_names = fasta_names[lo:hi]  
   fasta_names = [name + '.fasta' for name in fasta_names]
   #fasta_names = os.listdir(FLAGS.fasta_dir)[FLAGS.fasta_lo:FLAGS.fasta_hi]
   #fasta_names = [pathlib.Path(p).stem for p in FLAGS.fasta_paths]
-  print(FLAGS.run_feature, len(fasta_names), fasta_names)
 
   if len(fasta_names) != len(set(fasta_names)):
     raise ValueError('All FASTA paths must have a unique basename.')
@@ -449,21 +451,29 @@ def main(argv):
   logging.info('Using random seed %d for the data pipeline', random_seed)
 
   # Predict structure for each of the sequences.
+  fasta_failed = []
   #for i, fasta_path in enumerate(FLAGS.fasta_paths):
   for fasta_name in fasta_names:
     logging.info('')
-    logging.info('==== fasta %s', fasta_name)
-    #fasta_name = fasta_names[i]
-    predict_structure(
-      fasta_dir=FLAGS.fasta_dir,
-      fasta_name=fasta_name,
-      output_dir_base=FLAGS.output_dir,
-      data_pipeline=data_pipeline,
-      model_runners=model_runners,
-      amber_relaxer=amber_relaxer,
-      benchmark=FLAGS.benchmark,
-      random_seed=random_seed,
-      run_feature=FLAGS.run_feature)
+    logging.info(f'==== fasta {fasta_name} ====')
+
+    try:
+      predict_structure(
+        fasta_dir=FLAGS.fasta_dir,
+        fasta_name=fasta_name,
+        output_dir_base=FLAGS.output_dir,
+        data_pipeline=data_pipeline,
+        model_runners=model_runners,
+        amber_relaxer=amber_relaxer,
+        benchmark=FLAGS.benchmark,
+        random_seed=random_seed,
+        run_feature=FLAGS.run_feature)
+    except:
+      fasta_failed.append(fasta_name)
+      logging.info(f'!!! {fasta_name} failed !!!')
+
+  print('all pdbs', fasta_names)
+  print('failed pdbs', fasta_failed)
 
 
 if __name__ == '__main__':
@@ -473,6 +483,7 @@ if __name__ == '__main__':
     'fasta_dir',
     'output_dir',
     'data_dir',
+    'fasta_oom_fn',
     'fasta_done_fn',
     'fasta_names_fn',
     'fasta_cpu_exclude_fn',

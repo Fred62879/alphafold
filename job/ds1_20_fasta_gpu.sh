@@ -1,6 +1,6 @@
 #!/bin/bash
 #SBATCH --array=0
-#SBATCH --time=20:00:00
+#SBATCH --time=12:00:00
 #SBATCH --gres=gpu:1
 #SBATCH --nodes=1
 #SBATCH --ntasks=1

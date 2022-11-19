@@ -1,10 +1,19 @@
 #!/bin/bash
+#SBATCH --array=0
+#SBATCH --time=24:00:00
+#SBATCH --nodes=1      
+#SBATCH --ntasks=1
+#SBATCH --mem=40000
+#SBATCH --cpus-per-task=8
+#SBATCH --account=def-gsponer
+#SBATCH --job-name=alphafold_full_ds3_poly_g_20_cpu
+#SBATCH --output=./output/%x-%j.out
 
 DOWNLOAD_DIR=/datashare/alphafold
 REPO_DIR=~/scratch/fred862/code/bioinfo/alphafold
 #DOWNLOAD_DIR=~/scratch/fred862/data/bioinfo/input/database
-OUTPUT_DIR=~/scratch/fred862/data/bioinfo/output/ds3_af_full/poly_g_20_fasta
-INPUT_DIR=~/scratch/fred862/data/bioinfo/input/seq_to_pred/ds3/poly_g_20_fasta
+OUTPUT_DIR=~/scratch/fred862/data/bioinfo/output/ds3_af_full/poly_g_20
+INPUT_DIR=~/scratch/fred862/data/bioinfo/input/seq_to_pred/ds3/poly_g_20
 FASTA_FN=~/scratch/fred862/data/bioinfo/input/seq_to_pred/ds3/pdb_ids.npy
 DONE_FN=~/scratch/fred862/data/bioinfo/input/seq_to_pred/ds3/pdb_cpu_done.npy
 CPU_EXCLUDE_FN=~/scratch/fred862/data/bioinfo/input/seq_to_pred/ds3/pdb_cpu_exclude.npy
@@ -15,13 +24,13 @@ module load gcc/9.3.0 openmpi/4.0.3 cuda/11.4 cudnn/8.2.0 kalign/2.03 hmmer/3.2.
 source ~/env/alphafold_env/bin/activate
 
 python ${REPO_DIR}/run_alphafold.py \
-       --batch_sz=15 \
-       --batch_id=0 \
-       --run_feature=False \
+       --batch_sz=8\
+       --batch_id=$SLURM_ARRAY_TASK_ID \
+       --run_feature=True \
        --use_gpu_relax=True \
        --use_precomputed_msas=True \
        --model_preset=monomer_casp14 \
-       --max_template_date=2020-05-14 \
+       --max_template_date=2018-04-30 \
        --fasta_dir=${INPUT_DIR} \
        --data_dir=${DOWNLOAD_DIR} \
        --output_dir=${OUTPUT_DIR} \

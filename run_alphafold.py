@@ -143,6 +143,7 @@ flags.DEFINE_boolean('use_gpu_relax', None, 'Whether to relax on GPU. '
                      ' if this setting is enabled.')
 flags.DEFINE_boolean('run_feature', False, 'Calculate MSA and template to '
                      'generate feature')
+flags.DEFINE_boolean('run_oom', False, 'run out-of-mem')
 
 FLAGS = flags.FLAGS
 
@@ -341,11 +342,15 @@ def main(argv):
     num_ensemble = 1
 
   # Check for duplicate FASTA file names.
-  fasta_names = np.load(FLAGS.fasta_names_fn)
+  if FLAGS.run_oom:
+    fasta_names = np.load(FLAGS.fasta_oom_fn)
+    oom = set()
+  else:
+    fasta_names = np.load(FLAGS.fasta_names_fn)
+    oom = set(np.load(FLAGS.fasta_oom_fn))
 
   # exclude pdb that takes unreasonably long time to run and pdb thats done
   fasta_names = set(fasta_names)
-  oom = set(np.load(FLAGS.fasta_oom_fn))
   fasta_done = set(np.load(FLAGS.fasta_done_fn))
   cpu_exclude = set(np.load(FLAGS.fasta_cpu_exclude_fn))
 

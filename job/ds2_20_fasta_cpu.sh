@@ -1,6 +1,6 @@
 #!/bin/bash
-#SBATCH --array=0
-#SBATCH --time=12:00:00
+#SBATCH --array=0-12
+#SBATCH --time=24:00:00
 #SBATCH --nodes=1      
 #SBATCH --ntasks=1
 #SBATCH --mem=40000
@@ -14,6 +14,8 @@ REPO_DIR=~/scratch/fred862/code/bioinfo/alphafold
 #DOWNLOAD_DIR=~/scratch/fred862/data/bioinfo/input/database
 OUTPUT_DIR=~/scratch/fred862/data/bioinfo/output/ds2_af_full/poly_g_20
 INPUT_DIR=~/scratch/fred862/data/bioinfo/input/seq_to_pred/ds2/poly_g_20
+
+OOM_FN=~/scratch/fred862/data/bioinfo/input/seq_to_pred/ds2/oom.npy
 FASTA_FN=~/scratch/fred862/data/bioinfo/input/seq_to_pred/ds2/pdb_ids.npy
 DONE_FN=~/scratch/fred862/data/bioinfo/input/seq_to_pred/ds2/pdb_cpu_done.npy
 CPU_EXCLUDE_FN=~/scratch/fred862/data/bioinfo/input/seq_to_pred/ds2/pdb_cpu_exclude.npy
@@ -24,7 +26,7 @@ module load gcc/9.3.0 openmpi/4.0.3 cuda/11.4 cudnn/8.2.0 kalign/2.03 hmmer/3.2.
 source ~/env/alphafold_env/bin/activate
 
 python ${REPO_DIR}/run_alphafold.py \
-       --batch_sz=8 \
+       --batch_sz=15 \
        --batch_id=$SLURM_ARRAY_TASK_ID \
        --run_feature=True \
        --use_gpu_relax=True \
@@ -34,6 +36,7 @@ python ${REPO_DIR}/run_alphafold.py \
        --fasta_dir=${INPUT_DIR} \
        --data_dir=${DOWNLOAD_DIR} \
        --output_dir=${OUTPUT_DIR} \
+       --fasta_oom_fn=${OOM_FN}\
        --fasta_done_fn=${DONE_FN} \
        --fasta_names_fn=${FASTA_FN} \
        --fasta_cpu_exclude_fn=${CPU_EXCLUDE_FN} \

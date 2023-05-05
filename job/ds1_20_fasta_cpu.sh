@@ -12,8 +12,10 @@
 DOWNLOAD_DIR=/datashare/alphafold
 REPO_DIR=~/scratch/fred862/code/bioinfo/alphafold
 #DOWNLOAD_DIR=~/scratch/fred862/data/bioinfo/input/database
-OUTPUT_DIR=~/scratch/fred862/data/bioinfo/output/ds1_af_full/poly_g_20_fasta
-INPUT_DIR=~/scratch/fred862/data/bioinfo/input/seq_to_pred/ds1/poly_g_20_fasta
+OUTPUT_DIR=~/scratch/fred862/data/bioinfo/output/ds1_af_full/poly_g_20
+INPUT_DIR=~/scratch/fred862/data/bioinfo/input/seq_to_pred/ds1/poly_g_20
+
+OOM_FN=~/scratch/fred862/data/bioinfo/input/seq_to_pred/ds3/oom.npy
 FASTA_FN=~/scratch/fred862/data/bioinfo/input/seq_to_pred/ds1/pdb_ids0.npy
 DONE_FN=~/scratch/fred862/data/bioinfo/input/seq_to_pred/ds1/pdb_cpu_done0.npy
 CPU_EXCLUDE_FN=~/scratch/fred862/data/bioinfo/input/seq_to_pred/ds1/pdb_cpu_exclude0.npy
@@ -34,6 +36,7 @@ python ${REPO_DIR}/run_alphafold.py \
        --fasta_dir=${INPUT_DIR} \
        --data_dir=${DOWNLOAD_DIR} \
        --output_dir=${OUTPUT_DIR} \
+       --fasta_oom_fn=${OOM_FN}\
        --fasta_done_fn=${DONE_FN} \
        --fasta_names_fn=${FASTA_FN} \
        --fasta_cpu_exclude_fn=${CPU_EXCLUDE_FN} \

@@ -23,6 +23,7 @@ import sys
 import time
 from typing import Dict, Union
 
+from os.path import exists
 from absl import app
 from absl import flags
 from absl import logging
@@ -343,11 +344,14 @@ def main(argv):
 
   # Check for duplicate FASTA file names.
   if FLAGS.run_oom:
+    assert(exists(FLAGS.fasta_oom_fn))
     fasta_names = np.load(FLAGS.fasta_oom_fn)
     oom = set()
   else:
     fasta_names = np.load(FLAGS.fasta_names_fn)
-    oom = set(np.load(FLAGS.fasta_oom_fn))
+    if exists(FLAGS.fasta_oom_fn):
+      oom = set(np.load(FLAGS.fasta_oom_fn))
+    else: oom = set()
 
   # exclude pdb that takes unreasonably long time to run and pdb thats done
   fasta_names = set(fasta_names)
@@ -457,7 +461,7 @@ def main(argv):
 
   # Predict structure for each of the sequences.
   fasta_failed = []
-  #for i, fasta_path in enumerate(FLAGS.fasta_paths):
+
   for fasta_name in fasta_names:
     logging.info('')
     logging.info(f'==== fasta {fasta_name} ====')
@@ -476,6 +480,17 @@ def main(argv):
     except:
       fasta_failed.append(fasta_name)
       logging.info(f'!!! {fasta_name} failed !!!')
+
+    # predict_structure(
+    #     fasta_dir=FLAGS.fasta_dir,
+    #     fasta_name=fasta_name,
+    #     output_dir_base=FLAGS.output_dir,
+    #     data_pipeline=data_pipeline,
+    #     model_runners=model_runners,
+    #     amber_relaxer=amber_relaxer,
+    #     benchmark=FLAGS.benchmark,
+    #     random_seed=random_seed,
+    #     run_feature=FLAGS.run_feature)
 
   print('all pdbs', fasta_names)
   print('failed pdbs', fasta_failed)
